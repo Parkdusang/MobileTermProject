@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">HealthTrainer</string>
+    <string name="title_activity_trainermode">Trainermode</string>
+
+    <string-array name="plants_arrays">
+        <item>이름</item>
+        <item>성별</item>
+        <item>나이</item>
+        <item>전화번호</item>
+    </string-array>
+</resources>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/exerimg"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_launcher" />
+    <LinearLayout
+        android:layout_width="196dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.72"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/exertextview1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="운동이름"
+            android:textColor="#000000"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/exertextview2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="설명(몇 세트 몇 개씩)"
+            android:textColor="#ff0000"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+        <!--<LinearLayout-->
+            <!--android:layout_width="196dp"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<TextView-->
+                <!--android:id="@+id/exersettx"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="set:"-->
+                <!--android:textColor="#d14d4d"-->
+                <!--android:visibility="invisible"/>-->
+            <!--<EditText-->
+                <!--android:id="@+id/exerset"-->
+                <!--android:layout_width="35dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:visibility="invisible"-->
+                <!--android:textColor="#d14d4d"-->
+                <!--android:background="#90eac5"/>-->
+                <!--&lt;!&ndash;android:focusable="false"&ndash;&gt;-->
+            <!--<TextView-->
+                <!--android:id="@+id/exernumbertx"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="세트별 개수:"-->
+                <!--android:textColor="#d93e3e"-->
+                <!--android:visibility="invisible"/>-->
+            <!--<EditText-->
+                <!--android:id="@+id/exernumber"-->
+                <!--android:layout_width="55dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColor="#d14d4d"-->
+                <!--android:background="#90eac5"-->
+                <!--android:visibility="invisible"-->
+                <!--android:focusable="false"/>-->
+
+        <!--</LinearLayout>-->
+    </LinearLayout>
+    <CheckBox
+        android:id="@+id/checkexercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:checked="false"
+        android:focusable="false"/>
+</LinearLayout>

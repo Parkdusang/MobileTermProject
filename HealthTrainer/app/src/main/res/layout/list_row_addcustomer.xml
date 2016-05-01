@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/imgIcon3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="196dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.72"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtTitle3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Large Text"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/txtContent3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Small Text"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#ff0000" />
+
+
+    </LinearLayout>
+    <CheckBox
+        android:id="@+id/checkbox12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#54d9a3"
+        android:checked="false"
+        android:focusable="false"/>
+
+</LinearLayout>

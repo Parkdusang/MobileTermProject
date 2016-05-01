@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.example.parkdusang.healthtrainer.Login">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/loginbackground"
+        >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="280dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="20dp">
+        <TextView
+             android:layout_width="60dp"
+             android:layout_height="wrap_content"
+             android:text=" ID :"
+            android:gravity="left"
+            android:textSize="30dp"
+            />
+        <EditText
+            android:id="@+id/checkid"
+            android:layout_width="180dp"
+            android:inputType="textAutoComplete|text"
+            android:layout_height="wrap_content"
+           />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp">
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="PW:"
+            android:gravity="left"
+            android:textSize="30dp"
+            />
+        <EditText
+            android:id="@+id/checkpassword"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:inputType="numberPassword"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="60dp"
+        android:gravity="left"
+        >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 확인 "
+            android:id="@+id/button3" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 회원가입 "
+            android:id="@+id/button4" />
+    </LinearLayout>
+    </LinearLayout>
+</ScrollView>
