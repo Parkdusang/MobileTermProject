@@ -27,9 +27,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     EditText e1, e2;
     Button b1, b2;
     int checkingmode;
-    Boolean checkid = false;
-    Boolean checkpwd = false;
-    Boolean ifnotexist = false;
+
 
     InputStream is = null;
     String result = null;
@@ -54,24 +52,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
 
         if (R.id.button3 == v.getId()) {
-            if (checkingmode == 1) { // tranir login
-                int a = insert();
-
-                if (a == 0) {
-                    Intent myAct1 = new Intent(getApplicationContext(), Trainermode.class);
-                    startActivity(myAct1);
-                } else if (a == 1) {
-                    Toast.makeText(getApplicationContext(), "Fail password", Toast.LENGTH_SHORT).show();
-
-                } else if(a == 4){
-                    Toast.makeText(getApplicationContext(), "먼저끝났음", Toast.LENGTH_SHORT).show();
+            new Thread(new Runnable() {
+                public void run() {
+                    insert();
                 }
-                else
-                    Toast.makeText(getApplicationContext(), "Fail id", Toast.LENGTH_SHORT).show();
-            } else { // customer login
-                Intent myAct1 = new Intent(getApplicationContext(), customermode.class);
-                startActivity(myAct1);
-            }
+            }).start();
         } else {
             Intent myAct1 = new Intent(getApplicationContext(), Register.class);
             myAct1.putExtra("checktype", checkingmode);
@@ -79,56 +64,73 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
-    public int insert() {
+    public void insert() {
 
-        new Thread() {
-            public void run() {
-                ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
-                nameValuePairs.add(new BasicNameValuePair("_id", e1.getText().toString()));
-                nameValuePairs.add(new BasicNameValuePair("password", e2.getText().toString()));
-                // nameValuePairs.add(new BasicNameValuePair("tp", checkingmode+""));
+        ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
-                try {
-                    HttpClient httpclient = new DefaultHttpClient();
-                    HttpPost httppost = new HttpPost(url);
-                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-                    HttpResponse response = httpclient.execute(httppost);
-                    HttpEntity entity = response.getEntity();
-                    is = entity.getContent();
-                    Log.e("pass 1", "connection success ");
-                } catch (Exception e) {
-                    Log.e("Fail 1", e.toString());
-                    Toast.makeText(getApplicationContext(), "Invalid IP Address",
-                            Toast.LENGTH_LONG).show();
+        nameValuePairs.add(new BasicNameValuePair("_id", e1.getText().toString()));
+        nameValuePairs.add(new BasicNameValuePair("password", e2.getText().toString()));
+        nameValuePairs.add(new BasicNameValuePair("tp", checkingmode + ""));
+
+        try {
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost(url);
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            HttpResponse response = httpclient.execute(httppost);
+            HttpEntity entity = response.getEntity();
+            is = entity.getContent();
+            Log.e("pass 1", "connection success ");
+        } catch (Exception e) {
+            Log.e("Fail 1", e.toString());
+            Toast.makeText(getApplicationContext(), "Invalid IP Address",
+                    Toast.LENGTH_LONG).show();
+        }
+
+        try {
+            BufferedReader reader = new BufferedReader
+                    (new InputStreamReader(is, "iso-8859-1"), 8);
+            StringBuilder sb = new StringBuilder();
+            while ((line = reader.readLine()) != null) {
+                sb.append(line + "\n");
+            }
+            is.close();
+            result = sb.toString();
+            Log.e("1223", result);
+            if (result.substring(1, 3).equals("su")) {
+                Log.e("1223", "으아 들어갔다1!!!!");
+
+                if (checkingmode == 1) {
+                    Intent myAct1 = new Intent(getApplicationContext(), Trainermode.class);
+                    startActivity(myAct1);
+                } else {
+                    Intent myAct1 = new Intent(getApplicationContext(), customermode.class);
+                    startActivity(myAct1);
                 }
-
-                try {
-                    BufferedReader reader = new BufferedReader
-                            (new InputStreamReader(is, "iso-8859-1"), 8);
-                    StringBuilder sb = new StringBuilder();
-                    while ((line = reader.readLine()) != null) {
-                        sb.append(line + "\n");
+            } else if (result.substring(1, 9).equals("failedpa")) {
+                runOnUiThread(new Thread(new Runnable() {
+                    public void run() {
+                        Toast.makeText(getApplicationContext(), "비밀번호가 틀렸습니다", Toast.LENGTH_SHORT).show();
                     }
-                    is.close();
-                    result = sb.toString();
-                    Log.e("1223", result);
-                    if (result.equals("success")) {
-                        checkid = true;
-                        checkpwd = true;
-                        //Log.e("1223", result);
-                        ifnotexist = true;
-                    } else if (result.equals("failedpassword")) {
-                        ifnotexist = true;
-                        checkid = true;
-                        // Log.e("1223", result);
-                    } else {
-                        ifnotexist = true;
-                    }
+                }));
 
-                } catch (Exception e) {
-                    Log.e("Fail 2", e.toString());
-                }
+            } else if (result.substring(1, 3).equals("wr")) {
+                runOnUiThread(new Thread(new Runnable() {
+                    public void run() {
+                        Toast.makeText(getApplicationContext(), "다른모드의 아이뒤입니다", Toast.LENGTH_SHORT).show();
+                    }
+                }));
+            } else {
+                runOnUiThread(new Thread(new Runnable() {
+                    public void run() {
+                        Toast.makeText(getApplicationContext(), "아이뒤가 일치하지 않습니다", Toast.LENGTH_SHORT).show();
+                    }
+                }));
+            }
+
+        } catch (Exception e) {
+            Log.e("Fail 2", e.toString());
+        }
 
 //                    try {
 //                        JSONObject json_data = new JSONObject(result);
@@ -144,23 +146,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 //                    } catch (Exception e) {
 //                        Log.e("Fail 3", e.toString());
 //                    }
-            }
-        }.start();
-
-        if(ifnotexist) {
-            if (checkid) {
-                if (checkpwd) {
-                    return 0;
-                } else {
-                    return 1;
-                }
-            } else {
-                return 2;
-            }
-
-        }
-        else
-            return 4;
-
     }
+
 }
