@@ -1,77 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
-    tools:context="com.example.parkdusang.healthtrainer.Login">
-
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_register"
+   >
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
         android:orientation="vertical"
-        android:background="@drawable/loginbackground"
-        >
-    <LinearLayout
+        android:padding="10dp"
+        android:weightSum="1">
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="280dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginLeft="20dp">
-        <TextView
-             android:layout_width="60dp"
-             android:layout_height="wrap_content"
-             android:text=" ID :"
-            android:gravity="left"
-            android:textSize="30dp"
-            />
+        android:gravity="center"
+        android:layout_gravity="top"
+        android:textColor="@color/white"
+        android:text="@string/teamname"
+        android:textSize="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
         <EditText
             android:id="@+id/checkid"
-            android:layout_width="180dp"
-            android:inputType="textAutoComplete|text"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-           />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="20dp">
-        <TextView
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:text="PW:"
-            android:gravity="left"
-            android:textSize="30dp"
-            />
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:hint="I D"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
         <EditText
             android:id="@+id/checkpassword"
-            android:layout_width="180dp"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberPassword"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="60dp"
-        android:gravity="left"
-        >
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:hint="@string/hint_password"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint" />
+
+        <!-- Login Button -->
 
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/button3"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text=" 확인 "
-            android:id="@+id/button3" />
+            android:layout_marginTop="20dip"
+            android:background="@color/btn_login_bg"
+            android:text="@string/btn_login"
+            android:textColor="@color/btn_login" />
+
+        <!-- Link to Login Screen -->
 
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/button4"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text=" 회원가입 "
-            android:id="@+id/button4" />
+            android:layout_marginTop="40dip"
+            android:background="@null"
+            android:text="@string/btn_link_to_register"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
     </LinearLayout>
-    </LinearLayout>
+
+</LinearLayout>
 </ScrollView>

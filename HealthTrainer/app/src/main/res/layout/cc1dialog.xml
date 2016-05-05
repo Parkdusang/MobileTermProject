@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="5dp"
+    android:layout_height="match_parent">
+    <TableRow>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="시작 몸무게 : "
+            />
+        <EditText
+            android:id="@+id/startweight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="시작 몸무게가 뭐에요? : "
+            android:inputType="number"
+            />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="목표 몸무게 : "/>
+        <EditText
+            android:id="@+id/goalweight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="목표 몸무게가 뭐에요? : "
+            android:inputType="number"
+            />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="현재 몸무게 : "/>
+        <EditText
+            android:id="@+id/currentweight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="현재 몸무게가 뭐에요? : "
+            android:inputType="number"
+            />
+    </TableRow>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp">
+        <Button
+            android:id="@+id/dialog_btn1"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:text="설정"
+
+            />
+        <Button
+            android:id="@+id/dialog_btn2"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:text="취소"
+            />
+    </LinearLayout>
+</TableLayout>
