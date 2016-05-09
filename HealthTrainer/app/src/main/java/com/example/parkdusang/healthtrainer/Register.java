@@ -45,7 +45,7 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.register);
 
         Intent intent = getIntent();
-        checkingmode = intent.getIntExtra("sign", 10);
+        checkingmode = intent.getIntExtra("checktype", 10);
 
 
         ETname = (EditText) findViewById(R.id.rg_edit4);
@@ -118,6 +118,24 @@ public class Register extends AppCompatActivity {
                     is.close();
                     result = sb.toString();
                     Log.e("pass 2", result);
+
+                    Log.i("test", result.substring(1, 3));
+                    if(result.substring(1,3).equals("su")){
+                        runOnUiThread(new Thread(new Runnable() {
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "회원가입에 성공했습니다.", Toast.LENGTH_SHORT).show();
+                            }
+                        }));
+                        finish();
+                    }
+                    else{
+                        runOnUiThread(new Thread(new Runnable() {
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "회원가입에 실패했습니다.", Toast.LENGTH_SHORT).show();
+                            }
+                        }));
+                        finish();
+                    }
                 } catch (Exception e) {
                     Log.e("Fail 2", e.toString());
                 }
@@ -196,6 +214,8 @@ public class Register extends AppCompatActivity {
                         br.close();
                     }
                     conn.disconnect();
+                    String str = jsonHtml.toString();
+
                 }
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -205,8 +225,9 @@ public class Register extends AppCompatActivity {
         }
 
         protected void onPostExecute(String str) {
+
             Log.i("TAG", str);
-            //  txtView.setText(str);
+            //
         }
 
     }

@@ -1,121 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/bg_register"
     tools:context="com.example.parkdusang.healthtrainer.customermode">
 
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="아이디 : " />
 
         <EditText
+            android:id="@+id/rg_edit1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint=" ex) pesang72 "
-            android:text=""
-            android:id="@+id/rg_edit1"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="비밀번호 : " />
+            android:background="@color/input_register_bg"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            android:layout_marginBottom="10dp"
+            android:textColorHint="@color/input_register_hint"
+            android:hint="  I D" />
 
         <EditText
+            android:id="@+id/rg_edit4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
-            android:id="@+id/rg_edit2"/>
+            android:background="@color/input_register_bg"
+            android:textColorHint="@color/input_register_hint"
+            android:textSize="30dp"
+            android:layout_marginBottom="10dp"
+            android:hint="  Name" />
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="전화번호 : " />
 
         <EditText
+            android:id="@+id/rg_edit2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint=" ex) 010-xxxx-xxxx "
-            android:text=""
-            android:id="@+id/rg_edit3"/>
+            android:background="@color/input_register_bg"
+            android:textColorHint="@color/input_register_hint"
+            android:textSize="30dp"
+            android:layout_marginBottom="10dp"
 
+            android:hint="  Password" />
 
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="이름 : " />
 
         <EditText
+            android:id="@+id/rg_edit2c"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=""
-            android:id="@+id/rg_edit4"/>
+            android:background="@color/input_register_bg"
+            android:textColorHint="@color/input_register_hint"
+            android:textSize="30dp"
+            android:layout_marginBottom="10dp"
+            android:hint="  Check PW" />
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/rg_edit3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/input_register_bg"
+            android:textColorHint="@color/input_register_hint"
+            android:textSize="30dp"
+            android:layout_marginBottom="10dp"
+            android:hint="  Phone Number" />
+
+
+        <EditText
+            android:id="@+id/rg_edit_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/input_register_bg"
+            android:textColorHint="@color/input_register_hint"
+            android:textSize="30dp"
+            android:layout_marginBottom="10dp"
+            android:hint="  E - Mail" />
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="성별 : " />
-
-        <CheckBox
+            android:textSize="30dp"
+            android:text="성별  "
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+<RadioGroup
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+        <RadioButton
             android:id="@+id/sex1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" 남 "/>
-        <CheckBox
+            android:text=" 남 " />
+
+        <RadioButton
             android:id="@+id/sex2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" 여 "/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:layout_width="wrap_content"
+            android:text=" 여 " />
+</RadioGroup>
+        <TextView
+            android:id="@+id/rg_pwcheck"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=" 확인 "
-            android:id="@+id/button5" />
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ff0000" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" 취소 "
-            android:id="@+id/button6" />
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 확인 " />
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 취소 " />
+        </LinearLayout>
+
     </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

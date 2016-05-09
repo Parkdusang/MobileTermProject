@@ -97,24 +97,33 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             is.close();
             result = sb.toString();
             Log.e("1223", result);
-            if (result.substring(1, 3).equals("su")) {
+            if (result.substring(2, 4).equals("su")) {
                 Log.e("1223", "으아 들어갔다1!!!!");
-
-                if (checkingmode == 1) {
+                checkingmode = Integer.parseInt(result.substring(1,2).toString());
+                Log.e("check", checkingmode+"");
+                if (checkingmode == 1) { // 트레이너모드
                     Intent myAct1 = new Intent(getApplicationContext(), Trainermode.class);
+                    Log.i("TAG", e1.getText().toString());
+                    myAct1.putExtra("_id", e1.getText().toString());
                     startActivity(myAct1);
-                } else {
+                } else if(checkingmode == 3 || checkingmode == 2) { // 고객이 등록수락 전 모드
+                    Intent myAct1 = new Intent(getApplicationContext(), Connectionwaiting.class);
+                    myAct1.putExtra("_id", e1.getText().toString());
+                    myAct1.putExtra("type",checkingmode);
+                    startActivity(myAct1);
+                }else { // 고객이 트레이너와 맺어졌을때
                     Intent myAct1 = new Intent(getApplicationContext(), customermode.class);
+                    myAct1.putExtra("_id", e1.getText().toString());
                     startActivity(myAct1);
                 }
-            } else if (result.substring(1, 9).equals("failedpa")) {
+            } else if (result.substring(2, 8).equals("failed")) { // 비밀번호 실패
                 runOnUiThread(new Thread(new Runnable() {
                     public void run() {
                         Toast.makeText(getApplicationContext(), "비밀번호가 틀렸습니다", Toast.LENGTH_SHORT).show();
                     }
                 }));
 
-            } else if (result.substring(1, 3).equals("wr")) {
+            } else if (result.substring(2, 4).equals("wr")) { // 모드선택 오류
                 runOnUiThread(new Thread(new Runnable() {
                     public void run() {
                         Toast.makeText(getApplicationContext(), "다른모드의 아이뒤입니다", Toast.LENGTH_SHORT).show();

@@ -3,6 +3,7 @@
     package="com.example.parkdusang.healthtrainer">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -21,8 +22,9 @@
             android:label="@string/title_activity_trainermode"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".customermode" />
-        <activity android:name=".Login"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Login"
+            android:screenOrientation="portrait" />
         <activity android:name=".AddCustomer" />
         <activity android:name=".Register" />
         <activity android:name=".Customercontent1" />
@@ -32,7 +34,8 @@
         <activity android:name=".Setexercise" />
         <activity android:name=".Todayreport" />
         <activity android:name=".CreateExercise" />
-        <activity android:name=".Customercontent4"></activity>
+        <activity android:name=".Customercontent4" />
+        <activity android:name=".Connectionwaiting"></activity>
     </application>
 
 </manifest>
