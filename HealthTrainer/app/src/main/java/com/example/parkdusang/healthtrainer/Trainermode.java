@@ -138,7 +138,6 @@ public class Trainermode extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
     }
 
     public void getData(String url, String id) {

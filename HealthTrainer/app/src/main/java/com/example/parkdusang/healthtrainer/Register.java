@@ -2,13 +2,13 @@ package com.example.parkdusang.healthtrainer;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
@@ -29,8 +29,8 @@ import java.util.ArrayList;
 
 public class Register extends AppCompatActivity {
     Button ok;
-    EditText ETname, ETphone, ETID, ETpassword;
-    CheckBox b1, b2;
+    EditText ETname, ETphone, ETID, ETpassword, ETpasswordCheck;
+    RadioButton b1, b2;
     InputStream is = null;
     String result = null;
     String line = null;
@@ -51,30 +51,32 @@ public class Register extends AppCompatActivity {
         ETname = (EditText) findViewById(R.id.rg_edit4);
         ETID = (EditText) findViewById(R.id.rg_edit1);
         ETpassword = (EditText) findViewById(R.id.rg_edit2);
+        ETpasswordCheck = (EditText) findViewById(R.id.rg_edit2c);
         ETphone = (EditText) findViewById(R.id.rg_edit3);
-        b1 = (CheckBox) findViewById(R.id.sex1);
-        b2 = (CheckBox) findViewById(R.id.sex2);
+        b1 = (RadioButton) findViewById(R.id.sex1);
+        b2 = (RadioButton) findViewById(R.id.sex2);
         ok = (Button) findViewById(R.id.button5);
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (ETname.equals("")) {
-                    Toast.makeText(getApplicationContext(),"이름을 입력하시오",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "이름을 입력하시오", Toast.LENGTH_SHORT).show();
                 } else if (ETID.equals("")) {
-                    Toast.makeText(getApplicationContext(),"아이디를 입력하시오",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "아이디를 입력하시오", Toast.LENGTH_SHORT).show();
                 } else if (ETpassword.equals("")) {
-                    Toast.makeText(getApplicationContext(),"비밀번호를 입력하시오",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "비밀번호를 입력하시오", Toast.LENGTH_SHORT).show();
                 } else if (ETphone.equals("")) {
-                    Toast.makeText(getApplicationContext(),"휴대폰 번호를 입력하시오",Toast.LENGTH_SHORT).show();
-                } else if (b1.isChecked() == false && b2.isChecked() == false){
-                    Toast.makeText(getApplicationContext(),"성별을 체크하시오",Toast.LENGTH_SHORT).show();
-                } else{
+                    Toast.makeText(getApplicationContext(), "휴대폰 번호를 입력하시오", Toast.LENGTH_SHORT).show();
+                } else if (b1.isChecked() == false && b2.isChecked() == false) {
+                    Toast.makeText(getApplicationContext(), "성별을 체크하시오", Toast.LENGTH_SHORT).show();
+                } else if (ETpassword.getText().toString().equals(ETpasswordCheck.getText().toString())) {
+                    Toast.makeText(getApplicationContext(), "비밀번호가 다릅니다.", Toast.LENGTH_SHORT).show();
+                } else {
 
-                    if(b1.isChecked()){
-                        sex =1;
-                    }
-                    else
-                        sex =2;
+                    if (b1.isChecked()) {
+                        sex = 1;
+                    } else
+                        sex = 2;
                     insert();
                 }
             }
@@ -92,7 +94,7 @@ public class Register extends AppCompatActivity {
                 nameValuePairs.add(new BasicNameValuePair("name", ETname.getText().toString()));
                 nameValuePairs.add(new BasicNameValuePair("sex", "1"));
                 nameValuePairs.add(new BasicNameValuePair("phonenumber", ETphone.getText().toString()));
-                nameValuePairs.add(new BasicNameValuePair("tp", checkingmode+""));
+                nameValuePairs.add(new BasicNameValuePair("tp", checkingmode + ""));
 
                 try {
                     HttpClient httpclient = new DefaultHttpClient();
@@ -120,15 +122,14 @@ public class Register extends AppCompatActivity {
                     Log.e("pass 2", result);
 
                     Log.i("test", result.substring(1, 3));
-                    if(result.substring(1,3).equals("su")){
+                    if (result.substring(1, 3).equals("su")) {
                         runOnUiThread(new Thread(new Runnable() {
                             public void run() {
                                 Toast.makeText(getApplicationContext(), "회원가입에 성공했습니다.", Toast.LENGTH_SHORT).show();
                             }
                         }));
                         finish();
-                    }
-                    else{
+                    } else {
                         runOnUiThread(new Thread(new Runnable() {
                             public void run() {
                                 Toast.makeText(getApplicationContext(), "회원가입에 실패했습니다.", Toast.LENGTH_SHORT).show();
