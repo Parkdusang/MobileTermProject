@@ -17,12 +17,14 @@ public class Customercontent4 extends Fragment{
     Button cc4btn;
     ArrayList<MyCustomDTO2> cc4list;
     Cc4Adapter cc4adapter;
-
+    String id;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
 
         ViewGroup v = (ViewGroup)inflater.inflate(R.layout.customercontent4, container, false);
+
+        id = this.getArguments().getString("_id","None");
         cc4listView = (ListView)v.findViewById(R.id.cc4listView);
         cc4list=new ArrayList<MyCustomDTO2>();
         //디비 연동할 부분

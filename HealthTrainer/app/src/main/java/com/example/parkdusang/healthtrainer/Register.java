@@ -69,7 +69,7 @@ public class Register extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "휴대폰 번호를 입력하시오", Toast.LENGTH_SHORT).show();
                 } else if (b1.isChecked() == false && b2.isChecked() == false) {
                     Toast.makeText(getApplicationContext(), "성별을 체크하시오", Toast.LENGTH_SHORT).show();
-                } else if (ETpassword.getText().toString().equals(ETpasswordCheck.getText().toString())) {
+                } else if (!ETpassword.getText().toString().equals(ETpasswordCheck.getText().toString())) {
                     Toast.makeText(getApplicationContext(), "비밀번호가 다릅니다.", Toast.LENGTH_SHORT).show();
                 } else {
 

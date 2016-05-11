@@ -16,11 +16,13 @@ public class Customercontent2 extends Fragment{
     private ArrayList<ArrayList<String>> mChildList = null;
     private ArrayList<String> mChildListContent = null;
     private ExpandableListView mListView;
-
+    String id;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         ViewGroup v = (ViewGroup) inflater.inflate(R.layout.customercontent2, container, false);
+
+        id = this.getArguments().getString("_id","None");
         mListView=(ExpandableListView)v.findViewById(R.id.elv_list);
         mGroupList = new ArrayList<String>();
         mChildList = new ArrayList<ArrayList<String>>();

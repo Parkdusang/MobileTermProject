@@ -13,14 +13,14 @@ public class Customercontent3 extends Fragment{
 
     TextView cc3Txt1,cc3Txt2,cc3Txt3,cc3Txt4,cc3Txt5,cc3Txt6;
     ProgressBar cc3Pbar1,cc3Pbar2,cc3Pbar3,cc3Pbar4,cc3Pbar5,cc3Pbar6;
-
+    String id;
 
     int barValue[]={1,2,3,4,5,6};
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         ViewGroup v = (ViewGroup)inflater.inflate(R.layout.customercontent3, container, false);
-
+        id = this.getArguments().getString("_id","None");
         cc3Txt1=(TextView)v.findViewById(R.id.cc3Text1); //디비 연동해서 얻어온 값을 setText로 열어주게한다
         cc3Txt2=(TextView)v.findViewById(R.id.cc3Text2);
         cc3Txt3=(TextView)v.findViewById(R.id.cc3Text3);

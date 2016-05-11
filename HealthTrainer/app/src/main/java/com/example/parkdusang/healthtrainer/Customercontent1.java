@@ -23,14 +23,20 @@ public class Customercontent1 extends Fragment{
     Cc1Adapter cc1adapter;
     Cc1Diaglog cc1Dialog;
     String crtWeight,stWeight,goalWeight;
+    String id;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         ViewGroup v = (ViewGroup)inflater.inflate(R.layout.customercontent1, container, false);
+
         cc1listView = (ListView)v.findViewById(R.id.cc1listView);
 
         cc1txt1=(TextView)v.findViewById(R.id.cc1txt1);
         cc1txt2=(TextView)v.findViewById(R.id.cc1txt2);
+
+
+        id = this.getArguments().getString("_id","None");
+
 
         cc1pBar=(ProgressBar)v.findViewById(R.id.cc1pBar);
 
@@ -127,5 +133,8 @@ public class Customercontent1 extends Fragment{
             }
         }
         return result;
+    }
+    public void testid(){
+
     }
 }

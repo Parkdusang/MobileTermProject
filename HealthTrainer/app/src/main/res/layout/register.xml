@@ -69,17 +69,6 @@
             android:hint="  Phone Number" />
 
 
-        <EditText
-            android:id="@+id/rg_edit_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/input_register_bg"
-            android:textColorHint="@color/input_register_hint"
-            android:textSize="30dp"
-            android:layout_marginBottom="10dp"
-            android:hint="  E - Mail" />
-
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

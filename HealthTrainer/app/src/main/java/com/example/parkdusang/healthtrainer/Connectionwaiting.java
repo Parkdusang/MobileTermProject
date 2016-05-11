@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -47,13 +48,29 @@ public class Connectionwaiting extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //ok눌렀을떄
+                new Thread(new Runnable() {
+                    public void run() {
+                        Updatetype2(1, id);
+                    }
+                }).start();
+
+                Intent myAct1 = new Intent(getApplicationContext(), customermode.class);
+                myAct1.putExtra("_id",id);
+                startActivity(myAct1);
             }
         });
         Ccancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                new Thread(new Runnable() {
+                    public void run() {
+                        Updatetype2(2,id);
+                    }
+                }).start();
                 //ㄴㄴ 눌렀을때
+                txt.setText("아직 트레이너의 신청이 오지 않았습니다");
+                Cok.setVisibility(View.INVISIBLE);
+                Ccancel.setVisibility(View.INVISIBLE);
 
             }
         });
@@ -66,6 +83,24 @@ public class Connectionwaiting extends AppCompatActivity {
             getData(url, id);
         }
     }
+    public void Updatetype2(int check,String ids){
+        ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs.add(new BasicNameValuePair("mode", "3"));
+        nameValuePairs.add(new BasicNameValuePair("check", check+""));
+        nameValuePairs.add(new BasicNameValuePair("_id", ids));
+
+        try {
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost(url);
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            httpclient.execute(httppost);
+            Log.e("pass1", "connection success ");
+        } catch (Exception e) {
+            Log.e("Fail1", e.toString());
+            Toast.makeText(getApplicationContext(), "Invalid IP Address",
+                    Toast.LENGTH_LONG).show();
+        }
+    }
     public void getData(String url, String id) {
         class GetDataJSON extends AsyncTask<String, Void, String> {
 
@@ -76,7 +111,7 @@ public class Connectionwaiting extends AppCompatActivity {
                 ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
                 nameValuePairs.add(new BasicNameValuePair("_id", ids));
                 nameValuePairs.add(new BasicNameValuePair("mode", "2"));
-                // 코드해독불가
+
                 try {
                     HttpClient httpclient = new DefaultHttpClient();
                     HttpPost httppost = new HttpPost(uri);

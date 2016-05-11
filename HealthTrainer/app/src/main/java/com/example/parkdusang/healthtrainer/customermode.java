@@ -1,9 +1,11 @@
 package com.example.parkdusang.healthtrainer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -14,14 +16,19 @@ public class customermode extends AppCompatActivity implements View.OnClickListe
     ViewPager viewPager = null;
     Thread thread = null;
     Handler handler = null;
-    
+    String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
                setContentView(R.layout.activity_customermode);
 //viewPager
+
+        Intent intent = getIntent();
+        id = intent.getStringExtra("_id");
+
+        Log.i("TAG", "input customermode!");
         viewPager = (ViewPager)findViewById(R.id.viewPager);
-        MyViewPagerAdapter adapter = new MyViewPagerAdapter(getSupportFragmentManager());
+        MyViewPagerAdapter adapter = new MyViewPagerAdapter(getSupportFragmentManager(),id);
 
         viewPager.setAdapter(adapter);
 
