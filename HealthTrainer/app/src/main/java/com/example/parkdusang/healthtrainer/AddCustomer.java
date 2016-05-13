@@ -203,6 +203,9 @@ public class AddCustomer extends AppCompatActivity {
                     HttpPost httppost = new HttpPost(uri);
                     httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                     HttpResponse response = httpclient.execute(httppost);
+
+
+
                     HttpEntity entity = response.getEntity();
                     is = entity.getContent();
                     Log.e("pass 1", "connection success ");

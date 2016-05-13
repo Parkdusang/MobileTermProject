@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="여기에 일일보고가 보이며 뭐 사실 별거아닌 엑티비디임 ㅇㅇ"
+        android:text=""
         android:id="@+id/textView3_2"
         android:layout_below="@+id/textView3_1"
         android:layout_alignParentLeft="true"

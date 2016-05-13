@@ -91,6 +91,7 @@ public class Trainermode extends AppCompatActivity {
                 String content = list.get(position).getContent().toString();
                 int imgid = list.get(position).getImgIcon();
                 myAct.putExtra("imgid", imgid);
+                myAct.putExtra("trainrid", urlp);
                 myAct.putExtra("title1", title);
                 myAct.putExtra("content1", content);
                 startActivity(myAct);
@@ -212,6 +213,8 @@ public class Trainermode extends AppCompatActivity {
                 showList();
             }
         }
+
+
         GetDataJSON g = new GetDataJSON();
         g.execute(url,id);
     }

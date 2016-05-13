@@ -28,7 +28,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class Register extends AppCompatActivity {
-    Button ok;
+    Button ok,cancel;
     EditText ETname, ETphone, ETID, ETpassword, ETpasswordCheck;
     RadioButton b1, b2;
     InputStream is = null;
@@ -81,6 +81,14 @@ public class Register extends AppCompatActivity {
                 }
             }
         });
+
+        cancel = (Button)findViewById(R.id.button6);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public void insert() {
@@ -92,7 +100,7 @@ public class Register extends AppCompatActivity {
                 nameValuePairs.add(new BasicNameValuePair("_id", ETID.getText().toString()));
                 nameValuePairs.add(new BasicNameValuePair("password", ETpassword.getText().toString()));
                 nameValuePairs.add(new BasicNameValuePair("name", ETname.getText().toString()));
-                nameValuePairs.add(new BasicNameValuePair("sex", "1"));
+                nameValuePairs.add(new BasicNameValuePair("sex", sex+""));
                 nameValuePairs.add(new BasicNameValuePair("phonenumber", ETphone.getText().toString()));
                 nameValuePairs.add(new BasicNameValuePair("tp", checkingmode + ""));
 
@@ -121,7 +129,6 @@ public class Register extends AppCompatActivity {
                     result = sb.toString();
                     Log.e("pass 2", result);
 
-                    Log.i("test", result.substring(1, 3));
                     if (result.substring(1, 3).equals("su")) {
                         runOnUiThread(new Thread(new Runnable() {
                             public void run() {
@@ -129,7 +136,22 @@ public class Register extends AppCompatActivity {
                             }
                         }));
                         finish();
-                    } else {
+                    }
+                    else if(result.substring(1, 3).equals("id")){
+                        runOnUiThread(new Thread(new Runnable() {
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "이미 아이뒤가 존재합니다", Toast.LENGTH_SHORT).show();
+                            }
+                        }));
+                    }
+                    else if(result.substring(1, 3).equals("ph")){
+                        runOnUiThread(new Thread(new Runnable() {
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "이미 전화번호가 존재합니다.", Toast.LENGTH_SHORT).show();
+                            }
+                        }));
+                    }
+                    else {
                         runOnUiThread(new Thread(new Runnable() {
                             public void run() {
                                 Toast.makeText(getApplicationContext(), "회원가입에 실패했습니다.", Toast.LENGTH_SHORT).show();

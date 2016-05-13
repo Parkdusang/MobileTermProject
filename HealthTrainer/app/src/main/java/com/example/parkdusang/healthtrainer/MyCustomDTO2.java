@@ -7,13 +7,13 @@ public class MyCustomDTO2 {
     Boolean checkboxt;
     String title;
     String content;
-    int imgIcon;
+    int setexercise,number;
 
-    public MyCustomDTO2(Boolean checkboxt,String title, String content, int imgIcon) {
+    public MyCustomDTO2(Boolean checkboxt,String title, String content) {
         this.checkboxt = checkboxt;
         this.title = title;
         this.content = content;
-        this.imgIcon = imgIcon;
+
     }
     public String getTitle() {
         return title;
@@ -27,12 +27,6 @@ public class MyCustomDTO2 {
     public void setContent(String content) {
         this.content = content;
     }
-    public int getImgIcon() {
-        return imgIcon;
-    }
-    public void setImgIcon(int imgIcon) {
-        this.imgIcon = imgIcon;
-    }
 
 
     public void setCheckboxt(Boolean checkboxt){
@@ -40,5 +34,18 @@ public class MyCustomDTO2 {
     }
     public Boolean getCheckboxt(){
         return checkboxt;
+    }
+
+    public void setnumber(int checkboxt){
+        this.number = checkboxt;
+    }
+    public String getnumber(){
+        return number+"";
+    }
+    public void setexercise(int checkboxt){
+        this.setexercise = checkboxt;
+    }
+    public String getexercise(){
+        return setexercise+"";
     }
 }

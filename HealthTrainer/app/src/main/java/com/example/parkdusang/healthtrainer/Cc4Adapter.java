@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -55,13 +54,13 @@ public class Cc4Adapter extends BaseAdapter{
 
         TextView txtTitle = (TextView)convertView.findViewById(R.id.cc4listtext1);
         TextView txtContent = (TextView)convertView.findViewById(R.id.cc4listtext2);
-        ImageView imgIcon =  (ImageView)convertView.findViewById(R.id.cc4listimg);
+
         CheckBox box = (CheckBox)convertView.findViewById(R.id.cc4listcheck);
 
         MyCustomDTO2 dto = list.get(position);
         txtTitle.setText(dto.getTitle());
         txtContent.setText(dto.getContent());
-        imgIcon.setImageResource(dto.getImgIcon());
+
 
         if(dto.getCheckboxt()) {
             box.setChecked(true);

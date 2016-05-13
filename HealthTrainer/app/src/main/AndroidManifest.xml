@@ -10,20 +10,16 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        
-        
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
         <activity android:name=".MainActivity" />
-
         <activity
             android:name=".Trainermode"
             android:label="@string/title_activity_trainermode"
@@ -42,7 +38,8 @@
         <activity android:name=".Todayreport" />
         <activity android:name=".CreateExercise" />
         <activity android:name=".Customercontent4" />
-        <activity android:name=".Connectionwaiting"></activity>
+        <activity android:name=".Connectionwaiting" />
+        <activity android:name=".Setnumber"></activity>
     </application>
 
 </manifest>

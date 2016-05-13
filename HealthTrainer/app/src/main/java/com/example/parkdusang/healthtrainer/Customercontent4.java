@@ -29,11 +29,11 @@ public class Customercontent4 extends Fragment{
         cc4list=new ArrayList<MyCustomDTO2>();
         //디비 연동할 부분
 
-        cc4list.add(new MyCustomDTO2(false,"달리기", "겁나 달려!", R.drawable.exersice));
-        cc4list.add(new MyCustomDTO2(false,"달리기", "겁나 달려!", R.drawable.exersice));
-        cc4list.add(new MyCustomDTO2(false,"달리기", "겁나 달려!", R.drawable.exersice));
-        cc4list.add(new MyCustomDTO2(false,"달리기", "겁나 달려!", R.drawable.exersice));
-        cc4list.add(new MyCustomDTO2(false,"달리기", "겁나 달려!", R.drawable.exersice));
+        cc4list.add(new MyCustomDTO2(false,"달리기", "겁나 달려!"));
+        cc4list.add(new MyCustomDTO2(false,"달리기", "겁나 달려!"));
+        cc4list.add(new MyCustomDTO2(false,"달리기", "겁나 달려!"));
+        cc4list.add(new MyCustomDTO2(false,"달리기", "겁나 달려!"));
+        cc4list.add(new MyCustomDTO2(false,"달리기", "겁나 달려!"));
         cc4adapter=new Cc4Adapter(getActivity(),R.layout.cc4_list_row,cc4list);
 
         cc4listView.setAdapter(cc4adapter);
