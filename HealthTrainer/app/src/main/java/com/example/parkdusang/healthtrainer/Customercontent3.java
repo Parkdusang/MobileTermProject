@@ -14,6 +14,7 @@ public class Customercontent3 extends Fragment{
     TextView cc3Txt1,cc3Txt2,cc3Txt3,cc3Txt4,cc3Txt5,cc3Txt6;
     ProgressBar cc3Pbar1,cc3Pbar2,cc3Pbar3,cc3Pbar4,cc3Pbar5,cc3Pbar6;
     String id;
+    String url = "http://pesang72.cafe24.com/Customercontent3.php";
 
     int barValue[]={1,2,3,4,5,6};
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

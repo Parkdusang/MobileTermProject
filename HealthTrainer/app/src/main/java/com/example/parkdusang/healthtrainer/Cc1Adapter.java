@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -15,10 +16,10 @@ import java.util.ArrayList;
 public class Cc1Adapter extends BaseAdapter {
     Context ctx;
     int layout;
-    ArrayList<MyCustomDTO> list;
+    ArrayList<MyCustomDTO2> list;
     LayoutInflater inf;
 
-    public Cc1Adapter(Context ctx, int layout, ArrayList<MyCustomDTO> list){
+    public Cc1Adapter(Context ctx, int layout, ArrayList<MyCustomDTO2> list){
         this.ctx = ctx;
         this.layout = layout;
         this.list = list;
@@ -51,14 +52,33 @@ public class Cc1Adapter extends BaseAdapter {
             convertView = inf.inflate(layout, null);
         }
 
-        TextView txtTitle = (TextView)convertView.findViewById(R.id.cc1listtxt1);
-        TextView txtContent = (TextView)convertView.findViewById(R.id.cc1listtxt2);
+        TextView txtTitle = (TextView)convertView.findViewById(R.id.exertextview1);
+        TextView txtContent = (TextView)convertView.findViewById(R.id.exertextview2);
         //ImageView imgIcon =  (ImageView)convertView.findViewById(R.id.cc1listimg);
+        CheckBox box = (CheckBox)convertView.findViewById(R.id.checkexercise);
 
-        MyCustomDTO dto = list.get(position);
+        TextView txtset = (TextView)convertView.findViewById(R.id.exersettx);
+        TextView txtnumber = (TextView)convertView.findViewById(R.id.exernumbertx);
+
+        TextView set = (TextView)convertView.findViewById(R.id.exerset);
+        TextView number = (TextView)convertView.findViewById(R.id.exernumber);
+
+        MyCustomDTO2 dto = list.get(position);
+
+
         txtTitle.setText(dto.getTitle());
         txtContent.setText(dto.getContent());
         //imgIcon.setImageResource(dto.getImgIcon());
+
+        txtset.setVisibility(View.VISIBLE);
+        txtnumber.setVisibility(View.VISIBLE);
+        set.setVisibility(View.VISIBLE);
+        number.setVisibility(View.VISIBLE);
+        box.setVisibility(View.INVISIBLE);
+
+        set.setText(dto.getexercise());
+        number.setText(dto.getnumber());
+
 
 
         return convertView;

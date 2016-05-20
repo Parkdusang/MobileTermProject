@@ -1,6 +1,7 @@
 package com.example.parkdusang.healthtrainer;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -27,13 +28,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     EditText e1, e2;
     Button b1, b2;
     int checkingmode;
-
-
+    SharedPreferences sp;
+    
     InputStream is = null;
     String result = null;
     String line = null;
     private static String url = "http://pesang72.cafe24.com/compareId.php";
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,13 +45,19 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         b2 = (Button) findViewById(R.id.button4);
         b1.setOnClickListener(this);
         b2.setOnClickListener(this);
-
+        
         Intent intent = getIntent();
         checkingmode = intent.getIntExtra("sign", 10);
+        sp=getSharedPreferences("Login",MODE_PRIVATE);
+        
+        e1.setText(sp.getString("ID",""));
+        e2.setText(sp.getString("PW",""));
+        
+        
     }
-
+    
     public void onClick(View v) {
-
+        sharedPreferences(e1.getText().toString(),e2.getText().toString());
         if (R.id.button3 == v.getId()) {
             new Thread(new Runnable() {
                 public void run() {
@@ -63,16 +70,24 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             startActivity(myAct1);
         }
     }
-
+    
+    public void sharedPreferences(String id,String pw){
+        sp=getSharedPreferences("Login",MODE_PRIVATE);
+        SharedPreferences.Editor edit = sp.edit();
+        edit.putString("ID",id);
+        edit.putString("PW",pw);
+        edit.commit();
+        
+    }
     public void insert() {
-
-
+        
+        
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-
+        
         nameValuePairs.add(new BasicNameValuePair("_id", e1.getText().toString()));
         nameValuePairs.add(new BasicNameValuePair("password", e2.getText().toString()));
         nameValuePairs.add(new BasicNameValuePair("tp", checkingmode + ""));
-
+        
         try {
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost(url);
@@ -84,12 +99,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         } catch (Exception e) {
             Log.e("Fail 1", e.toString());
             Toast.makeText(getApplicationContext(), "Invalid IP Address",
-                    Toast.LENGTH_LONG).show();
+                           Toast.LENGTH_LONG).show();
         }
-
+        
         try {
             BufferedReader reader = new BufferedReader
-                    (new InputStreamReader(is, "iso-8859-1"), 8);
+            (new InputStreamReader(is, "iso-8859-1"), 8);
             StringBuilder sb = new StringBuilder();
             while ((line = reader.readLine()) != null) {
                 sb.append(line + "\n");
@@ -101,6 +116,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 Log.e("1223", "으아 들어갔다1!!!!");
                 checkingmode = Integer.parseInt(result.substring(1,2).toString());
                 Log.e("check", checkingmode+"");
+                
                 if (checkingmode == 1) { // 트레이너모드
                     Intent myAct1 = new Intent(getApplicationContext(), Trainermode.class);
                     Log.i("TAG", e1.getText().toString());
@@ -122,7 +138,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         Toast.makeText(getApplicationContext(), "비밀번호가 틀렸습니다", Toast.LENGTH_SHORT).show();
                     }
                 }));
-
+                
             } else if (result.substring(2, 4).equals("wr")) { // 모드선택 오류
                 runOnUiThread(new Thread(new Runnable() {
                     public void run() {
@@ -136,25 +152,25 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     }
                 }));
             }
-
+            
         } catch (Exception e) {
             Log.e("Fail 2", e.toString());
         }
-
-//                    try {
-//                        JSONObject json_data = new JSONObject(result);
-//                        code = (json_data.getInt("code"));
-//
-//                        if (code == 1) {
-//                            Toast.makeText(getBaseContext(), "Inserted Successfully",
-//                                    Toast.LENGTH_SHORT).show();
-//                        } else {
-//                            Toast.makeText(getBaseContext(), "Sorry, Try Again",
-//                                    Toast.LENGTH_LONG).show();
-//                        }
-//                    } catch (Exception e) {
-//                        Log.e("Fail 3", e.toString());
-//                    }
+        
+        //                    try {
+        //                        JSONObject json_data = new JSONObject(result);
+        //                        code = (json_data.getInt("code"));
+        //
+        //                        if (code == 1) {
+        //                            Toast.makeText(getBaseContext(), "Inserted Successfully",
+        //                                    Toast.LENGTH_SHORT).show();
+        //                        } else {
+        //                            Toast.makeText(getBaseContext(), "Sorry, Try Again",
+        //                                    Toast.LENGTH_LONG).show();
+        //                        }
+        //                    } catch (Exception e) {
+        //                        Log.e("Fail 3", e.toString());
+        //                    }
     }
-
+    
 }

@@ -36,16 +36,18 @@ public class MyCustomDTO2 {
         return checkboxt;
     }
 
-    public void setnumber(int checkboxt){
-        this.number = checkboxt;
-    }
-    public String getnumber(){
-        return number+"";
-    }
+
     public void setexercise(int checkboxt){
         this.setexercise = checkboxt;
     }
     public String getexercise(){
         return setexercise+"";
     }
+    public void setnumber(int checkboxt){
+        this.number = checkboxt;
+    }
+    public String getnumber(){
+        return number+"";
+    }
+
 }

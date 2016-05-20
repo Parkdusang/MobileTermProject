@@ -33,11 +33,10 @@ public class Trainermode extends AppCompatActivity {
 
     String myJSON;
 
-    private static final String TAG_RESULTS = "data";
     private static final String TAG_PHONE = "phone";
     private static final String TAG_ID = "name";
     private static final String TAG_SEX = "sex";
-
+    private static final String TAG_RESULTS = "data";
     JSONArray peoples = null;
 
     ArrayList<HashMap<String, String>> personList;

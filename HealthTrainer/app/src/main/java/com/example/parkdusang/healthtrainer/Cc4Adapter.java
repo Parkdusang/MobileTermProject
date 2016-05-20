@@ -52,23 +52,36 @@ public class Cc4Adapter extends BaseAdapter{
             convertView = inf.inflate(layout, null);
         }
 
-        TextView txtTitle = (TextView)convertView.findViewById(R.id.cc4listtext1);
-        TextView txtContent = (TextView)convertView.findViewById(R.id.cc4listtext2);
+        TextView txtset = (TextView)convertView.findViewById(R.id.exersettx);
+        TextView txtnumber = (TextView)convertView.findViewById(R.id.exernumbertx);
 
-        CheckBox box = (CheckBox)convertView.findViewById(R.id.cc4listcheck);
+        TextView set = (TextView)convertView.findViewById(R.id.exerset);
+        TextView number = (TextView)convertView.findViewById(R.id.exernumber);
+
+        TextView txtTitle = (TextView)convertView.findViewById(R.id.exertextview1);
+        TextView txtContent = (TextView)convertView.findViewById(R.id.exertextview2);
+        CheckBox box = (CheckBox)convertView.findViewById(R.id.checkexercise);
 
         MyCustomDTO2 dto = list.get(position);
         txtTitle.setText(dto.getTitle());
         txtContent.setText(dto.getContent());
 
+        txtset.setVisibility(View.VISIBLE);
+        txtnumber.setVisibility(View.VISIBLE);
+        set.setVisibility(View.VISIBLE);
+        set.setText(dto.getexercise());
+        number.setVisibility(View.VISIBLE);
+        number.setText(dto.getnumber());
 
         if(dto.getCheckboxt()) {
             box.setChecked(true);
+
         }
         else{
             box.setChecked(false);
 
         }
+
         return convertView;
     }
 }
