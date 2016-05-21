@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
@@ -32,7 +34,7 @@ import java.util.ArrayList;
 
 
 public class Customercontent4 extends Fragment{
-
+    ScrollView scr1;
     ListView listView;
     ArrayList<MyCustomDTO2> list;
     Button cc4btn;
@@ -51,6 +53,7 @@ public class Customercontent4 extends Fragment{
 
 
         ViewGroup v = (ViewGroup)inflater.inflate(R.layout.customercontent4, container, false);
+        scr1 = (ScrollView)v.findViewById(R.id.scrollc4);
 
         id = this.getArguments().getString("_id","None");
         cc4edit = (EditText)v.findViewById(R.id.cc4edit);
@@ -98,7 +101,13 @@ public class Customercontent4 extends Fragment{
             }
         });
 
-
+        listView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                scr1.requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
         getData(url,id);
 
         return v;

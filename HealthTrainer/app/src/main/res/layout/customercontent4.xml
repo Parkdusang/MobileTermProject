@@ -1,53 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:id="@+id/scrollc4"
     android:background="#ffffff">
 
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#f4e7753c"
-    android:gravity="center"
-    android:text="보고"
-    android:textSize="30dp"
-    />
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="  오늘의 운동~~"
-        android:textSize="30dp"
-        android:background="#ce6edbea" />
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cc4listView"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:background="#5470fd" />
-    </RelativeLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:text="Comments"
+            android:background="#f4e7753c"
             android:gravity="center"
-            android:background="#f9e355" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:text="dfdfd"
-        android:id="@+id/cc4edit"
-        android:gravity="top"
-        android:textSize="20dp"/>
+            android:text="보고"
+            android:textSize="30dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ce6edbea"
+            android:text="  오늘의 운동~~"
+            android:textSize="30dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <ListView
+                android:id="@+id/cc4listView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:background="#5470fd" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#f9e355"
+            android:gravity="center"
+            android:text="Comments"
+            android:textSize="30dp" />
+
+        <EditText
+            android:id="@+id/cc4edit"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="top"
+            android:text="dfdfd"
+            android:textSize="20dp" />
+
         <Button
+            android:id="@+id/cc4btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/cc4btn"
-            android:text="보고"/>
+            android:text="보고" />
     </LinearLayout>
+</ScrollView>
