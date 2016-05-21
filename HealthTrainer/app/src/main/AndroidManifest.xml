@@ -40,6 +40,8 @@
         <activity android:name=".Customercontent4" />
         <activity android:name=".Connectionwaiting" />
         <activity android:name=".Setnumber"></activity>
+        <activity android:name=".Answerclass" />
+        <activity android:name=".Inbodyinfo"></activity>
     </application>
 
 </manifest>

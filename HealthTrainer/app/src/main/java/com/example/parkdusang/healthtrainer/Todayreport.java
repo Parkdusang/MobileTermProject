@@ -26,7 +26,7 @@ import java.util.ArrayList;
 public class Todayreport extends AppCompatActivity {
     String stitle, scontent,trainrID;
     TextView tx;
-    Button btn;
+    Button btn,ansbtn;
     InputStream is = null;
     String result = null;
     String line = null;
@@ -44,6 +44,16 @@ public class Todayreport extends AppCompatActivity {
         getData(url,trainrID,scontent);
 
         tx = (TextView)findViewById(R.id.textView3_2);
+
+        ansbtn = (Button)findViewById(R.id.answerbtn);
+        ansbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(getApplicationContext(),Answerclass.class);
+                startActivity(intent1);
+
+            }
+        });
         btn  = (Button)findViewById(R.id.button3_1);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
