@@ -20,5 +20,8 @@
     <string name="btn_logout">LOGOUT</string>
     <string name="name">Fullname</string>
     <string name="teamname">HT.TP</string>
+    <string name="title_activity_main_tab">MainTab</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 
 </resources>

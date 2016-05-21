@@ -24,7 +24,6 @@
             android:name=".Trainermode"
             android:label="@string/title_activity_trainermode"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".customermode" />
         <activity
             android:name=".Login"
             android:screenOrientation="portrait" />
@@ -39,9 +38,13 @@
         <activity android:name=".CreateExercise" />
         <activity android:name=".Customercontent4" />
         <activity android:name=".Connectionwaiting" />
-        <activity android:name=".Setnumber"></activity>
+        <activity android:name=".Setnumber" />
         <activity android:name=".Answerclass" />
-        <activity android:name=".Inbodyinfo"></activity>
+        <activity android:name=".Inbodyinfo" />
+        <activity
+            android:name=".MainTab"
+            android:label="@string/title_activity_main_tab"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

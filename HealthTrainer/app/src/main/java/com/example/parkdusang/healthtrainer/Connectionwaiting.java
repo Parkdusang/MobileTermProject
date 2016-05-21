@@ -54,7 +54,7 @@ public class Connectionwaiting extends AppCompatActivity {
                     }
                 }).start();
 
-                Intent myAct1 = new Intent(getApplicationContext(), customermode.class);
+                Intent myAct1 = new Intent(getApplicationContext(), MainTab.class);
                 myAct1.putExtra("_id",id);
                 startActivity(myAct1);
             }
