@@ -53,6 +53,7 @@ public class Customercontent4 extends Fragment{
         ViewGroup v = (ViewGroup)inflater.inflate(R.layout.customercontent4, container, false);
 
         id = this.getArguments().getString("_id","None");
+        cc4edit = (EditText)v.findViewById(R.id.cc4edit);
         cc4btn = (Button)v.findViewById(R.id.cc4btn);
         cc4btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,13 +64,16 @@ public class Customercontent4 extends Fragment{
                        checkexercise(list.get(i).getTitle(),1);
                        report += list.get(i).getTitle()+"\n"+list.get(i).getexercise()+"/"+list.get(i).getnumber()+"\n";
                     }
+
+
                 }
+                report += cc4edit.getText().toString();
                 checkexercise(report,2);
 
 
             }
         });
-        cc4edit = (EditText)v.findViewById(R.id.cc4edit);
+
         list = new ArrayList<MyCustomDTO2>();
         listView = (ListView)v.findViewById(R.id.cc4listView);
         adapter2 =
@@ -147,7 +151,15 @@ public class Customercontent4 extends Fragment{
                 String content = c.getString("content");
                 int set = c.getInt("ECset");
                 int number = c.getInt("ECnumber");
-                list.add(new MyCustomDTO2(false,name, content));
+                int check = c.getInt("checkbl");
+
+                if(check == 1){
+                    list.add(new MyCustomDTO2(true,name, content));
+                }
+                else{
+                    list.add(new MyCustomDTO2(false,name, content));
+                }
+
                 list.get(i).setexercise(set);
                 list.get(i).setnumber(number);
             }
