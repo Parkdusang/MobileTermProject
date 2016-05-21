@@ -17,11 +17,11 @@
         android:layout_alignParentBottom="true"
         android:text="OK"
         android:id="@+id/setexercisebtn" />
-    <!--<Button-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_toRightOf="@+id/setexercisebtn"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:id="@+id/newexercisebtn"-->
-        <!--android:text="새로운 운동"/>-->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/setexercisebtn"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/newexercisebtn"
+        android:text="새로운 운동"/>
 </RelativeLayout>

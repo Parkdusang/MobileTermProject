@@ -69,17 +69,19 @@ public class Setexercise extends AppCompatActivity {
                 finish();
             }
         });
-//        btnnewec = (Button)findViewById(R.id.newexercisebtn);
-//        btnnewec.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//
-//            }
-//        });
+        btnnewec = (Button)findViewById(R.id.newexercisebtn);
+        btnnewec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myAct = new Intent (getApplicationContext(), CreateExercise.class);
+                myAct.putExtra("trainrid", trainrID);
+                myAct.putExtra("content1", scontent);
+                startActivityForResult(myAct, 2);
+            }
+        });
 
 
-        // 이부분을 db 불러와서 저장해야됌 ㅇㅇ 겁나 빡실거임
+
         list = new ArrayList<MyCustomDTO2>();
         listView = (ListView) findViewById(R.id.listView2);
         adapter2 =
@@ -133,6 +135,20 @@ public class Setexercise extends AppCompatActivity {
 
                 }
 
+            }
+            else if (requestCode == 2) {
+
+                int check = data.getIntExtra("check",10);
+                if(check == 1){
+
+                    Toast.makeText(getApplicationContext(),"success!",Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                else if(check == 2){
+
+                    Toast.makeText(getApplicationContext(),"Failed input!",Toast.LENGTH_SHORT).show();
+                    finish();
+                }
             }
         }
     }

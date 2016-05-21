@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="세트 : "
+                android:text="몸무게 : "
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <EditText
@@ -72,7 +72,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="세트당 개수 : "
+                android:text="지방량 : "
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <EditText
