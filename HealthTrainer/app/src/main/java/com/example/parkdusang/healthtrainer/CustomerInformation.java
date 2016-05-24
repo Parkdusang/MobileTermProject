@@ -14,7 +14,7 @@ public class CustomerInformation extends AppCompatActivity {
     TextView txtTitle;
     TextView txtContent;
     ImageView imgIcon;
-    Button setexercise,report;
+    Button setexercise,report,inbody;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +38,7 @@ public class CustomerInformation extends AppCompatActivity {
         setexercise.setOnClickListener(new View.OnClickListener() { // 운동 지정
             @Override
             public void onClick(View v) {
-                Intent myAct = new Intent (getApplicationContext(), Setexercise.class);
+                Intent myAct = new Intent(getApplicationContext(), Setexercise.class);
                 myAct.putExtra("trainrid", trainrID);
                 myAct.putExtra("title1", stitle);
                 myAct.putExtra("content1", scontent);
@@ -55,6 +55,17 @@ public class CustomerInformation extends AppCompatActivity {
                 myAct1.putExtra("title1", stitle);
                 myAct1.putExtra("content1", scontent);
                 startActivity(myAct1);
+            }
+        });
+        inbody = (Button)findViewById(R.id.inbodyinfo);
+        inbody.setOnClickListener(new View.OnClickListener() { // 보고
+            @Override
+            public void onClick(View v) {
+                Intent myAct2 = new Intent(getApplicationContext(), Inbodyinfo.class);
+                myAct2.putExtra("trainrid", trainrID);
+                myAct2.putExtra("title1", stitle);
+                myAct2.putExtra("content1", scontent);
+                startActivity(myAct2);
             }
         });
     }
