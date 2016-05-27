@@ -29,6 +29,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".AddCustomer" />
         <activity android:name=".Register" />
+        <activity android:name=".RegisterInfo" />
         <activity android:name=".Customercontent1" />
         <activity android:name=".Customercontent2" />
         <activity android:name=".Customercontent3" />
@@ -41,6 +42,7 @@
         <activity android:name=".Setnumber" />
         <activity android:name=".Answerclass" />
         <activity android:name=".Inbodyinfo" />
+        <activity android:name=".Recodeexercise" />
         <activity
             android:name=".MainTab"
             android:label="@string/title_activity_main_tab"

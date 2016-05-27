@@ -5,65 +5,90 @@
     android:layout_height="match_parent"
     android:layout_margin="15dp"
     tools:context="com.example.parkdusang.healthtrainer.CreateExercise">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="초기 입력값을 넣어 주세요"
-            android:textSize="30dp"
+            android:layout_marginBottom="30dp"
             android:gravity="center"
-            android:layout_marginBottom="30dp"/>
+            android:text="초기 입력값을 넣어 주세요"
+            android:textSize="30dp" />
+
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-            <TableRow
-                android:layout_marginBottom="20dp">
+            android:layout_height="wrap_content">
+
+            <TableRow android:layout_marginBottom="20dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="이름"
                     android:layout_weight="0.2"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:text="키" />
+
                 <EditText
-                    android:id="@+id/ri_name"
+                    android:id="@+id/ri_height"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"/>
+                    android:gravity="center" />
             </TableRow>
-            <TableRow
-                android:layout_marginBottom="20dp">
+
+            <TableRow android:layout_marginBottom="20dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="초기 몸무게"
                     android:layout_weight="0.2"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:text="초기 몸무게" />
+
                 <EditText
+                    android:id="@+id/ri_fweight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/ri_fweight"
                     android:layout_weight="1"
-                    android:gravity="center"/>
-            </TableRow><TableRow
-            android:layout_marginBottom="20dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="목표 몸무게"
-                android:layout_weight="0.2"
-                android:gravity="center"/>
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ri_gweight"
-                android:layout_weight="1"
-                android:gravity="center"/>
-        </TableRow>
+                    android:gravity="center" />
+            </TableRow>
+
+            <TableRow android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:gravity="center"
+                    android:text="목표 몸무게" />
+
+                <EditText
+                    android:id="@+id/ri_gweight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+            </TableRow>
+            <TableRow android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:gravity="center"
+                    android:text="나의 목표!" />
+
+                <EditText
+                    android:id="@+id/one_coment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center" />
+            </TableRow>
         </TableLayout>
 
         <LinearLayout
@@ -74,15 +99,11 @@
                 android:id="@+id/ri_ok"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ok"
-                android:onClick="onOkClick"/>
+                android:onClick="onOkClick"
+                android:text="ok" />
 
-            <Button
-                android:id="@+id/ri_cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="cancel"
-                android:onClick="onOkClick"/>
+
         </LinearLayout>
+
     </LinearLayout>
 </ScrollView>

@@ -23,8 +23,9 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="  나의 한마디"/>
+                android:text="트레이너 공지사항"/>
             <TextView
+                android:id="@+id/trainr_oneword"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"

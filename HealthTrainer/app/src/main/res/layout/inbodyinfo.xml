@@ -107,22 +107,22 @@
                 android:gravity="center"/>
 
         </TableRow>
-        <TableRow
-            android:layout_marginBottom="20dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="지방LV"
-                android:layout_weight="0.45"
-                android:gravity="center"/>
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:id="@+id/inbodyFatLv"
-                android:gravity="center"/>
+        <!--<TableRow-->
+            <!--android:layout_marginBottom="20dp">-->
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="지방LV"-->
+                <!--android:layout_weight="0.45"-->
+                <!--android:gravity="center"/>-->
+            <!--<EditText-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:id="@+id/inbodyFatLv"-->
+                <!--android:gravity="center"/>-->
 
-        </TableRow>
+        <!--</TableRow>-->
     </TableLayout>
 
     <LinearLayout
@@ -130,12 +130,13 @@
         android:layout_height="wrap_content">
 
         <Button
-
+            android:id="@+id/inbodyok"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ok" />
 
         <Button
+            android:id="@+id/inbodycancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="cancel" />

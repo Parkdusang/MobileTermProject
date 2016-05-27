@@ -44,20 +44,43 @@
                     android:text="Small Text"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="#ff0000" />
+                <TextView
+                    android:id="@+id/onewordcustomer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Text"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#4bb9a5" />
             </LinearLayout>
         </LinearLayout>
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="#428b86" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="트레이너 한마디!" />
-
-        <TextView
-            android:layout_width="wrap_content"
+            android:text="트레이너 공지!" />
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="~~~~~~~~~~~~~~~~~~~~~~~" />
+            android:orientation="horizontal"
+            android:layout_weight="2">
+              <TextView
+                android:layout_weight="10"
+                android:id="@+id/settrainr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="~~~~~~~~~~~~~~~~~~~~~~~" />
+            <Button
+                android:id="@+id/setoneword"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="변경" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -106,12 +129,18 @@
             android:id="@+id/button8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="운동 일일 보고" />
 
-        <TextView
-            android:layout_width="wrap_content"
+            android:text="운동 일일 보고" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="#579c8a" />
+        <Button
+            android:layout_weight="2"
+            android:id="@+id/recodeex"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="~~~~~~~~~~~~~~~~~~~~~~~~~~~\n~~~~~~~~~~~~~~~~~~~~\n~~~~~~~~~~~~~~~~~" />
+
+            android:text="운동 기록" />
     </LinearLayout>
 </LinearLayout>

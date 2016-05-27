@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -31,6 +32,7 @@ public class Todayreport extends AppCompatActivity {
     String result = null;
     String line = null;
     String url = "http://pesang72.cafe24.com/getstringtype.php";
+    boolean check=true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,8 +51,16 @@ public class Todayreport extends AppCompatActivity {
         ansbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(getApplicationContext(),Answerclass.class);
-                startActivity(intent1);
+                if(check) {
+
+                    Intent intent1 = new Intent(getApplicationContext(), Answerclass.class);
+                    intent1.putExtra("report",tx.getText().toString());
+                    intent1.putExtra("content1", scontent);
+                    startActivity(intent1);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "아직 보고가 오지 않았습니다", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -92,7 +102,7 @@ public class Todayreport extends AppCompatActivity {
 
                 try {
                     BufferedReader reader = new BufferedReader
-                            (new InputStreamReader(is, "iso-8859-1"), 8);
+                            (new InputStreamReader(is, "UTF-8"));
                     StringBuilder sb = new StringBuilder();
                     while ((line = reader.readLine()) != null) {
                         sb.append(line + "\n");
@@ -111,6 +121,10 @@ public class Todayreport extends AppCompatActivity {
             }
             @Override
             protected void onPostExecute(String result) {
+                if(result.substring(0,4).equals("아직 보")){
+                    check =false;
+                }
+
                 tx.setText(result);
             }
         }

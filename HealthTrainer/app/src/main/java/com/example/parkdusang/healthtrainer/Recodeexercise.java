@@ -1,14 +1,12 @@
 package com.example.parkdusang.healthtrainer;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.widget.ExpandableListView;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -27,72 +25,99 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+/**
+ * Created by parkdusang on 16. 5. 27..
+ */
+public class Recodeexercise extends AppCompatActivity {
 
-public class Customercontent3 extends Fragment{
+    private ArrayList<String> mGroupList = null;
+    private ArrayList<ArrayList<String>> mChildList = null;
+    private ArrayList<String> mChildListContent = null;
 
-    TextView cc3Txt1,cc3Txt2,cc3Txt3,cc3Txt4,cc3Txt5,cc3Txt6;
-    ProgressBar cc3Pbar1,cc3Pbar2,cc3Pbar3,cc3Pbar4,cc3Pbar5,cc3Pbar6;
-    String id;
-    String url = "http://pesang72.cafe24.com/Customercontent3.php";
-    String myJSON;
+    private ExpandableListView mListView;
+    private BaseExpandableAdapter adapter;
+    String id,myJSON2;
     InputStream is = null;
     String result = null;
     String line = null;
-    JSONArray peoples;
-    double height,muscle,bodyfat,weight,BMI,persentfat;
-    int barValue[]={1,2,3,4,5,6};
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    String url ="http://pesang72.cafe24.com/Customercontent2.php";
+    private static final String TAG_RESULTS = "data";
+    JSONArray peoples = null;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.customercontent2);
 
-        ViewGroup v = (ViewGroup)inflater.inflate(R.layout.customercontent3, container, false);
-        id = this.getArguments().getString("_id","None");
-        cc3Txt1=(TextView)v.findViewById(R.id.cc3Text1); //디비 연동해서 얻어온 값을 setText로 열어주게한다
-        cc3Txt2=(TextView)v.findViewById(R.id.cc3Text2);
-        cc3Txt3=(TextView)v.findViewById(R.id.cc3Text3);
-        cc3Txt4=(TextView)v.findViewById(R.id.cc3Text4);
-        cc3Txt5=(TextView)v.findViewById(R.id.cc3Text5);
-        cc3Txt6=(TextView)v.findViewById(R.id.cc3Text6);
+        Intent a = getIntent();
 
-        cc3Pbar1=(ProgressBar)v.findViewById(R.id.cc3Bar1);
-        cc3Pbar2=(ProgressBar)v.findViewById(R.id.cc3Bar2);
-        cc3Pbar3=(ProgressBar)v.findViewById(R.id.cc3Bar3);
-        cc3Pbar4=(ProgressBar)v.findViewById(R.id.cc3Bar4);
-        cc3Pbar5=(ProgressBar)v.findViewById(R.id.cc3Bar5);
-        cc3Pbar6=(ProgressBar)v.findViewById(R.id.cc3Bar6);
+        id = a.getStringExtra("_id");
+        mListView=(ExpandableListView)findViewById(R.id.elv_list);
+        mGroupList = new ArrayList<String>();
+        mChildList = new ArrayList<ArrayList<String>>();
+        mChildListContent = new ArrayList<String>();
 
-        cc3Pbar1.setProgress(1);
-        cc3Pbar2.setProgress(2);
-        cc3Pbar3.setProgress(3);
-        cc3Pbar4.setProgress(4);
-        cc3Pbar5.setProgress(5);
-        cc3Pbar6.setProgress(6);
+
+        adapter = new BaseExpandableAdapter(getApplicationContext(), mGroupList, mChildList);
+        mListView.setAdapter(adapter);
+
+        mListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+
+                return false;
+            }
+        });
+
+
+        mListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v,
+                                        int groupPosition, int childPosition, long id) {
+
+                return false;
+            }
+        });
+
+        mListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+            @Override
+            public void onGroupCollapse(int groupPosition) {
+            }
+        });
+
+        mListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+            @Override
+            public void onGroupExpand(int groupPosition) {
+
+            }
+        });
+
         getData(url,id);
-        return v;
+
 
     }
 
-    protected void saveList() {
+
+    protected void showList() {
         try {
-            JSONObject jsonObj = new JSONObject(myJSON);
-            peoples = jsonObj.getJSONArray("data");
+            JSONObject jsonObj = new JSONObject(myJSON2);
+            peoples = jsonObj.getJSONArray(TAG_RESULTS);
 
             for (int i = 0; i < peoples.length(); i++) {
                 JSONObject c = peoples.getJSONObject(i);
-                String name = c.getString("name"); // 이름
-                height = c.getDouble("height"); // 키
-                muscle = c.getDouble("muscle"); // 근육
-                bodyfat = c.getDouble("bodyfat"); // 지방
-                weight = c.getDouble("weight"); // 몸무게
-                persentfat =  c.getDouble("persentfat"); // 지방률
-                BMI =c.getDouble("BMI"); //M
-            }
+                String info = c.getString("information");
+                String date_list = c.getString("currenttime");
+                mChildListContent=new ArrayList<String>();
 
+                mGroupList.add(date_list);
+
+                mChildListContent.add(info);
+                mChildList.add(mChildListContent);
+            }
+            adapter.setdata();
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
-
-
 
     public void getData(String url, String id) {
         class GetDataJSON extends AsyncTask<String, Void, String> {
@@ -141,9 +166,8 @@ public class Customercontent3 extends Fragment{
 
             @Override
             protected void onPostExecute(String result) {
-                myJSON = result;
-                saveList();
-
+                myJSON2 = result;
+                showList();
             }
         }
 
@@ -151,6 +175,4 @@ public class Customercontent3 extends Fragment{
         GetDataJSON g = new GetDataJSON();
         g.execute(url,id);
     }
-
-
 }

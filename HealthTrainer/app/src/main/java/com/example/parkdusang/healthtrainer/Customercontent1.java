@@ -36,7 +36,7 @@ public class Customercontent1 extends Fragment {
     Button cc1btn;
     ArrayList<MyCustomDTO2> cc1list;
     ProgressBar cc1pBar;
-    TextView cc1txt1, cc1txt2;
+    TextView cc1txt1, cc1txt2 , oneword;
     Cc1Adapter cc1adapter;
     Cc1Diaglog cc1Dialog;
     String crtWeight, stWeight, goalWeight;
@@ -55,14 +55,16 @@ public class Customercontent1 extends Fragment {
         
         cc1txt1 = (TextView) v.findViewById(R.id.cc1txt1);
         cc1txt2 = (TextView) v.findViewById(R.id.cc1txt2);
-        
-        
+        oneword = (TextView) v.findViewById(R.id.trainr_oneword);
+
         id = this.getArguments().getString("_id", "None");
         
         
         cc1pBar = (ProgressBar) v.findViewById(R.id.cc1pBar);
         
         cc1btn = (Button) v.findViewById(R.id.cc1btn);
+
+
         cc1Dialog = new Cc1Diaglog(getActivity());
         cc1Dialog.setTitle("몸무게를 입력해주세요!");
         //다이어로그를 열어서 입력한 값을 얻어오는곳
@@ -111,7 +113,7 @@ public class Customercontent1 extends Fragment {
         cc1btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cc1Dialog.show();
+                //cc1Dialog.show();
             }
         });
         
@@ -167,32 +169,36 @@ public class Customercontent1 extends Fragment {
                 cc1list.get(i).setnumber(number);
             }
             cc1adapter.notifyDataSetChanged();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-    protected void showList2() {
-        try {
-            JSONObject jsonObj = new JSONObject(myJSON);
             peoples = jsonObj.getJSONArray("data");
 
             for (int i = 0; i < peoples.length(); i++) {
                 JSONObject c = peoples.getJSONObject(i);
 
-                String name = c.getString("exercise");
-                String content = c.getString("content");
-                int set = c.getInt("ECset");
-                int number = c.getInt("ECnumber");
-                cc1list.add(new MyCustomDTO2(false, name, content));
-                cc1list.get(i).setexercise(set);
-                cc1list.get(i).setnumber(number);
 
+                //TODO 여기부분을 원하는 값으로 넣고 프로그레스바 움직이면됌
+                double weight = c.getDouble("weight");  // 초기 몸무게
+                double goal = c.getDouble("goalweight"); // 목표몸무게
+                double pressent = c.getDouble("presentweight");// 현제 몸무게
+
+
+            }
+            peoples = jsonObj.getJSONArray("info");
+
+            for (int i = 0; i < peoples.length(); i++) {
+                JSONObject c = peoples.getJSONObject(i);
+                if(c.getString("trainr").equals("")){
+                    oneword.setText("아직 입력사항이 없습니다.");
+                }
+                else {
+                    oneword.setText(c.getString("trainr"));
+                }
             }
             cc1adapter.notifyDataSetChanged();
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
+
 
     public void getData(String url, String id) {
         class GetDataJSON extends AsyncTask<String, Void, String> {
@@ -208,7 +214,7 @@ public class Customercontent1 extends Fragment {
                 try {
                     HttpClient httpclient = new DefaultHttpClient();
                     HttpPost httppost = new HttpPost(uri);
-                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
                     HttpResponse response = httpclient.execute(httppost);
                     HttpEntity entity = response.getEntity();
                     is = entity.getContent();
@@ -222,7 +228,7 @@ public class Customercontent1 extends Fragment {
 
                 try {
                     BufferedReader reader = new BufferedReader
-                            (new InputStreamReader(is, "iso-8859-1"), 8);
+                            (new InputStreamReader(is, "UTF-8"));
                     StringBuilder sb = new StringBuilder();
                     while ((line = reader.readLine()) != null) {
                         sb.append(line + "\n");
@@ -243,7 +249,6 @@ public class Customercontent1 extends Fragment {
             protected void onPostExecute(String result) {
                 myJSON = result;
                 showList();
-                //showList2();
             }
         }
 

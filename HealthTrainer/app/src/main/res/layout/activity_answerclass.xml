@@ -45,6 +45,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_below="@+id/textView3_1"
                     android:background="#ef9696"
+                    android:id="@+id/answertx"
                     android:padding="5dp"
                     android:text="dfdf"
                     android:textAppearance="?android:attr/textAppearanceMedium" />

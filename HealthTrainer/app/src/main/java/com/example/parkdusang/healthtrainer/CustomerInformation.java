@@ -1,20 +1,48 @@
 package com.example.parkdusang.healthtrainer;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class CustomerInformation extends AppCompatActivity {
-    String stitle, scontent,trainrID;
+    String stitle, scontent,trainrID,CustomerId;
     int simgid;
-    TextView txtTitle;
+    TextView txtTitle,setcumtomer,settrainr;
     TextView txtContent;
     ImageView imgIcon;
-    Button setexercise,report,inbody;
+    Button setexercise,report,inbody,setword,record;
+    String url = "http://pesang72.cafe24.com/customerinfo.php";
+    InputStream is = null;
+    String result = null;
+    String line = null,myJSON= null;
+    JSONArray peoples = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,10 +57,55 @@ public class CustomerInformation extends AppCompatActivity {
         txtTitle = (TextView)findViewById(R.id.txtTitle2);
         txtContent = (TextView)findViewById(R.id.txtContent2);
         imgIcon =  (ImageView)findViewById(R.id.imgIcon2);
+        setcumtomer = (TextView)findViewById(R.id.onewordcustomer);
+        settrainr = (TextView)findViewById(R.id.settrainr);
         txtTitle.setText(stitle);
         txtContent.setText(scontent);
         imgIcon.setImageResource(simgid);
+        setword = (Button)findViewById(R.id.setoneword);
+        record = (Button)findViewById(R.id.recodeex);
 
+        setword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(CustomerInformation.this);
+
+                alert.setTitle("Input your name");
+                alert.setMessage("Plz, input yourname");
+
+
+                final EditText name = new EditText(CustomerInformation.this);
+                alert.setView(name);
+
+                alert.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+
+                        settrainr.setText(name.getText().toString());
+                        CustomerInformation.this.testinput(name.getText().toString());
+
+                    }
+                });
+
+
+                alert.setNegativeButton("no",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+
+                    }
+                });
+
+                alert.show();
+
+            }
+        });
+
+        record.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(getApplicationContext(),Recodeexercise.class);
+                intent1.putExtra("_id",CustomerId);
+                startActivity(intent1);
+            }
+        });
         setexercise = (Button)findViewById(R.id.setexercise);
 
         setexercise.setOnClickListener(new View.OnClickListener() { // 운동 지정
@@ -68,5 +141,137 @@ public class CustomerInformation extends AppCompatActivity {
                 startActivity(myAct2);
             }
         });
+
+        getData(url,trainrID,scontent);
+
     }
+    public void testinput(final String txt){
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                Updatetype(trainrID,txt,stitle);
+            }
+        }).start();
+    }
+    public void Updatetype(String ids,String txt,String name){
+        ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs.add(new BasicNameValuePair("check", "2"));
+        nameValuePairs.add(new BasicNameValuePair("_id", ids));
+        nameValuePairs.add(new BasicNameValuePair("txt", txt));
+        nameValuePairs.add(new BasicNameValuePair("name", name));
+
+        Log.i("TAG11", ids + " " + txt + " " + name);
+        try {
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost(url);
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
+            httpclient.execute(httppost);
+            Log.e("pass1", "connection success ");
+        } catch (Exception e) {
+            Log.e("Fail1", e.toString());
+            Toast.makeText(getApplicationContext(), "Invalid IP Address",
+                    Toast.LENGTH_LONG).show();
+        }
+    }
+    protected void showList() {
+        try {
+            JSONObject jsonObj = new JSONObject(myJSON);
+            peoples = jsonObj.getJSONArray("data");
+
+            for (int i = 0; i < peoples.length(); i++) {
+                JSONObject c = peoples.getJSONObject(i);
+
+                String trainr = c.getString("trainr");
+                String customer = c.getString("customer");
+
+                if(customer.equals("")){
+                    setcumtomer.setText("아직 입력사항이 없습니다.");
+                }
+                else{
+                    setcumtomer.setText(customer);
+                }
+                if(trainr.equals("")){
+                    settrainr.setText("아직 입력사항이 없습니다.");
+                }
+                else{
+                    settrainr.setText(trainr);
+                }
+
+            }
+            peoples = jsonObj.getJSONArray("info");
+
+            for (int i = 0; i < peoples.length(); i++) {
+                JSONObject c = peoples.getJSONObject(i);
+
+                CustomerId = c.getString("id");
+
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    public void getData(String url, String id,String scontent) {
+        class GetDataJSON extends AsyncTask<String, Void, String> {
+
+            @Override
+            protected String doInBackground(String... params) {
+                String uri = params[0];
+                String ids = params[1];
+                String phone = params[2];
+                ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+                nameValuePairs.add(new BasicNameValuePair("_id", ids));
+                nameValuePairs.add(new BasicNameValuePair("check", "1"));
+                nameValuePairs.add(new BasicNameValuePair("phone", phone));
+
+                try {
+                    HttpClient httpclient = new DefaultHttpClient();
+                    HttpPost httppost = new HttpPost(uri);
+                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                    HttpResponse response = httpclient.execute(httppost);
+                    HttpEntity entity = response.getEntity();
+                    is = entity.getContent();
+                    Log.i("TAG", ids);
+                    Log.e("pass 1", "connection success ");
+                } catch (Exception e) {
+                    Log.e("Fail 1", e.toString());
+
+                }
+
+
+                try {
+                    BufferedReader reader = new BufferedReader
+                            (new InputStreamReader(is, "UTF-8"));
+                    StringBuilder sb = new StringBuilder();
+                    while ((line = reader.readLine()) != null) {
+                        sb.append(line + "\n");
+                    }
+                    is.close();
+                    result = sb.toString();
+                    Log.e("1223", result);
+
+                    return sb.toString().trim();
+                } catch (Exception e) {
+                    Log.e("Fail 2", e.toString());
+                    return null;
+                }
+
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                myJSON = result;
+                showList();
+            }
+        }
+
+
+        GetDataJSON g = new GetDataJSON();
+        g.execute(url,id,scontent);
+    }
+
+
 }

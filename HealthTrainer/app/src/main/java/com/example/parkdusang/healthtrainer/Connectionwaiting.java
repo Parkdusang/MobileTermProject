@@ -28,6 +28,7 @@ public class Connectionwaiting extends AppCompatActivity {
     Button Cok,Ccancel;
     TextView txt;
     String id;
+
     int type;
     InputStream is = null;
     String line = null;
@@ -48,13 +49,13 @@ public class Connectionwaiting extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //ok눌렀을떄
-                new Thread(new Runnable() {
-                    public void run() {
-                        Updatetype2(1, id);
-                    }
-                }).start();
+//                new Thread(new Runnable() {
+//                    public void run() {
+//                        Updatetype2(1, id);
+//                    }
+//                }).start();
 
-                Intent myAct1 = new Intent(getApplicationContext(), MainTab.class);
+                Intent myAct1 = new Intent(getApplicationContext(), RegisterInfo.class);
                 myAct1.putExtra("_id",id);
                 startActivity(myAct1);
             }

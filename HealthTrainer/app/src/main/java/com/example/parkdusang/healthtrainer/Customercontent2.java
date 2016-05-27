@@ -55,29 +55,6 @@ public class Customercontent2 extends Fragment{
         mChildList = new ArrayList<ArrayList<String>>();
         mChildListContent = new ArrayList<String>();
 
-//        mGroupList.add("가위");
-//        mGroupList.add("바위");
-//        mGroupList.add("보");
-//
-//        for(int i=0;i<3;i++) {
-//            mChildListContent=new ArrayList<String>();
-//            if(i==0) {
-//                mChildListContent.add("1");
-//                mChildListContent.add("2");
-//                mChildListContent.add("3");
-//            }
-//            else if(i==1) {
-//                mChildListContent.add("11");
-//                mChildListContent.add("22");
-//                mChildListContent.add("33");
-//            }
-//            else if(i==2) {
-//                mChildListContent.add("111");
-//                mChildListContent.add("2222");
-//                mChildListContent.add("3333");
-//            }
-//            mChildList.add(mChildListContent);
-//        }
 
         adapter = new BaseExpandableAdapter(getActivity(), mGroupList, mChildList);
         mListView.setAdapter(adapter);
@@ -157,7 +134,7 @@ public class Customercontent2 extends Fragment{
                 try {
                     HttpClient httpclient = new DefaultHttpClient();
                     HttpPost httppost = new HttpPost(uri);
-                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
                     HttpResponse response = httpclient.execute(httppost);
                     HttpEntity entity = response.getEntity();
                     is = entity.getContent();
@@ -171,7 +148,7 @@ public class Customercontent2 extends Fragment{
 
                 try {
                     BufferedReader reader = new BufferedReader
-                            (new InputStreamReader(is, "iso-8859-1"), 8);
+                            (new InputStreamReader(is, "UTF-8"));
                     StringBuilder sb = new StringBuilder();
                     while ((line = reader.readLine()) != null) {
                         sb.append(line + "\n");
