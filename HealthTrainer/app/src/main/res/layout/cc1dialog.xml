@@ -3,20 +3,7 @@
     android:layout_width="match_parent"
     android:padding="5dp"
     android:layout_height="match_parent">
-    <TableRow>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="시작 몸무게 : "
-            />
-        <EditText
-            android:id="@+id/startweight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="시작 몸무게가 뭐에요? : "
-            android:inputType="number"
-            />
-    </TableRow>
+
     <TableRow>
         <TextView
             android:layout_width="match_parent"
@@ -27,6 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="목표 몸무게가 뭐에요? : "
+
             android:inputType="number"
             />
     </TableRow>
@@ -40,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="현재 몸무게가 뭐에요? : "
+
             android:inputType="number"
             />
     </TableRow>
