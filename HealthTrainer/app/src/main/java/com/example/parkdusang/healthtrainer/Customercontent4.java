@@ -196,6 +196,7 @@ public class Customercontent4 extends Fragment{
                 list.get(i).setnumber(number);
             }
             adapter2.notifyDataSetChanged();
+
         } catch (JSONException e) {
             e.printStackTrace();
         }

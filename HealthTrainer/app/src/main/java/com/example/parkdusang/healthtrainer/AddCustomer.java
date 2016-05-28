@@ -5,11 +5,14 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -30,32 +33,39 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Locale;
+import java.util.concurrent.ExecutionException;
 
 public class AddCustomer extends AppCompatActivity {
     String myJSON;
-
+    String line = null;
+    String name, content;
     private static final String TAG_RESULTS = "data";
     private static final String TAG_PHONE = "phone";
     private static final String TAG_ID = "name";
     private static final String TAG_SEX = "sex";
-    InputStream is = null;
-    String line = null;
-    JSONArray peoples = null;
+    private String url = "http://pesang72.cafe24.com/connecttranirdb.php";
+    private String url2 = "http://pesang72.cafe24.com/UpdateType.php";
+    String trainrid;
 
+
+    InputStream is = null;
+    JSONArray peoples = null;
     Spinner s1;
     String[] plants_arrays = {
-            "이름", "성별", "나이", "전화번호"
+            "전화번호", "이름"
     };
     ListView listView;
     MyCustomAdapter3 adapter3;
     ArrayList<MyCustomDTOAddCustim> list;
     Button btn2;
-    String name, content;
+    EditText ed;
+
     int imgid;
     int i;
-    private String url = "http://pesang72.cafe24.com/connecttranirdb.php";
-    private String url2 = "http://pesang72.cafe24.com/UpdateType.php";
-    String trainrid;
+    int index=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +73,7 @@ public class AddCustomer extends AppCompatActivity {
         Intent intent = getIntent();
         trainrid = intent.getStringExtra("trainrid");
 
-
+        getData(url);
         btn2 = (Button) findViewById(R.id.btn1);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +84,7 @@ public class AddCustomer extends AppCompatActivity {
                         Log.i("testid", trainrid);
                         new Thread(new Runnable() {
                             public void run() {
-                                Updatetype(list.get(i).getContent(),trainrid);
+                                Updatetype(list.get(i).getContent(), trainrid);
                             }
                         }).start();
                         break;
@@ -94,32 +104,44 @@ public class AddCustomer extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0,
                                        View arg1, int arg2, long arg3) {
-                int index = s1.getSelectedItemPosition();
+                index = s1.getSelectedItemPosition();
                 Toast.makeText(getBaseContext(),
                         "You have selected item : " + plants_arrays[index], Toast.LENGTH_SHORT).show();
+                sorting(index);
+                adapter3.notifyDataSetChanged();
             }
 
             public void onNothingSelected(AdapterView<?> arg0) {
             }
         });
+        ed = (EditText)findViewById(R.id.search_name);
 
+        ed.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String text = ed.getText().toString().toLowerCase(Locale.getDefault());
+                adapter3.filter(text);
+            }
+        });
 
         list = new ArrayList<MyCustomDTOAddCustim>();
-//        list.add(new MyCustomDTOAddCustim(false, "누군가", "홍길동 테스트!", R.drawable.user1));
-//        list.add(new MyCustomDTOAddCustim(false, "미친존재감", "영희 테스트!", R.drawable.user2));
-//        list.add(new MyCustomDTOAddCustim(false, "추가", "철수 테스트!", R.drawable.user1));
+//
 
         listView = (ListView) findViewById(R.id.listView3);
 
-        adapter3 =
-                new MyCustomAdapter3(
-                        getApplicationContext(),
-                        R.layout.list_row_addcustomer,
-                        list);
 
-        listView.setAdapter(adapter3);
 
-        getData(url);
+
 
 
 
@@ -180,14 +202,48 @@ public class AddCustomer extends AppCompatActivity {
                 } else {
                     list.add(new MyCustomDTOAddCustim(false,name, phone, R.drawable.user2));
                 }
+                sorting(index);
             }
+            adapter3 =
+                    new MyCustomAdapter3(
+                            getApplicationContext(),
+                            R.layout.list_row_addcustomer,
+                            list);
+
+            listView.setAdapter(adapter3);
             adapter3.notifyDataSetChanged();
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
     }
+    public void sorting(int i)
+    {
+        if(i==1){//이름으로 솔팅하는 것
+            Collections.sort(list, new Comparator<MyCustomDTOAddCustim>() {
+                @Override
+                public int compare(MyCustomDTOAddCustim s1, MyCustomDTOAddCustim s2) {
+                    return s1.getTitle().compareToIgnoreCase(s2.getTitle());
+                }
+            });
+            Log.d("22", "이름으로 솔팅이됨");
+            for(MyCustomDTOAddCustim p:list)
+                Log.d("1111",p.getTitle());
+        }
+        else if(i==0){
+            Collections.sort(list, new Comparator<MyCustomDTOAddCustim>() {
+                @Override
+                public int compare(MyCustomDTOAddCustim s1, MyCustomDTOAddCustim s2) {
+                    return s1.getContent().compareToIgnoreCase(s2.getContent());
+                }
+            });
+            Log.d("22", "이름으로 솔팅이됨");
+            for(MyCustomDTOAddCustim p:list)
+                Log.d("1111",p.getContent());
 
+        }
+
+    }
     public void getData(String url) {
         class GetDataJSON extends AsyncTask<String, Void, String> {
 
@@ -234,11 +290,19 @@ public class AddCustomer extends AppCompatActivity {
 
             @Override
             protected void onPostExecute(String result) {
+
                 myJSON = result;
                 showList();
             }
         }
         GetDataJSON g = new GetDataJSON();
-        g.execute(url);
+        try {
+            g.execute(url).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
     }
 }

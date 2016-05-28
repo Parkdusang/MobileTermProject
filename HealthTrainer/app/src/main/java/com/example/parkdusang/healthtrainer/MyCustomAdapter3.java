@@ -2,6 +2,7 @@ package com.example.parkdusang.healthtrainer;
 
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,25 +12,30 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MyCustomAdapter3 extends BaseAdapter {
 
     Context ctx;
     int layout;
-    ArrayList<MyCustomDTOAddCustim> list;
+    ArrayList<MyCustomDTOAddCustim> templist;
+    ArrayList<MyCustomDTOAddCustim> list =null;
     LayoutInflater inf;
 
     public MyCustomAdapter3(Context ctx, int layout, ArrayList<MyCustomDTOAddCustim> list){
         this.ctx = ctx;
         this.layout = layout;
         this.list = list;
-
+        this.templist = new ArrayList<MyCustomDTOAddCustim>();
+        this.templist.addAll(list);
+        Log.i("d", "MyCustomAdapter3: "+templist.size() + " " + this.list.size() + " "+ list.size());
         inf = (LayoutInflater)ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public int getCount() {
         // TODO Auto-generated method stub
+        //Log.i("TAG1", "getCount: "+list.size());
         return list.size();
     }
 
@@ -68,5 +74,27 @@ public class MyCustomAdapter3 extends BaseAdapter {
         }
         return v;
     }
+
+
+    public void filter(String charText) {
+        charText = charText.toLowerCase(Locale.getDefault());
+        Log.i("TAG", "text:"+charText);
+        list.clear();
+        Log.i("TAG", "charTextlength:" + charText.length());
+        if (charText.length() == 0) {
+            list.addAll(templist);
+        }
+        else {
+            Log.i("TAG", "come!:"+templist.size());
+            for (MyCustomDTOAddCustim wpt : templist) {
+                Log.i("TAG", "get:"+ wpt.getTitle());
+                if (wpt.getTitle().toLowerCase(Locale.getDefault()).contains(charText)) {
+                    list.add(wpt);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
+
 
 }
