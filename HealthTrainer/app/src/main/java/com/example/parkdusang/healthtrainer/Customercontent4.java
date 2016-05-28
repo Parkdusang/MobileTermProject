@@ -47,6 +47,7 @@ public class Customercontent4 extends Fragment{
     JSONArray peoples = null;
     String url = "http://pesang72.cafe24.com/Customercontent4.php";
     String url2 = "http://pesang72.cafe24.com/reportsubmit.php";
+    String url3 = "http://pesang72.cafe24.com/GCMservice.php";
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -72,7 +73,12 @@ public class Customercontent4 extends Fragment{
                 }
                 report += cc4edit.getText().toString();
                 checkexercise(report,2);
-
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        pushmsg(id);
+                    }
+                }).start();
 
             }
         });
@@ -112,6 +118,23 @@ public class Customercontent4 extends Fragment{
 
         return v;
     }
+    public void pushmsg(String phone){
+        ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs.add(new BasicNameValuePair("idt",id));
+        nameValuePairs.add(new BasicNameValuePair("check", "4"));
+
+        try {
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost(url3);
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
+            httpclient.execute(httppost);
+            Log.e("pass1", "connection success ");
+        } catch (Exception e) {
+            Log.e("Fail1", e.toString());
+
+        }
+    }
+
     public void checkexercise(final String name, final int check){
         new Thread(new Runnable() {
             public void run() {

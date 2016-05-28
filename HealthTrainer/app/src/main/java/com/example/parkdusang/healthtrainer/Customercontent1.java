@@ -79,7 +79,7 @@ public class Customercontent1 extends Fragment {
                 if (cc1Dialog.checkcancel()) {
                     goalWeight = cc1Dialog.getedtxString1();
                     crtWeight = cc1Dialog.getedtxString2();
-                    
+
                     if (goalWeight == null) {
                         goalWeight = "";
                     }
@@ -91,11 +91,16 @@ public class Customercontent1 extends Fragment {
                     } else {
                         cc1Dialog.setGoalWeight(goalWeight);
                         cc1Dialog.setCurrentWeight(crtWeight);
-                        cc1txt2.setText(goalWeight);
 
+                        cc1txt2.setText(goalWeight);
                         cc1pBar.setProgress((int) goalRate(crtWeight, cc1Dialog.getStartWeight(), goalWeight));
 
-
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Updatetype(goalWeight, crtWeight);
+                            }
+                        }).start();
                     }
                 }
             }
@@ -104,7 +109,7 @@ public class Customercontent1 extends Fragment {
         cc1Dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialog) {
-                cc1btn.setText("test 설정하시겠어요?");
+                cc1btn.setText("목표 설정하시겠어요?");
 
             }
         });
@@ -115,12 +120,11 @@ public class Customercontent1 extends Fragment {
                 cc1Dialog.show();
             }
         });
-
         cc1list = new ArrayList<MyCustomDTO2>();
         cc1adapter = new Cc1Adapter(getActivity(), R.layout.list_row_exercise, cc1list);
 
         cc1listView.setAdapter(cc1adapter);
-
+        Log.i("TAG", "1: ");
         getData(url, id);
         return v;
     }
@@ -153,11 +157,29 @@ public class Customercontent1 extends Fragment {
         return result;
     }
 
+    public void Updatetype(String goal, String current){
+        ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs.add(new BasicNameValuePair("_id",id));
+        nameValuePairs.add(new BasicNameValuePair("check","2"));
+        nameValuePairs.add(new BasicNameValuePair("goal",goal));
+        nameValuePairs.add(new BasicNameValuePair("current",current));
+
+        try {
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost(url);
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            httpclient.execute(httppost);
+            Log.e("pass1", "connection success ");
+        } catch (Exception e) {
+            Log.e("Fail1", e.toString());
+            Toast.makeText(getActivity(), "Invalid IP Address",
+                    Toast.LENGTH_LONG).show();
+        }
+    }
 
     protected void showList() {
         try {
             JSONObject jsonObj = new JSONObject(myJSON);
-
             peoples = jsonObj.getJSONArray("data");
 
             for (int i = 0; i < peoples.length(); i++) {
@@ -185,6 +207,11 @@ public class Customercontent1 extends Fragment {
                     oneword.setText(c.getString("trainr"));
                 }
             }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        try {
+            JSONObject jsonObj = new JSONObject(myJSON);
             peoples = jsonObj.getJSONArray("exercise");
 
             for (int i = 0; i < peoples.length(); i++) {
@@ -199,7 +226,8 @@ public class Customercontent1 extends Fragment {
                 cc1list.get(i).setnumber(number);
             }
             cc1adapter.notifyDataSetChanged();
-        } catch (JSONException e) {
+        }
+        catch (JSONException e) {
             e.printStackTrace();
         }
     }
@@ -213,9 +241,10 @@ public class Customercontent1 extends Fragment {
                 String uri = params[0];
                 String ids = params[1];
                 ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+                nameValuePairs.add(new BasicNameValuePair("check", "1"));
                 nameValuePairs.add(new BasicNameValuePair("_id", ids));
 
-
+                Log.i("TAG", "2: ");
                 try {
                     HttpClient httpclient = new DefaultHttpClient();
                     HttpPost httppost = new HttpPost(uri);
@@ -241,7 +270,7 @@ public class Customercontent1 extends Fragment {
                     is.close();
                     result = sb.toString();
                     Log.e("1223", result);
-
+                    Log.i("TAG", "3: ");
                     return sb.toString().trim();
                 } catch (Exception e) {
                     Log.e("Fail 2", e.toString());

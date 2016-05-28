@@ -34,7 +34,9 @@ public class Setexercise extends AppCompatActivity {
     Button btnok, btnnewec;
     MyCustomAdapter2 adapter2;
     String url="http://pesang72.cafe24.com/insertexercise.php";
+    String url2 = "http://pesang72.cafe24.com/GCMservice.php";
     String getifurl ="http://pesang72.cafe24.com/getexercise.php";
+
     String trainrID,scontent;
     String name,set,number;
     InputStream is = null;
@@ -63,9 +65,14 @@ public class Setexercise extends AppCompatActivity {
                         inputthread(name,set,number);
                     }
 
-
                 }
 
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        pushmsg(scontent);
+                    }
+                }).start();
                 finish();
             }
         });
@@ -174,11 +181,24 @@ public class Setexercise extends AppCompatActivity {
             Log.e("pass1", "connection success ");
         } catch (Exception e) {
             Log.e("Fail1", e.toString());
-            Toast.makeText(getApplicationContext(), "Invalid IP Address",
-                    Toast.LENGTH_LONG).show();
         }
     }
+    public void pushmsg(String phone){
+        ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs.add(new BasicNameValuePair("phone",phone));
+        nameValuePairs.add(new BasicNameValuePair("check", "3"));
 
+        try {
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost(url2);
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
+            httpclient.execute(httppost);
+            Log.e("pass1", "connection success ");
+        } catch (Exception e) {
+            Log.e("Fail1", e.toString());
+
+        }
+    }
     protected void showList() {
         try {
             JSONObject jsonObj = new JSONObject(myJSON);

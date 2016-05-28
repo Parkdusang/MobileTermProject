@@ -24,6 +24,7 @@ public class CreateExercise extends AppCompatActivity {
     Button ok,cancel;
     EditText ename,epart,eset,enumber,einfo;
     Intent intent;
+    String url2 = "http://pesang72.cafe24.com/GCMservice.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +50,11 @@ public class CreateExercise extends AppCompatActivity {
                                 .toString(),enumber.getText().toString(),einfo.getText().toString());
                     }
                 }).start();
-
+                new Thread(new Runnable() {
+                    public void run() {
+                        pushmsg(scontent);
+                    }
+                }).start();
 
             }
         });
@@ -61,6 +66,23 @@ public class CreateExercise extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    public void pushmsg(String phone){
+        ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs.add(new BasicNameValuePair("phone", phone));
+        nameValuePairs.add(new BasicNameValuePair("check", "3"));
+
+        try {
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost(url2);
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
+            httpclient.execute(httppost);
+            Log.e("pass1", "connection success ");
+        } catch (Exception e) {
+            Log.e("Fail1", e.toString());
+
+        }
     }
 
     public void Updatetype(String phone, String ename, String epart, String eset, String enumber, String einfo){
