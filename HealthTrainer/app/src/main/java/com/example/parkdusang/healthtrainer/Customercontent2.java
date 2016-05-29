@@ -43,7 +43,6 @@ public class Customercontent2 extends Fragment{
     private static final String TAG_RESULTS = "data";
     JSONArray peoples = null;
 
-
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -62,7 +61,6 @@ public class Customercontent2 extends Fragment{
         mListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-
                 return false;
             }
         });
@@ -119,7 +117,6 @@ public class Customercontent2 extends Fragment{
         }
     }
 
-
     public void getData(String url, String id) {
         class GetDataJSON extends AsyncTask<String, Void, String> {
 
@@ -144,7 +141,6 @@ public class Customercontent2 extends Fragment{
                     Log.e("Fail 1", e.toString());
 
                 }
-
 
                 try {
                     BufferedReader reader = new BufferedReader
@@ -175,5 +171,6 @@ public class Customercontent2 extends Fragment{
 
         GetDataJSON g = new GetDataJSON();
         g.execute(url,id);
+
     }
 }

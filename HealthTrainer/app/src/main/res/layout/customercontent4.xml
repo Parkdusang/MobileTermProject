@@ -13,21 +13,36 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#f4e7753c"
+            android:text="REPORT"
+            android:textColor="@color/input_register_hint"
+            android:textSize="50dp"
             android:gravity="center"
-            android:text="보고"
-            android:textSize="30dp" />
-
-        <TextView
+            android:background="#F9F4D8" />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#ce6edbea"
-            android:text="  오늘의 운동~~"
-            android:textSize="30dp" />
+            android:orientation="horizontal"
+            android:paddingLeft="10dp">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/content1"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="오늘의 운동"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textSize="25dp" />
+
+        </LinearLayout>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_height="200dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
 
             <ListView
                 android:id="@+id/cc4listView"
@@ -35,28 +50,47 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:background="#5470fd" />
+                android:background="@drawable/customercontent4_tv"/>
         </RelativeLayout>
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#f9e355"
-            android:gravity="center"
-            android:text="Comments"
-            android:textSize="30dp" />
+            android:orientation="horizontal"
+            android:paddingLeft="10dp">
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/content1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comment"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textSize="25dp" />
+
+        </LinearLayout>
 
         <EditText
             android:id="@+id/cc4edit"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:gravity="top"
+            android:padding="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/customercontent4_tv"
             android:text="dfdfd"
             android:textSize="20dp" />
 
         <Button
             android:id="@+id/cc4btn"
-            android:layout_width="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="보고" />
     </LinearLayout>

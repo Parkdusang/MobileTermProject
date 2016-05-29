@@ -8,13 +8,17 @@
         android:id="@+id/imgIcon3"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/ic_launcher"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="3dp"/>
 
     <LinearLayout
         android:layout_width="196dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.72"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp">
 
         <TextView
             android:id="@+id/txtTitle3"
@@ -22,7 +26,8 @@
             android:layout_height="wrap_content"
             android:text="Large Text"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#000000" />
+            android:textColor="#406d93"
+            android:textColorHighlight="#5e809c" />
 
         <TextView
             android:id="@+id/txtContent3"
@@ -30,7 +35,8 @@
             android:layout_height="wrap_content"
             android:text="Small Text"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="#ff0000" />
+            android:textColor="#7e7e7e"
+            android:textColorHighlight="#9b9a9a" />
 
 
     </LinearLayout>
@@ -40,6 +46,7 @@
         android:layout_height="wrap_content"
         android:background="#54d9a3"
         android:checked="false"
+        android:clickable="false"
         android:focusable="false"/>
 
 </LinearLayout>

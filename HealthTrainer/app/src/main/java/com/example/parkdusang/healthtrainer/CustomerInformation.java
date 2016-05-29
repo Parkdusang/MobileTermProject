@@ -70,8 +70,8 @@ public class CustomerInformation extends AppCompatActivity {
             public void onClick(View v) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(CustomerInformation.this);
 
-                alert.setTitle("Input your name");
-                alert.setMessage("Plz, input yourname");
+                alert.setTitle("트레이너 공지");
+                alert.setMessage("공지사항을 입력해주세요");
 
 
                 final EditText name = new EditText(CustomerInformation.this);
@@ -191,7 +191,7 @@ public class CustomerInformation extends AppCompatActivity {
                     setcumtomer.setText("아직 입력사항이 없습니다.");
                 }
                 else{
-                    setcumtomer.setText(customer);
+                    setcumtomer.setText(stitle+ "님의 한마디!\n" +customer);
                 }
                 if(trainr.equals("")){
                     settrainr.setText("아직 입력사항이 없습니다.");

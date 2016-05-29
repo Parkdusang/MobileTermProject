@@ -11,10 +11,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:gravity="center_vertical"
+        android:gravity="center_vertical|center"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Today Report"
         android:id="@+id/textView3_1"
+        android:textColor="#406d93"
+        android:textSize="35dp"
+        android:textColorHighlight="#5e809c"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true" />
@@ -46,5 +49,6 @@
         android:layout_below="@+id/textView3_1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_above="@+id/answerbtn" />
+        android:layout_above="@+id/answerbtn"
+        android:background="@drawable/border_trainr"/>
 </RelativeLayout>

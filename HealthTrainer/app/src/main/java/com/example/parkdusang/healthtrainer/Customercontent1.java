@@ -284,7 +284,6 @@ public class Customercontent1 extends Fragment {
                     is.close();
                     result = sb.toString();
                     Log.e("1223", result);
-                    Log.i("TAG", "3: ");
                     return sb.toString().trim();
                 } catch (Exception e) {
                     Log.e("Fail 2", e.toString());
@@ -309,7 +308,7 @@ public class Customercontent1 extends Fragment {
         } catch (ExecutionException e) {
             e.printStackTrace();
         } finally {
-            progressBar.setProgress(100);
+            progressBar.dismiss();
         }
     }
 }

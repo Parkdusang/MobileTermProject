@@ -79,7 +79,9 @@
                 android:layout_width="0dp"
                 android:layout_height="3dp"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="0.5"
+                android:layout_weight="0.2"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:background="#b8bebd" />
 
             <EditText
@@ -94,12 +96,13 @@
                 android:textColorHint="@color/input_register_hint"
                 android:textSize="20dp"
                 android:inputType="number"/>
-
             <View
                 android:layout_width="0dp"
                 android:layout_height="3dp"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="0.5"
+                android:layout_weight="0.2"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:background="#b8bebd" />
 
             <EditText

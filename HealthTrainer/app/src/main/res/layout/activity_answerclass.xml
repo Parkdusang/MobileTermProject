@@ -47,7 +47,6 @@
                     android:background="#ef9696"
                     android:id="@+id/answertx"
                     android:padding="5dp"
-                    android:text="dfdf"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             </LinearLayout>
         </ScrollView>
@@ -64,7 +63,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
-            android:text="돌아가기"
+            android:text="기록"
 
             android:textColor="#896a6a" />
 

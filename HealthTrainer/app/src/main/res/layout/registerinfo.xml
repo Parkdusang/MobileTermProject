@@ -17,7 +17,9 @@
             android:layout_marginBottom="30dp"
             android:gravity="center"
             android:text="초기 입력값을 넣어 주세요"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:textColor="#406d93"
+            android:textColorHighlight="#5e809c"/>/>
 
         <TableLayout
             android:layout_width="match_parent"
@@ -30,7 +32,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
                     android:gravity="center"
-                    android:text="키" />
+                    android:text="키"
+                    android:textColor="#406d93"
+                    android:textColorHighlight="#5e809c"/>/>
 
                 <EditText
                     android:id="@+id/ri_height"
@@ -48,7 +52,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
                     android:gravity="center"
-                    android:text="초기 몸무게" />
+                    android:text="초기 몸무게"
+                    android:textColor="#406d93"
+                    android:textColorHighlight="#5e809c"/>/>
 
                 <EditText
                     android:id="@+id/ri_fweight"
@@ -67,6 +73,8 @@
                     android:layout_weight="0.2"
                     android:gravity="center"
                     android:text="목표 몸무게"
+                    android:textColor="#406d93"
+                    android:textColorHighlight="#5e809c"/>
                     />
 
                 <EditText
@@ -84,7 +92,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
                     android:gravity="center"
-                    android:text="나의 목표!" />
+                    android:text="나의 목표!"
+                    android:textColor="#406d93"
+                    android:textColorHighlight="#5e809c"/>/>
 
                 <EditText
                     android:id="@+id/one_coment"
