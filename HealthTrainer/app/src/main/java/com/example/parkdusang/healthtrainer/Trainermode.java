@@ -154,7 +154,7 @@ public class Trainermode extends AppCompatActivity {
                 try {
                     HttpClient httpclient = new DefaultHttpClient();
                     HttpPost httppost = new HttpPost(uri);
-                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
                     HttpResponse response = httpclient.execute(httppost);
                     HttpEntity entity = response.getEntity();
                     is = entity.getContent();

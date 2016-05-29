@@ -176,7 +176,7 @@ public class Setexercise extends AppCompatActivity {
         try {
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost(url);
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
             httpclient.execute(httppost);
             Log.e("pass1", "connection success ");
         } catch (Exception e) {
@@ -230,7 +230,7 @@ public class Setexercise extends AppCompatActivity {
                     HttpURLConnection con = (HttpURLConnection) url.openConnection();
                     StringBuilder sb = new StringBuilder();
 
-                    bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream(), "iso-8859-1"));
+                    bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream(),"UTF-8"));
 
                     String json;
                     while ((json = bufferedReader.readLine()) != null) {

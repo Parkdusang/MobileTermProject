@@ -93,7 +93,7 @@ public class Connectionwaiting extends AppCompatActivity {
         try {
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost(url);
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
             httpclient.execute(httppost);
             Log.e("pass1", "connection success ");
         } catch (Exception e) {
@@ -116,7 +116,7 @@ public class Connectionwaiting extends AppCompatActivity {
                 try {
                     HttpClient httpclient = new DefaultHttpClient();
                     HttpPost httppost = new HttpPost(uri);
-                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
                     HttpResponse response = httpclient.execute(httppost);
                     HttpEntity entity = response.getEntity();
                     is = entity.getContent();
@@ -129,7 +129,7 @@ public class Connectionwaiting extends AppCompatActivity {
 
                 try {
                     BufferedReader reader = new BufferedReader
-                            (new InputStreamReader(is, "iso-8859-1"), 8);
+                            (new InputStreamReader(is,"UTF-8"));
                     StringBuilder sb = new StringBuilder();
                     while ((line = reader.readLine()) != null) {
                         sb.append(line + "\n");

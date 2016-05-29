@@ -167,7 +167,7 @@ public class Customercontent1 extends Fragment {
         try {
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost(url);
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
             httpclient.execute(httppost);
             Log.e("pass1", "connection success ");
         } catch (Exception e) {

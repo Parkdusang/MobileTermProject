@@ -190,6 +190,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         } catch (Exception e) {
             Log.e("Fail 2", e.toString());
         }
+
+
         
         //                    try {
         //                        JSONObject json_data = new JSONObject(result);

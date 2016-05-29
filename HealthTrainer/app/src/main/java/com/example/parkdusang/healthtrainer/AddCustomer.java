@@ -177,7 +177,7 @@ public class AddCustomer extends AppCompatActivity {
         try {
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost(url2);
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
             httpclient.execute(httppost);
             Log.e("pass1", "connection success ");
         } catch (Exception e) {
@@ -257,7 +257,7 @@ public class AddCustomer extends AppCompatActivity {
                 try {
                     HttpClient httpclient = new DefaultHttpClient();
                     HttpPost httppost = new HttpPost(uri);
-                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
                     HttpResponse response = httpclient.execute(httppost);
 
 
@@ -273,7 +273,7 @@ public class AddCustomer extends AppCompatActivity {
 
                 try {
                     BufferedReader reader = new BufferedReader
-                            (new InputStreamReader(is, "iso-8859-1"), 8);
+                            (new InputStreamReader(is, "UTF-8"));
                     StringBuilder sb = new StringBuilder();
                     while ((line = reader.readLine()) != null) {
                         sb.append(line + "\n");
