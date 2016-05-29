@@ -74,6 +74,8 @@ public class Todayreport extends AppCompatActivity {
         //디비 불러와서 끝
     }
 
+
+
     public void getData(String url, String id, String phone) {
         class GetDataJSON extends AsyncTask<String, Void, String> {
 
@@ -109,7 +111,7 @@ public class Todayreport extends AppCompatActivity {
                     }
                     is.close();
                     result = sb.toString();
-                    Log.e("1223", result);
+                    Log.e("122333", result);
 
                     return sb.toString().trim();
                 } catch (Exception e) {
@@ -121,14 +123,17 @@ public class Todayreport extends AppCompatActivity {
             }
             @Override
             protected void onPostExecute(String result) {
-                if(result.substring(0,4).equals("아직 보")){
+                if(result.substring(0,2).equals("아직")){
                     check =false;
                 }
-
-                tx.setText(result);
+                else {
+                    tx.setText(result);
+                }
             }
         }
         GetDataJSON g = new GetDataJSON();
         g.execute(url, id, phone);
     }
+
+
 }

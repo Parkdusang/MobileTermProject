@@ -61,7 +61,10 @@
                 android:layout_width="fill_parent"
                 android:layout_height="55dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/login" />
+                android:text="Login"
+                android:textSize="30dp"
+                android:textColor="@color/white"
+                android:background="@drawable/button_design" />
 
             <!-- Link to Login Screen -->
 
@@ -69,7 +72,7 @@
                 android:id="@+id/button4"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dip"
+                android:layout_marginTop="30dip"
                 android:background="@null"
                 android:text="@string/btn_link_to_register"
                 android:textAllCaps="false"

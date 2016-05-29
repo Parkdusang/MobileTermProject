@@ -14,9 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="INBODY"
+        android:textColor="@color/input_register_hint"
         android:textSize="50dp"
         android:gravity="center"
-        android:background="#f4f9f965"
+        android:background="#F9F4D8"
         android:layout_marginBottom="10dp"/>
 
    <LinearLayout
@@ -74,7 +75,7 @@
                    android:text="표준이하"
                    android:gravity="center"
                    android:layout_weight="1"
-                   android:background="#ea4b4b"
+                   android:background="@drawable/customercontent3_design_bar1"
                    android:textColor="#ffffff" />
                <TextView
                    android:layout_width="wrap_content"
@@ -82,7 +83,7 @@
                    android:text="표준"
                    android:gravity="center"
                    android:layout_weight="2"
-                   android:background="#60e152"
+                   android:background="@drawable/customercontent3_design_bar2"
                    android:textColor="#ffffff" />
                <TextView
                    android:layout_width="wrap_content"
@@ -90,7 +91,7 @@
                    android:text="표준이상"
                    android:gravity="center"
                    android:layout_weight="1"
-                   android:background="#347bc3"
+                   android:background="@drawable/customercontent3_design_bar3"
                    android:textColor="#ffffff" />
 
            </LinearLayout>
@@ -164,7 +165,7 @@
                     android:text="표준이하"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="#ea4b4b"
+                    android:background="@drawable/customercontent3_design_bar1"
                     android:textColor="#ffffff" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -172,7 +173,7 @@
                     android:text="표준"
                     android:gravity="center"
                     android:layout_weight="2"
-                    android:background="#60e152"
+                    android:background="@drawable/customercontent3_design_bar2"
                     android:textColor="#ffffff" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -180,7 +181,7 @@
                     android:text="표준이상"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="#347bc3"
+                    android:background="@drawable/customercontent3_design_bar3"
                     android:textColor="#ffffff" />
 
             </LinearLayout>
@@ -254,7 +255,7 @@
                     android:text="표준이하"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="#ea4b4b"
+                    android:background="@drawable/customercontent3_design_bar1"
                     android:textColor="#ffffff" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -262,7 +263,7 @@
                     android:text="표준"
                     android:gravity="center"
                     android:layout_weight="2"
-                    android:background="#60e152"
+                    android:background="@drawable/customercontent3_design_bar2"
                     android:textColor="#ffffff" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -270,7 +271,7 @@
                     android:text="표준이상"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="#347bc3"
+                    android:background="@drawable/customercontent3_design_bar3"
                     android:textColor="#ffffff" />
 
             </LinearLayout>
@@ -343,7 +344,7 @@
                     android:text="표준이하"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="#ea4b4b"
+                    android:background="@drawable/customercontent3_design_bar1"
                     android:textColor="#ffffff" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -351,7 +352,7 @@
                     android:text="표준"
                     android:gravity="center"
                     android:layout_weight="2"
-                    android:background="#60e152"
+                    android:background="@drawable/customercontent3_design_bar2"
                     android:textColor="#ffffff" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -359,7 +360,7 @@
                     android:text="표준이상"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="#347bc3"
+                    android:background="@drawable/customercontent3_design_bar3"
                     android:textColor="#ffffff" />
 
             </LinearLayout>
@@ -432,7 +433,7 @@
                     android:text="표준이하"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="#ea4b4b"
+                    android:background="@drawable/customercontent3_design_bar1"
                     android:textColor="#ffffff" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -440,7 +441,7 @@
                     android:text="표준"
                     android:gravity="center"
                     android:layout_weight="2"
-                    android:background="#60e152"
+                    android:background="@drawable/customercontent3_design_bar2"
                     android:textColor="#ffffff" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -448,7 +449,7 @@
                     android:text="표준이상"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="#347bc3"
+                    android:background="@drawable/customercontent3_design_bar3"
                     android:textColor="#ffffff" />
 
             </LinearLayout>
@@ -521,7 +522,7 @@
                     android:text="표준이하"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="#ea4b4b"
+                    android:background="@drawable/customercontent3_design_bar1"
                     android:textColor="#ffffff" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -529,7 +530,7 @@
                     android:text="표준"
                     android:gravity="center"
                     android:layout_weight="2"
-                    android:background="#60e152"
+                    android:background="@drawable/customercontent3_design_bar2"
                     android:textColor="#ffffff" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -537,7 +538,7 @@
                     android:text="표준이상"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="#347bc3"
+                    android:background="@drawable/customercontent3_design_bar3"
                     android:textColor="#ffffff" />
 
             </LinearLayout>
