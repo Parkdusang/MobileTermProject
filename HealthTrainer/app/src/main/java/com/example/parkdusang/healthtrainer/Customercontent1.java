@@ -2,6 +2,7 @@ package com.example.parkdusang.healthtrainer;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -43,7 +45,7 @@ public class Customercontent1 extends Fragment {
     Cc1Adapter cc1adapter;
     Cc1Diaglog cc1Dialog;
     String crtWeight, stWeight, goalWeight;
-    String id, myJSON;
+    String idt, myJSON;
     String result = null;
     String line = null;
 
@@ -63,7 +65,7 @@ public class Customercontent1 extends Fragment {
         cc1txt2 = (TextView) v.findViewById(R.id.cc1txt2);
         oneword = (TextView) v.findViewById(R.id.trainr_oneword);
 
-        id = this.getArguments().getString("_id", "None");
+        idt = this.getArguments().getString("_id", "None");
 
 
         cc1pBar = (ProgressBar) v.findViewById(R.id.cc1pBar);
@@ -114,7 +116,7 @@ public class Customercontent1 extends Fragment {
         cc1Dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialog) {
-                cc1btn.setText("목표 설정하시겠어요?");
+                cc1btn.setText("SET WEIGHT");
 
             }
         });
@@ -129,7 +131,17 @@ public class Customercontent1 extends Fragment {
         cc1adapter = new Cc1Adapter(getActivity(), R.layout.list_row_exercise, cc1list);
 
         cc1listView.setAdapter(cc1adapter);
+        cc1listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(),ExerciseInformation.class);
+                intent.putExtra("_id",idt);
+                intent.putExtra("name",cc1list.get(position).getTitle().toString());
+                intent.putExtra("content", cc1list.get(position).getContent().toString());
+                startActivity(intent);
 
+            }
+        });
         progressBar = new ProgressDialog(v.getContext());
         progressBar.setCancelable(true);
         progressBar.setMessage("서버에서  불러오는중 ...");
@@ -139,7 +151,7 @@ public class Customercontent1 extends Fragment {
         progressBar.show();
 
 
-        getData(url, id);
+        getData(url, idt);
         return v;
     }
 
@@ -173,7 +185,7 @@ public class Customercontent1 extends Fragment {
 
     public void Updatetype(String goal, String current){
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-        nameValuePairs.add(new BasicNameValuePair("_id",id));
+        nameValuePairs.add(new BasicNameValuePair("_id",idt));
         nameValuePairs.add(new BasicNameValuePair("check","2"));
         nameValuePairs.add(new BasicNameValuePair("goal",goal));
         nameValuePairs.add(new BasicNameValuePair("current",current));

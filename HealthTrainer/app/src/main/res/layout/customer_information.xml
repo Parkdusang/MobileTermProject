@@ -104,7 +104,10 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_margin="2dp"
-                android:text="변경" />
+                android:text="변경"
+                android:textSize="18dp"
+                android:textColor="#ffffff"
+                android:background="@drawable/trainrbtn"/>
         </LinearLayout>
     </LinearLayout>
 

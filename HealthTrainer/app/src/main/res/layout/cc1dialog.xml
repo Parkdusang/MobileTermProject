@@ -41,13 +41,16 @@
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:text="설정"
-
+            android:layout_margin="5dp"
+            android:background="@drawable/customerbtn"
             />
         <Button
             android:id="@+id/dialog_btn2"
             android:layout_height="match_parent"
             android:layout_width="wrap_content"
             android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:background="@drawable/customerbtn"
             android:text="취소"
             />
     </LinearLayout>

@@ -8,16 +8,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="REPORT"
-            android:textColor="@color/input_register_hint"
-            android:textSize="50dp"
-            android:gravity="center"
-            android:background="#F9F4D8" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -82,7 +75,6 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:background="@drawable/customercontent4_tv"
-            android:text="dfdfd"
             android:textSize="20dp" />
 
         <Button
@@ -92,6 +84,8 @@
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="보고" />
+            android:background="@drawable/customerbtn"
+            android:text="보고"
+            android:textColor="#FFFFFF"/>
     </LinearLayout>
 </ScrollView>

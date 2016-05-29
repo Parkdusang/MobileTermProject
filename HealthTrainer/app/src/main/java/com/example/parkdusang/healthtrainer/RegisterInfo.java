@@ -64,7 +64,7 @@ public class RegisterInfo extends Activity{
 
         }
     }
-    public void Updatetype2(int check,String ids,String goal, String present1, String height,String oneword){
+    public void Updatetype2(int check,String ids,String present1, String goal, String height,String oneword){
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         nameValuePairs.add(new BasicNameValuePair("mode", "3"));
         nameValuePairs.add(new BasicNameValuePair("check", check+""));

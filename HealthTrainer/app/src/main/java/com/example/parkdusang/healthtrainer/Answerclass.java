@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,7 +36,6 @@ public class Answerclass extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answerclass);
-        edit_scroll=(ScrollView)findViewById(R.id.edit_scroll);
         repo_scroll=(ScrollView)findViewById(R.id.repo_scroll);
         tx = (TextView)findViewById(R.id.answertx);
         ed = (EditText)findViewById(R.id.repo_edit113);
@@ -61,18 +59,6 @@ public class Answerclass extends AppCompatActivity {
         sreport = intent.getStringExtra("report");
         scontent = intent.getStringExtra("content1"); // 전화번호
         tx.setText(sreport);
-        edit_scroll.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                if (event.getAction() == MotionEvent.ACTION_UP)
-                    repo_scroll.requestDisallowInterceptTouchEvent(false);
-                else
-                    repo_scroll.requestDisallowInterceptTouchEvent(true);
-
-                return false;
-            }
-        });
 
     }
 

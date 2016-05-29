@@ -3,16 +3,21 @@
     package="com.example.parkdusang.healthtrainer">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <permission android:name="org.androidtown.gcm.push.permission.C2D_MESSAGE"
+
+    <permission
+        android:name="org.androidtown.gcm.push.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
+
     <uses-permission android:name="org.androidtown.gcm.push.permission.C2D_MESSAGE" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
     <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar" -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:largeHeap="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".SplashActivity"
@@ -26,45 +31,66 @@
         <activity android:name=".MainActivity" />
         <activity
             android:name=".Trainermode"
-            android:label="@string/title_activity_trainermode"
+            android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Login"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden"/>
-        <activity android:name=".AddCustomer" />
-        <activity android:name=".Register" />
-        <activity android:name=".RegisterInfo" />
-        <activity android:name=".Customercontent1" />
-        <activity android:name=".Customercontent2" />
-        <activity android:name=".Customercontent3" />
-        <activity android:name=".CustomerInformation" />
-        <activity android:name=".Setexercise" />
-        <activity android:name=".Todayreport" />
-        <activity android:name=".CreateExercise" />
-        <activity android:name=".Customercontent4" />
-        <activity android:name=".Connectionwaiting" />
-        <activity android:name=".Setnumber" />
-        <activity android:name=".Answerclass" />
-        <activity android:name=".Inbodyinfo" />
-        <activity android:name=".Recodeexercise" />
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".AddCustomer"
+            android:label="@string/app_name"/>
+        <activity android:name=".Register"
+            android:label="@string/app_name"/>
+        <activity android:name=".RegisterInfo"
+            android:label="@string/app_name"/>
+        <activity android:name=".Customercontent1"
+            android:label="@string/app_name"/>
+        <activity android:name=".Customercontent2"
+            android:label="@string/app_name"/>
+        <activity android:name=".Customercontent3"
+            android:label="@string/app_name"/>
+        <activity android:name=".CustomerInformation"
+            android:label="@string/app_name"/>
+        <activity android:name=".Setexercise"
+            android:label="@string/app_name"/>
+        <activity android:name=".Todayreport"
+            android:label="@string/app_name"/>
+        <activity android:name=".CreateExercise"
+            android:label="@string/app_name"/>
+        <activity android:name=".Customercontent4"
+            android:label="@string/app_name"/>
+        <activity android:name=".Connectionwaiting"
+            android:label="@string/app_name"/>
+        <activity android:name=".Answerclass"
+            android:label="@string/app_name"/>
+        <activity android:name=".Inbodyinfo"
+            android:label="@string/app_name"/>
+        <activity android:name=".Recodeexercise"
+            android:label="@string/app_name"/>
         <activity
             android:name=".MainTab"
-            android:label="@string/title_activity_main_tab"
+            android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <receiver android:name=".GCMBroadcastReceiver"
+        <receiver
+            android:name=".GCMBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
+
                 <!-- 메시지 수신 메시지 지정 -->
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
                 <category android:name="org.androidtown.gcm.push" />
             </intent-filter>
         </receiver>
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
+        <activity android:name=".ExerciseInformation"
+            android:label="@string/app_name" />
     </application>
 
 </manifest>

@@ -48,7 +48,8 @@ public class Setexercise extends AppCompatActivity {
     String line = null;
     JSONArray peoples = null;
     String myJSON;
-    int position1=0;
+    int position1 = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,12 +113,9 @@ public class Setexercise extends AppCompatActivity {
 
                 } else {
 
-//                    Intent myAct1 = new Intent(getApplicationContext(), Setnumber.class);
-//                    myAct1.putExtra("position", position);
-//                    startActivityForResult(myAct1, 1);
                     AlertDialog.Builder alert = new AlertDialog.Builder(Setexercise.this);
 
-                    alert.setTitle("세트별 횟 지정");
+                    alert.setTitle("세트별 회수 지정");
                     alert.setMessage("개수를 입력하세요!");
 
 
@@ -158,7 +156,7 @@ public class Setexercise extends AppCompatActivity {
 //                    name2.setLayoutParams(buttonParams);
 
 
-                    LinearLayout ll_1=new LinearLayout(Setexercise.this);
+                    LinearLayout ll_1 = new LinearLayout(Setexercise.this);
                     ll_1.setOrientation(LinearLayout.HORIZONTAL);
                     ll_1.addView(set);
                     ll_1.addView(name);
@@ -166,7 +164,7 @@ public class Setexercise extends AppCompatActivity {
                     ll_2.setOrientation(LinearLayout.HORIZONTAL);
                     ll_2.addView(set2);
                     ll_2.addView(name2);
-                    LinearLayout ll=new LinearLayout(Setexercise.this);
+                    LinearLayout ll = new LinearLayout(Setexercise.this);
                     ll.setOrientation(LinearLayout.VERTICAL);
                     ll.addView(ll_1);
                     ll.addView(ll_2);
@@ -177,7 +175,7 @@ public class Setexercise extends AppCompatActivity {
 
 
                             list.get(position1).setnumber(Integer.parseInt(name2.getText().toString()));
-                            list.get(position1).setexercise( Integer.parseInt(name.getText().toString()));
+                            list.get(position1).setexercise(Integer.parseInt(name.getText().toString()));
                             list.get(position1).setCheckboxt(true);
                             adapter2.notifyDataSetChanged();
                         }
@@ -208,22 +206,7 @@ public class Setexercise extends AppCompatActivity {
 
         if (resultCode == RESULT_OK) // 액티비티가 정상적으로 종료되었을 경우
         {
-            // CreateActivity에서 호출한 경우에만 처리
-            if (requestCode == 1) {
-
-                int mode = data.getIntExtra("mode", 10);
-                int position = data.getIntExtra("position", 10);
-                int set = data.getIntExtra("set", 10);
-                int number = data.getIntExtra("number", 10);
-                if (mode == 1) {
-                    list.get(position).setnumber(number);
-                    list.get(position).setexercise(set);
-                    list.get(position).setCheckboxt(true);
-                    adapter2.notifyDataSetChanged();
-
-                }
-
-            } else if (requestCode == 2) {
+            if (requestCode == 2) {
 
                 int check = data.getIntExtra("check", 10);
                 if (check == 1) {

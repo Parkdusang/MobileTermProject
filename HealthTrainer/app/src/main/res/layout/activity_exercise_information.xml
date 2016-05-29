@@ -13,10 +13,10 @@
         android:layout_height="80dp"
         android:gravity="center_vertical|center"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Today Report"
-        android:id="@+id/textView3_1"
-        android:textColor="#406d93"
+        android:text="Exercise Infomation"
+        android:textColor="@color/customer_red"
         android:textSize="35dp"
+        android:id="@+id/exinfomation1"
         android:textColorHighlight="#5e809c"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -25,35 +25,25 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/infoexercise"
         android:text="돌아가기"
-        android:layout_margin="5dp"
-        android:id="@+id/button3_1"
-        android:textColor="#ffffff"
-        android:background="@drawable/trainrbtn"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-
-        />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:text="의견남기기"
-        android:id="@+id/answerbtn"
-        android:layout_above="@+id/button3_1"
-        android:textColor="#ffffff"
-        android:background="@drawable/trainrbtn"/>
+        android:background="@drawable/customerbtn"
+        android:textColor="#FFFFFF"/>
+
     <TextView
         android:padding="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text=""
-        android:id="@+id/textView3_2"
-        android:layout_below="@+id/textView3_1"
+        android:id="@+id/exinfomation"
+        android:layout_below="@+id/exinfomation1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_above="@+id/answerbtn"
-        android:background="@drawable/border_trainr"/>
+        android:layout_above="@+id/infoexercise"
+        android:background="@drawable/customercontent4_tv"/>
 </RelativeLayout>

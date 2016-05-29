@@ -16,12 +16,18 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:text="OK"
-        android:id="@+id/setexercisebtn" />
+        android:id="@+id/setexercisebtn"
+        android:background="@drawable/trainrbtn"
+        android:textColor="#ffffff"
+        android:layout_margin="5dp"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/setexercisebtn"
         android:layout_alignParentBottom="true"
         android:id="@+id/newexercisebtn"
-        android:text="새로운 운동"/>
+        android:text="새로운 운동"
+        android:background="@drawable/trainrbtn"
+        android:textColor="#ffffff"
+        android:layout_margin="5dp"/>
 </RelativeLayout>
