@@ -17,118 +17,130 @@
             android:id="@+id/rg_edit1"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@color/input_register_bg"
-            android:textColor="@color/white"
-            android:textSize="30dp"
             android:layout_marginBottom="10dp"
+            android:background="@color/input_register_bg"
+            android:hint="  I D"
+            android:textColor="@color/white"
             android:textColorHint="@color/input_register_hint"
-            android:hint="  I D" />
+            android:textSize="30dp" />
 
         <EditText
             android:id="@+id/rg_edit4"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@color/input_register_bg"
-            android:textColorHint="@color/input_register_hint"
-            android:textSize="30dp"
             android:layout_marginBottom="10dp"
-            android:hint="  Name" />
+            android:background="@color/input_register_bg"
+            android:hint="  Name"
+            android:textColorHint="@color/input_register_hint"
+            android:textSize="30dp" />
 
 
         <EditText
             android:id="@+id/rg_edit2"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@color/input_register_bg"
-            android:textColorHint="@color/input_register_hint"
-            android:textSize="30dp"
             android:layout_marginBottom="10dp"
+            android:background="@color/input_register_bg"
+            android:hint="  Password"
+            android:textColorHint="@color/input_register_hint"
 
-            android:hint="  Password" />
+            android:textSize="30dp" />
 
 
         <EditText
             android:id="@+id/rg_edit2c"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@color/input_register_bg"
-            android:textColorHint="@color/input_register_hint"
-            android:textSize="30dp"
             android:layout_marginBottom="10dp"
-            android:hint="  Check PW" />
+            android:background="@color/input_register_bg"
+            android:hint="  Check PW"
+            android:textColorHint="@color/input_register_hint"
+            android:textSize="30dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:orientation="horizontal">
+
             <EditText
-                android:layout_weight="1"
                 android:id="@+id/rg_edit3_1"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
                 android:background="@color/input_register_bg"
+                android:hint="ex)01"
+                android:textColor="@color/white"
                 android:textColorHint="@color/input_register_hint"
                 android:textSize="20dp"
-                android:textColor="@color/white"
-                android:layout_marginBottom="10dp"
-                android:hint="ex)01" />
+                android:inputType="number"/>
+
             <View
-                android:layout_weight="0.5"
-                android:layout_gravity="center_vertical"
                 android:layout_width="0dp"
                 android:layout_height="3dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.5"
                 android:background="#b8bebd" />
+
             <EditText
-                android:layout_weight="1"
                 android:id="@+id/rg_edit3_2"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
                 android:background="@color/input_register_bg"
+                android:hint="0000"
+                android:textColor="@color/white"
                 android:textColorHint="@color/input_register_hint"
                 android:textSize="20dp"
-                android:textColor="@color/white"
-                android:layout_marginBottom="10dp"
-                android:hint="Num" />
+                android:inputType="number"/>
+
             <View
-                android:layout_weight="0.5"
-                android:layout_gravity="center_vertical"
                 android:layout_width="0dp"
                 android:layout_height="3dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.5"
                 android:background="#b8bebd" />
+
             <EditText
-                android:layout_weight="1"
                 android:id="@+id/rg_edit3_3"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
                 android:background="@color/input_register_bg"
+                android:hint="0000"
+                android:textColor="@color/white"
                 android:textColorHint="@color/input_register_hint"
                 android:textSize="20dp"
-                android:textColor="@color/white"
-                android:layout_marginBottom="10dp"
-                android:hint="  ber" />
+                android:inputType="number"/>
         </LinearLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30dp"
             android:text="성별  "
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-<RadioGroup
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-        <RadioButton
-            android:id="@+id/sex1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" 남 " />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="30dp" />
 
-        <RadioButton
-            android:id="@+id/sex2"
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=" 여 " />
-</RadioGroup>
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/sex1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 남 " />
+
+            <RadioButton
+                android:id="@+id/sex2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 여 " />
+        </RadioGroup>
+
         <TextView
             android:id="@+id/rg_pwcheck"
             android:layout_width="match_parent"
@@ -136,31 +148,32 @@
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#ff0000" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
 
-<Button
-android:id="@+id/button5"
-android:background="@drawable/button_design"
-android:layout_width="100dp"
-android:layout_height="wrap_content"
-android:layout_marginRight="10dp"
-android:textColor="@color/white"
-android:textSize="20dp"
-android:textStyle="bold"
-android:text=" OK " />
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/button_design"
+                android:text=" OK "
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
-<Button
-android:id="@+id/button6"
-android:background="@drawable/button_design"
-android:layout_width="100dp"
-android:layout_height="wrap_content"
-android:textColor="@color/white"
-android:textSize="20dp"
-android:textStyle="bold"
-android:text=" Cancel " />
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_design"
+                android:text=" Cancel "
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>

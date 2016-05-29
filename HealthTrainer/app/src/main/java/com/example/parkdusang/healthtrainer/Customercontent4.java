@@ -66,7 +66,7 @@ public class Customercontent4 extends Fragment{
                 for (int i = 0; i < adapter2.getCount(); i++) {
                     if (list.get(i).getCheckboxt()){
                        checkexercise(list.get(i).getTitle(),1);
-                       report += list.get(i).getTitle()+"\n"+list.get(i).getexercise()+"/"+list.get(i).getnumber()+"\n";
+                       report += list.get(i).getTitle()+"\n 세트: "+list.get(i).getexercise()+" 개수:"+list.get(i).getnumber()+"\n";
                     }
 
 

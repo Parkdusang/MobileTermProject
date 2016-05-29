@@ -19,14 +19,15 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="set :"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            />
 
         <EditText
             android:text=""
             android:id="@+id/exerciseset"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
-
+            android:inputType="number"
             />
 
 
@@ -52,6 +53,7 @@
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:text=""
+            android:inputType="number"
             />
     </LinearLayout>
 

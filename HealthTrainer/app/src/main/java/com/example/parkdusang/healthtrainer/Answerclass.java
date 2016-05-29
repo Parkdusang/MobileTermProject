@@ -45,7 +45,7 @@ public class Answerclass extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String result = ed.getText().toString() + "\n ---------- \n" + tx.getText().toString();
+                final String result = "트레이너 :"+ed.getText().toString() + "\n ---------- \n" + tx.getText().toString();
 
                 new Thread(new Runnable() {
                     public void run() {

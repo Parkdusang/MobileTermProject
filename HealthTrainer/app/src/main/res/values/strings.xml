@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HealthTrainer</string>
+    <string name="app_name">Fitcen</string>
     <string name="title_activity_trainermode">Trainermode</string>
 
     <string-array name="plants_arrays">

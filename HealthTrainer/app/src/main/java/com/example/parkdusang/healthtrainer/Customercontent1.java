@@ -1,5 +1,6 @@
 package com.example.parkdusang.healthtrainer;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 
 public class Customercontent1 extends Fragment {
@@ -42,10 +44,13 @@ public class Customercontent1 extends Fragment {
     Cc1Diaglog cc1Dialog;
     String crtWeight, stWeight, goalWeight;
     String id, myJSON;
-    InputStream is = null;
     String result = null;
     String line = null;
+
+
+    InputStream is = null;
     JSONArray peoples = null;
+    private  ProgressDialog progressBar;
     String url = "http://pesang72.cafe24.com/Customercontent1.php";
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -124,7 +129,16 @@ public class Customercontent1 extends Fragment {
         cc1adapter = new Cc1Adapter(getActivity(), R.layout.list_row_exercise, cc1list);
 
         cc1listView.setAdapter(cc1adapter);
-        Log.i("TAG", "1: ");
+
+        progressBar = new ProgressDialog(v.getContext());
+        progressBar.setCancelable(true);
+        progressBar.setMessage("서버에서  불러오는중 ...");
+        progressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressBar.setProgress(0);
+        progressBar.setMax(100);
+        progressBar.show();
+
+
         getData(url, id);
         return v;
     }
@@ -288,6 +302,14 @@ public class Customercontent1 extends Fragment {
 
 
         GetDataJSON g = new GetDataJSON();
-        g.execute(url, id);
+        try {
+            g.execute(url, id).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } finally {
+            progressBar.setProgress(100);
+        }
     }
 }

@@ -16,4 +16,19 @@
     <color name="btn_login_bg">#eceef1</color>
     <color name="lbl_name">#333333</color>
     <color name="btn_logut_bg">#ff6861</color>
+    <color name="customer_red">#EA636C</color>
+    <color name="customer_white">#FEFDF5</color>
+    <color name="customer_ivry">#F9F4D8</color>
+    <color name="customer_yellow">#EBCE90</color>
+    <color name="customer_pink">#F7A09A</color>
+    <color name="customer_pinkgray">#DECECF</color>
+    <color name="customer_darkgray">#7B7A7B</color>
+    <color name="trainer_gray">#909CAF</color>
+    <color name="trainer_darkblue">#3D5476</color>
+    <color name="trainer_bluegray">#839CB2</color>
+    <color name="trainer_skyblue">#CDEBFE</color>
+    <color name="trainer_lightblue">#A1C8DF</color>
+    <color name="trainer_darkgray">#708299</color>
+    <color name="trainer_lightgray">#CDD3DB</color>
+    <color name="trainer_white">#FEFFFF</color>
 </resources>

@@ -4,6 +4,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.WakefulBroadcastReceiver;
 import android.util.Log;
@@ -40,9 +41,10 @@ public class GCMBroadcastReceiver  extends WakefulBroadcastReceiver {
         PendingIntent pendingIntent = PendingIntent.getActivity(mContext, 0, intent,
                 PendingIntent.FLAG_ONE_SHOT);
 
-
+        //Bitmap bm = BitmapFactory.decodeResource(Resources.getSystem(), R.mipmap.icon);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(mContext)
-                .setSmallIcon(R.drawable.ic_launcher)
+                .setSmallIcon(R.mipmap.icon)
+                .setLargeIcon(BitmapFactory.decodeResource(mContext.getResources(), R.drawable.splash))
                 .setContentTitle(title)
                 .setContentText(message)
                 .setAutoCancel(true)

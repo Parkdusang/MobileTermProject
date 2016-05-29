@@ -8,8 +8,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.2"
+        android:layout_height="0dp"
+        android:layout_weight="0.45"
         android:orientation="vertical">
 
         <LinearLayout
@@ -27,7 +27,8 @@
                 android:layout_width="196dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.72"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingLeft="10dp">
 
                 <TextView
                     android:id="@+id/txtTitle2"
@@ -44,6 +45,7 @@
                     android:text="Small Text"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="#ff0000" />
+
                 <TextView
                     android:id="@+id/onewordcustomer"
                     android:layout_width="wrap_content"
@@ -53,30 +55,42 @@
                     android:textColor="#4bb9a5" />
             </LinearLayout>
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="3dp"
             android:background="#428b86" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="트레이너 공지!" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="2">
-              <TextView
-                android:layout_weight="10"
-                android:id="@+id/settrainr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="~~~~~~~~~~~~~~~~~~~~~~~" />
+            android:layout_weight="2"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2.5"
+                android:orientation="vertical"
+                android:background="@drawable/edittext_style">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="10dp"
+                    android:text="트레이너 공지!" />
+
+                <TextView
+
+                    android:id="@+id/settrainr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="~~~~~~~~~~~~~~~~~~~~~~~" />
+            </LinearLayout>
+
             <Button
                 android:id="@+id/setoneword"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="변경" />
@@ -85,8 +99,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.4"
+        android:layout_height="0dp"
+        android:layout_weight="0.32"
         android:orientation="vertical">
 
         <View
@@ -104,43 +118,37 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="오늘의 운동 지정하기" />
+                android:background="@drawable/trainr_btn1" />
+
             <Button
                 android:id="@+id/inbodyinfo"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="인바디 정보" />
+                android:background="@drawable/trainr_btn2" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="0.4"
         android:orientation="vertical">
 
-        <View
+        <Button
+            android:id="@+id/recodeex"
             android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="#579c8a" />
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:background="@drawable/trainr_btn3" />
 
         <Button
             android:id="@+id/button8"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1.12"
+            android:background="@drawable/trainr_btn4" />
 
-            android:text="운동 일일 보고" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="#579c8a" />
-        <Button
-            android:layout_weight="2"
-            android:id="@+id/recodeex"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
 
-            android:text="운동 기록" />
     </LinearLayout>
 </LinearLayout>
