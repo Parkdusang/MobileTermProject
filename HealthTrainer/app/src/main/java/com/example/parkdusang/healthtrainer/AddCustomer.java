@@ -49,7 +49,7 @@ public class AddCustomer extends AppCompatActivity {
     private String url = "http://pesang72.cafe24.com/connecttranirdb.php";
     private String url2 = "http://pesang72.cafe24.com/UpdateType.php";
     String trainrid;
-
+    Boolean checkuser;
 
     InputStream is = null;
     JSONArray peoples = null;
@@ -78,22 +78,28 @@ public class AddCustomer extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"신청을 보냈습니다",Toast.LENGTH_SHORT).show();
-                Intent returnintent = new Intent();
-                for (i = 0; i < adapter3.getCount(); i++) {
-                    if (list.get(i).getCheckboxt()) {
-                        Log.i("testid", trainrid);
-                        new Thread(new Runnable() {
-                            public void run() {
-                                Updatetype(list.get(i).getContent(), trainrid);
-                            }
-                        }).start();
-                        break;
+                if(checkuser) {
+                    Toast.makeText(getApplicationContext(), "신청을 보냈습니다", Toast.LENGTH_SHORT).show();
+                    Intent returnintent = new Intent();
+                    for (i = 0; i < adapter3.getCount(); i++) {
+                        if (list.get(i).getCheckboxt()) {
+                            Log.i("testid", trainrid);
+                            new Thread(new Runnable() {
+                                public void run() {
+                                    Updatetype(list.get(i).getContent(), trainrid);
+                                }
+                            }).start();
+                            break;
+                        }
                     }
-                }
-                setResult(Activity.RESULT_OK, returnintent);
+                    setResult(Activity.RESULT_OK, returnintent);
 
-                finish();
+                    finish();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "유저가 없습니다.", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
             }
         });
 
@@ -212,7 +218,19 @@ public class AddCustomer extends AppCompatActivity {
 
             listView.setAdapter(adapter3);
             adapter3.notifyDataSetChanged();
+            checkuser = true;
         } catch (JSONException e) {
+            checkuser = false;
+            adapter3 =
+                    new MyCustomAdapter3(
+                            getApplicationContext(),
+                            R.layout.list_row_addcustomer,
+                            list);
+            listView.setAdapter(adapter3);
+
+
+            list.add(new MyCustomDTOAddCustim(false, "아직 추가된 유저가 없습니다.", "", R.drawable.user1));
+            adapter3.notifyDataSetChanged();
             e.printStackTrace();
         }
 

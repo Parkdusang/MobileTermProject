@@ -158,6 +158,8 @@ public class Trainermode extends AppCompatActivity {
             }
             adapter.notifyDataSetChanged();
         } catch (JSONException e) {
+            list.add(new MyCustomDTO("아직 추가된 유저가 없습니다.", "", R.drawable.user2));
+            adapter.notifyDataSetChanged();
             e.printStackTrace();
         }
     }

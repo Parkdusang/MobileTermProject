@@ -62,6 +62,7 @@ public class Customercontent4 extends Fragment{
         cc4btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String report="";
                 for (int i = 0; i < adapter2.getCount(); i++) {
                     if (list.get(i).getCheckboxt()){
@@ -79,7 +80,7 @@ public class Customercontent4 extends Fragment{
                         pushmsg(id);
                     }
                 }).start();
-
+                Toast.makeText(getActivity(),"보고가 전송되었습니다.",Toast.LENGTH_SHORT).show();
             }
         });
 

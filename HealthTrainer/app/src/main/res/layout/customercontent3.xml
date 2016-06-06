@@ -140,7 +140,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:layout_gravity="right"
-                        android:text="kg"
+                        android:text="%"
                         android:textSize="15dp"/>
                 </LinearLayout>
             </LinearLayout>

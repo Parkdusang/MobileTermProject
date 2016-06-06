@@ -146,6 +146,8 @@ public class Customercontent1 extends Fragment {
                }
             }
         });
+
+
         progressBar = new ProgressDialog(v.getContext());
         progressBar.setCancelable(true);
         progressBar.setMessage("서버에서  불러오는중 ...");
@@ -219,6 +221,7 @@ public class Customercontent1 extends Fragment {
                 cc1txt1.setText(c.getDouble("weight") + "");
                 cc1txt2.setText(c.getDouble("goalweight") + ""); // 목표몸무게);
                 crtWeight = c.getDouble("presentweight") + "";// 현제 몸무게
+                Log.i("TAG",+c.getDouble("weight") +" " + c.getDouble("goalweight") + c.getDouble("presentweight"));
                 cc1pBar.setProgress((int) goalRate(crtWeight, c.getDouble("weight") + "", c.getDouble("goalweight") + ""));
 
                 cc1Dialog.setStartWeight(c.getDouble("weight") + "");

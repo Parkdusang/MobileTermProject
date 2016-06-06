@@ -125,6 +125,7 @@ public class Todayreport extends AppCompatActivity {
             protected void onPostExecute(String result) {
                 if(result.substring(0,2).equals("아직")){
                     check =false;
+                    tx.setText(result);
                 }
                 else {
                     tx.setText(result);

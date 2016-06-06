@@ -73,7 +73,7 @@ public class Setexercise extends AppCompatActivity {
                     }
 
                 }
-
+                Toast.makeText(getApplicationContext(), "운동을 지정하셨습니다.!", Toast.LENGTH_SHORT).show();
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -121,14 +121,14 @@ public class Setexercise extends AppCompatActivity {
 
                     final TextView set = new TextView(Setexercise.this);
                     set.setText("    세트 :");
-                    set.setTextSize(25);
+                    set.setTextSize(15);
                     alert.setView(set);
                     final EditText name = new EditText(Setexercise.this);
                     alert.setView(name);
 
                     final TextView set2 = new TextView(Setexercise.this);
                     set2.setText("    개수 :");
-                    set2.setTextSize(25);
+                    set2.setTextSize(15);
                     alert.setView(set2);
                     final EditText name2 = new EditText(Setexercise.this);
                     alert.setView(name2);

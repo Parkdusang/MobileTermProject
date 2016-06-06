@@ -92,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
                     android:gravity="center"
-                    android:text="나의 목표!"
+                    android:text="나의 한마디!"
                     android:textColor="#406d93"
                     android:textColorHighlight="#5e809c"/>/>
 
