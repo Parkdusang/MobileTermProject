@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -78,9 +80,9 @@ public class Trainermode extends AppCompatActivity {
 
         listView.setAdapter(adapter);
 
-   //     Log.i("testtttt", url);
+        //     Log.i("testtttt", url);
 
-   //   Log.i("TAG", urlp);
+        //   Log.i("TAG", urlp);
         getData(url,urlp);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -98,7 +100,32 @@ public class Trainermode extends AppCompatActivity {
         });
 
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add(0, 0, Menu.NONE, "만든사람들");
+        menu.add(0, 1, Menu.NONE, "연결 해제");
+        menu.add(0, 2, Menu.NONE, "로그아웃");
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case 0:
+                Intent intent = new Intent(getApplicationContext(), Developer.class);
+                startActivity(intent);
+                break;
+            case 1:
+
+            case 2:
+                Intent intent1 = new Intent(getApplicationContext(), MainActivity.class);
+                intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent1);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 

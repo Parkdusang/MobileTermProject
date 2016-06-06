@@ -9,6 +9,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
 public class MainTab extends AppCompatActivity {
 
@@ -48,6 +50,32 @@ public class MainTab extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add(0, 0, Menu.NONE, "만든사람들");
+        menu.add(0, 1, Menu.NONE, "연결 해제");
+        menu.add(0, 2, Menu.NONE, "로그아웃");
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case 0:
+                Intent intent = new Intent(getApplicationContext(), Developer.class);
+                startActivity(intent);
+                break;
+            case 1:
+
+            case 2:
+                Intent intent1 = new Intent(getApplicationContext(), MainActivity.class);
+                intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent1);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 
 

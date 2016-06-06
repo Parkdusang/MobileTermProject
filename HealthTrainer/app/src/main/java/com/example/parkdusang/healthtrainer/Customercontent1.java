@@ -152,7 +152,6 @@ public class Customercontent1 extends Fragment {
         progressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressBar.setProgress(0);
         progressBar.setMax(100);
-        progressBar.show();
 
 
         getData(url, idt);
@@ -268,7 +267,6 @@ public class Customercontent1 extends Fragment {
 
     public void getData(String url, String id) {
         class GetDataJSON extends AsyncTask<String, Void, String> {
-
             @Override
             protected String doInBackground(String... params) {
                 String uri = params[0];
@@ -322,6 +320,7 @@ public class Customercontent1 extends Fragment {
         GetDataJSON g = new GetDataJSON();
         try {
             g.execute(url, id).get();
+            progressBar.show();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
