@@ -78,6 +78,7 @@ public class AddCustomer extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"신청을 보냈습니다",Toast.LENGTH_SHORT).show();
                 Intent returnintent = new Intent();
                 for (i = 0; i < adapter3.getCount(); i++) {
                     if (list.get(i).getCheckboxt()) {
@@ -91,6 +92,7 @@ public class AddCustomer extends AppCompatActivity {
                     }
                 }
                 setResult(Activity.RESULT_OK, returnintent);
+
                 finish();
             }
         });
@@ -105,8 +107,6 @@ public class AddCustomer extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> arg0,
                                        View arg1, int arg2, long arg3) {
                 index = s1.getSelectedItemPosition();
-                Toast.makeText(getBaseContext(),
-                        "You have selected item : " + plants_arrays[index], Toast.LENGTH_SHORT).show();
                 sorting(index);
                 adapter3.notifyDataSetChanged();
             }

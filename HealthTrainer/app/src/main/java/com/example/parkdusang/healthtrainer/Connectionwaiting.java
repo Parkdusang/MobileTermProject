@@ -48,15 +48,10 @@ public class Connectionwaiting extends AppCompatActivity {
         Cok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //ok눌렀을떄
-//                new Thread(new Runnable() {
-//                    public void run() {
-//                        Updatetype2(1, id);
-//                    }
-//                }).start();
 
                 Intent myAct1 = new Intent(getApplicationContext(), RegisterInfo.class);
                 myAct1.putExtra("_id",id);
+                myAct1.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(myAct1);
             }
         });

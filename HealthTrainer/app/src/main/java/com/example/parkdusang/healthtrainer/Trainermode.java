@@ -103,7 +103,6 @@ public class Trainermode extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add(0, 0, Menu.NONE, "만든사람들");
-        menu.add(0, 1, Menu.NONE, "연결 해제");
         menu.add(0, 2, Menu.NONE, "로그아웃");
         return true;
     }
@@ -116,8 +115,6 @@ public class Trainermode extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), Developer.class);
                 startActivity(intent);
                 break;
-            case 1:
-
             case 2:
                 Intent intent1 = new Intent(getApplicationContext(), MainActivity.class);
                 intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

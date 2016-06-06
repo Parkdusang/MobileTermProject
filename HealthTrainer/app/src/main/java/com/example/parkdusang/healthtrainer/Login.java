@@ -165,6 +165,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     Intent myAct1 = new Intent(getApplicationContext(), Connectionwaiting.class);
                     myAct1.putExtra("_id", e1.getText().toString());
                     myAct1.putExtra("type",checkingmode);
+                    myAct1.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                     startActivity(myAct1);
                 }else { // 고객이 트레이너와 맺어졌을때
                     Intent myAct1 = new Intent(getApplicationContext(), MainTab.class);

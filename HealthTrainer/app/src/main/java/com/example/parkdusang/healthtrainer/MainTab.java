@@ -1,5 +1,6 @@
 package com.example.parkdusang.healthtrainer;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -7,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -68,6 +70,39 @@ public class MainTab extends AppCompatActivity {
                 break;
             case 1:
 
+                AlertDialog.Builder alt_bld = new AlertDialog.Builder(this);
+                alt_bld.setMessage("트레이너와의 연결을 끊으시겠습니까 ?").setCancelable(
+                        false).setPositiveButton("Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent intent2 = new Intent(getApplicationContext(), Destroyconnection.class);
+                                intent2.putExtra("check", "2");
+                                intent2.putExtra("id", id);
+                                startService(intent2);
+
+                                Intent intent3 = new Intent(getApplicationContext(), Connectionwaiting.class);
+                                intent3.putExtra("_id",id);
+                                intent3.putExtra("type",2);
+                                intent3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent3);
+                            }
+                        }).setNegativeButton("No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // Action for 'NO' Button
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = alt_bld.create();
+                // Title for AlertDialog
+                alert.setTitle("트레이너 연결관리");
+                // Icon for AlertDialog
+                alert.setIcon(R.drawable.icon);
+                alert.show();
+
+
+
+                break;
             case 2:
                 Intent intent1 = new Intent(getApplicationContext(), MainActivity.class);
                 intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

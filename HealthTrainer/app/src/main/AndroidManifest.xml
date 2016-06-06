@@ -109,7 +109,11 @@
         <activity
             android:name=".Findidpassword"
             android:label="@string/app_name" />
-        <activity android:name=".Developer"></activity>
+        <activity android:name=".Developer" />
+
+        <service
+            android:name=".Destroyconnection"
+            android:exported="false"></service>
     </application>
 
 </manifest>

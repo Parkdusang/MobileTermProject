@@ -165,7 +165,38 @@ public class CustomerInformation extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case 1:
+                AlertDialog.Builder alt_bld = new AlertDialog.Builder(this);
+                alt_bld.setMessage("고객과의 연결을 끊으시겠습니까 ?").setCancelable(
+                        false).setPositiveButton("Yes",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent intent2 = new Intent(getApplicationContext(), Destroyconnection.class);
+                                intent2.putExtra("check", "1");
+                                intent2.putExtra("id",trainrID);
+                                intent2.putExtra("name",stitle);
+                                intent2.putExtra("phone", scontent);
+                                startService(intent2);
 
+                                Intent intent3 = new Intent(getApplicationContext(), Trainermode.class);
+                                intent3.putExtra("_id",trainrID);
+                                intent3.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent3);
+                            }
+                        }).setNegativeButton("No",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // Action for 'NO' Button
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert = alt_bld.create();
+                // Title for AlertDialog
+                alert.setTitle("고객 연결관리");
+                // Icon for AlertDialog
+                alert.setIcon(R.drawable.icon);
+                alert.show();
+
+                break;
             case 2:
                 Intent intent1 = new Intent(getApplicationContext(), MainActivity.class);
                 intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
