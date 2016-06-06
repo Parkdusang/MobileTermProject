@@ -198,6 +198,10 @@ public class Customercontent4 extends Fragment{
             adapter2.notifyDataSetChanged();
 
         } catch (JSONException e) {
+
+            list.add(new MyCustomDTO2(false,"아직 입력사항이 없습니다", ""));
+            list.get(0).setnullinput(true);
+            adapter2.notifyDataSetChanged();
             e.printStackTrace();
         }
     }

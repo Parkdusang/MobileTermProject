@@ -40,7 +40,7 @@
             <ListView
                 android:id="@+id/cc4listView"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:background="@drawable/customercontent4_tv"/>

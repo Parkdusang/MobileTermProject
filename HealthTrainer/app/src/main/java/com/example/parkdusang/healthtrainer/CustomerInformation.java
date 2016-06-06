@@ -54,6 +54,7 @@ public class CustomerInformation extends AppCompatActivity {
         scontent = intent.getStringExtra("content1"); // 전화번호
         simgid = intent.getIntExtra("imgid", 10);
 
+        Log.i("TAG", "onCreate: "+scontent);
         txtTitle = (TextView)findViewById(R.id.txtTitle2);
         txtContent = (TextView)findViewById(R.id.txtContent2);
         imgIcon =  (ImageView)findViewById(R.id.imgIcon2);

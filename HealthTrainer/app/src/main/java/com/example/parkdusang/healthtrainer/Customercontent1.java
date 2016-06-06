@@ -134,12 +134,16 @@ public class Customercontent1 extends Fragment {
         cc1listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(),ExerciseInformation.class);
-                intent.putExtra("_id",idt);
-                intent.putExtra("name",cc1list.get(position).getTitle().toString());
-                intent.putExtra("content", cc1list.get(position).getContent().toString());
-                startActivity(intent);
+               if(cc1list.get(position).getnullinput()){
 
+               }
+               else {
+                   Intent intent = new Intent(getActivity(), ExerciseInformation.class);
+                   intent.putExtra("_id", idt);
+                   intent.putExtra("name", cc1list.get(position).getTitle().toString());
+                   intent.putExtra("content", cc1list.get(position).getContent().toString());
+                   startActivity(intent);
+               }
             }
         });
         progressBar = new ProgressDialog(v.getContext());
@@ -254,6 +258,9 @@ public class Customercontent1 extends Fragment {
             cc1adapter.notifyDataSetChanged();
         }
         catch (JSONException e) {
+            cc1list.add(new MyCustomDTO2(false, "아직 입력사항이 없습니다.", ""));
+            cc1list.get(0).setnullinput(true);
+            cc1adapter.notifyDataSetChanged();
             e.printStackTrace();
         }
     }

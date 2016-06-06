@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="목표 몸무게가 뭐에요? : "
-            android:inputType="number"
+            android:inputType="numberDecimal"
             />
     </TableRow>
     <TableRow>
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="현재 몸무게가 뭐에요? : "
-            android:inputType="number"
+            android:inputType="numberDecimal"
             />
     </TableRow>
     <LinearLayout

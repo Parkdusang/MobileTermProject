@@ -12,13 +12,14 @@
         android:padding="10dp"
         android:weightSum="1">
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_width="300dp"
+            android:layout_height="120dp"
             android:gravity="center"
-            android:layout_gravity="top"
+            android:layout_gravity="top|center_horizontal"
             android:background="@drawable/title_fitcen1"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="50dp" />
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="1"/>
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -26,7 +27,8 @@
             android:layout_gravity="center"
             android:orientation="vertical"
             android:paddingLeft="20dp"
-            android:paddingRight="20dp">
+            android:paddingRight="20dp"
+            >
 
             <EditText
                 android:id="@+id/checkid"
@@ -67,12 +69,21 @@
                 android:background="@drawable/button_design" />
 
             <!-- Link to Login Screen -->
-
+            <Button
+                android:id="@+id/findidpassword"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dip"
+                android:background="@null"
+                android:text="Do you remember your Id or Password ?"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
             <Button
                 android:id="@+id/button4"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dip"
+                android:layout_marginTop="2dip"
                 android:background="@null"
                 android:text="@string/btn_link_to_register"
                 android:textAllCaps="false"

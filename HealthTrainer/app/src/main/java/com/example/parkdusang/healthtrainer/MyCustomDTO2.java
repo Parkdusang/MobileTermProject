@@ -8,7 +8,7 @@ public class MyCustomDTO2 {
     String title;
     String content;
     int setexercise,number;
-
+    Boolean nullinput = false;
     public MyCustomDTO2(Boolean checkboxt,String title, String content) {
         this.checkboxt = checkboxt;
         this.title = title;
@@ -48,6 +48,15 @@ public class MyCustomDTO2 {
     }
     public String getnumber(){
         return number+"";
+    }
+
+
+
+    public void setnullinput(Boolean nullinput){
+        this.nullinput = nullinput;
+    }
+    public Boolean getnullinput(){
+        return nullinput;
     }
 
 }

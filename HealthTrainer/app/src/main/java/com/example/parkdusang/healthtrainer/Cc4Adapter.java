@@ -73,13 +73,21 @@ public class Cc4Adapter extends BaseAdapter{
         number.setVisibility(View.VISIBLE);
         number.setText(dto.getnumber());
 
-        if(dto.getCheckboxt()) {
-            box.setChecked(true);
-
+        if(dto.getnullinput()){
+            txtset.setVisibility(View.INVISIBLE);
+            txtnumber.setVisibility(View.INVISIBLE);
+            set.setVisibility(View.INVISIBLE);
+            number.setVisibility(View.INVISIBLE);
+            box.setVisibility(View.INVISIBLE);
         }
-        else{
-            box.setChecked(false);
+        else {
+            if (dto.getCheckboxt()) {
+                box.setChecked(true);
 
+            } else {
+                box.setChecked(false);
+
+            }
         }
 
         return convertView;

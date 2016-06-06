@@ -29,7 +29,7 @@ import java.util.ArrayList;
 
 public class Register extends AppCompatActivity {
     Button ok,cancel;
-    EditText ETname, ETphone1,ETphone2,ETphone3, ETID, ETpassword, ETpasswordCheck;
+    EditText ETname, ETphone1,ETphone2,ETphone3, ETID, ETpassword, ETpasswordCheck,ETemail;
     RadioButton b1, b2;
     InputStream is = null;
     String result = null;
@@ -55,6 +55,7 @@ public class Register extends AppCompatActivity {
         ETphone1 = (EditText) findViewById(R.id.rg_edit3_1);
         ETphone2 = (EditText) findViewById(R.id.rg_edit3_2);
         ETphone3 = (EditText) findViewById(R.id.rg_edit3_3);
+        ETemail = (EditText) findViewById(R.id.rg_edit2email);
         b1 = (RadioButton) findViewById(R.id.sex1);
         b2 = (RadioButton) findViewById(R.id.sex2);
         ok = (Button) findViewById(R.id.button5);
@@ -63,17 +64,19 @@ public class Register extends AppCompatActivity {
             public void onClick(View v) {
                 if (ETname.equals("")) {
                     Toast.makeText(getApplicationContext(), "이름을 입력하시오", Toast.LENGTH_SHORT).show();
-                } else if (ETID.equals("")) {
-                    Toast.makeText(getApplicationContext(), "아이디를 입력하시오", Toast.LENGTH_SHORT).show();
-                } else if (ETpassword.equals("")) {
-                    Toast.makeText(getApplicationContext(), "비밀번호를 입력하시오", Toast.LENGTH_SHORT).show();
+                } else if (ETID.equals("") || ETID.getText().length() < 4) {
+                    Toast.makeText(getApplicationContext(), "올바른 아이디를 입력하시오", Toast.LENGTH_SHORT).show();
+                } else if (ETpassword.equals("") || ETpassword.getText().length() < 4) {
+                    Toast.makeText(getApplicationContext(), "올바른 비밀번호를 입력하시오", Toast.LENGTH_SHORT).show();
                 } else if (ETphone1.length() < 2 || ETphone2.length() < 3 || ETphone3.length() < 3 ) {
                     Toast.makeText(getApplicationContext(), "정확한 휴대폰 번호를 입력하시오", Toast.LENGTH_SHORT).show();
                 } else if (b1.isChecked() == false && b2.isChecked() == false) {
                     Toast.makeText(getApplicationContext(), "성별을 체크하시오", Toast.LENGTH_SHORT).show();
                 } else if (!ETpassword.getText().toString().equals(ETpasswordCheck.getText().toString())) {
                     Toast.makeText(getApplicationContext(), "비밀번호가 다릅니다.", Toast.LENGTH_SHORT).show();
-                } else {
+                } else if(!ETemail.getText().toString().contains("@") || !ETemail.getText().toString().contains(".") ){
+                    Toast.makeText(getApplicationContext(), "이메일 형식이 잘못되었습니다.", Toast.LENGTH_SHORT).show();
+                }else {
 
                     if (b1.isChecked()) {
                         sex = 1;
@@ -94,7 +97,7 @@ public class Register extends AppCompatActivity {
     }
 
     public void insert() {
-        final String phone = ETphone1.getText().toString()+ "-"+ ETphone2.getText().toString() +"-"+ETphone3.getText().toString();
+        final String phone = ETphone1.getText().toString()+  ETphone2.getText().toString() +ETphone3.getText().toString();
         new Thread() {
             public void run() {
                 ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
@@ -105,6 +108,7 @@ public class Register extends AppCompatActivity {
                 nameValuePairs.add(new BasicNameValuePair("sex", sex+""));
                 nameValuePairs.add(new BasicNameValuePair("phonenumber",phone));
                 nameValuePairs.add(new BasicNameValuePair("tp", checkingmode + ""));
+                nameValuePairs.add(new BasicNameValuePair("email",ETemail.getText().toString()));
 
                 try {
                     HttpClient httpclient = new DefaultHttpClient();

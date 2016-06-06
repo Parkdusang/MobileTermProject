@@ -79,7 +79,13 @@ public class Cc1Adapter extends BaseAdapter {
         set.setText(dto.getexercise());
         number.setText(dto.getnumber());
 
-
+        if(dto.getnullinput()){
+            txtset.setVisibility(View.INVISIBLE);
+            txtnumber.setVisibility(View.INVISIBLE);
+            set.setVisibility(View.INVISIBLE);
+            number.setVisibility(View.INVISIBLE);
+            box.setVisibility(View.INVISIBLE);
+        }
 
         return convertView;
     }

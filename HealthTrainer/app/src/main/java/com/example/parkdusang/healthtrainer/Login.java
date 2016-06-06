@@ -30,7 +30,7 @@ import java.util.ArrayList;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
     EditText e1, e2;
-    Button b1, b2;
+    Button b1, b2,b3;
     int checkingmode;
     SharedPreferences sp;
     
@@ -47,9 +47,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         e2 = (EditText) findViewById(R.id.checkpassword);
         b1 = (Button) findViewById(R.id.button3);
         b2 = (Button) findViewById(R.id.button4);
+        b3 = (Button) findViewById(R.id.findidpassword);
         b1.setOnClickListener(this);
         b2.setOnClickListener(this);
-        
+        b3.setOnClickListener(this);
         Intent intent = getIntent();
         checkingmode = intent.getIntExtra("sign", 10);
         sp=getSharedPreferences("Login",MODE_PRIVATE);
@@ -68,7 +69,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     insert();
                 }
             }).start();
-        } else {
+        }else if(R.id.findidpassword == v.getId()) {
+            Intent myAct1 = new Intent(getApplicationContext(), Findidpassword.class);
+            startActivity(myAct1);
+        }
+        else {
             Intent myAct1 = new Intent(getApplicationContext(), Register.class);
             myAct1.putExtra("checktype", checkingmode);
             startActivity(myAct1);
