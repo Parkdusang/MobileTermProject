@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main);
         b1 = (Button)findViewById(R.id.button);
         b2 = (Button)findViewById(R.id.button2);
-        
+
         b1.setOnClickListener(new View.OnClickListener() {
             @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
             @Override

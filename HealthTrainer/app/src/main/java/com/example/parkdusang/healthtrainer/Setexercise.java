@@ -116,45 +116,27 @@ public class Setexercise extends AppCompatActivity {
                     AlertDialog.Builder alert = new AlertDialog.Builder(Setexercise.this);
 
                     alert.setTitle("세트별 회수 지정");
+                    alert.setIcon(R.drawable.icon);
                     alert.setMessage("개수를 입력하세요!");
 
-
                     final TextView set = new TextView(Setexercise.this);
-                    set.setText("세트 :");
+                    set.setText("    세트 :");
+                    set.setTextSize(25);
                     alert.setView(set);
                     final EditText name = new EditText(Setexercise.this);
                     alert.setView(name);
 
                     final TextView set2 = new TextView(Setexercise.this);
-                    set2.setText("개수 :");
+                    set2.setText("    개수 :");
+                    set2.setTextSize(25);
                     alert.setView(set2);
                     final EditText name2 = new EditText(Setexercise.this);
                     alert.setView(name2);
 
-                    set.setWidth(300);
-                    set2.setWidth(300);
-                    name.setWidth(300);
-                    name2.setWidth(300);
-//                    LinearLayout.LayoutParams buttonParams =(LinearLayout.LayoutParams) set.getLayoutParams();
-//                    buttonParams.weight = 1;
-//                    buttonParams.width = buttonParams.WRAP_CONTENT;
-//                    set.setLayoutParams(buttonParams);
-//
-//                    buttonParams = (LinearLayout.LayoutParams) name.getLayoutParams();
-//                    buttonParams.weight = 1;
-//                    buttonParams.width = buttonParams.WRAP_CONTENT;
-//                    name.setLayoutParams(buttonParams);
-//
-//                    buttonParams = (LinearLayout.LayoutParams) set2.getLayoutParams();
-//                    buttonParams.weight = 1;
-//                    buttonParams.width = buttonParams.WRAP_CONTENT;
-//                    set2.setLayoutParams(buttonParams);
-//
-//                    buttonParams = (LinearLayout.LayoutParams) name2.getLayoutParams();
-//                    buttonParams.weight = 1;
-//                    buttonParams.width = buttonParams.WRAP_CONTENT;
-//                    name2.setLayoutParams(buttonParams);
-
+                    set.setWidth(200);
+                    set2.setWidth(200);
+                    name.setWidth(500);
+                    name2.setWidth(500);
 
                     LinearLayout ll_1 = new LinearLayout(Setexercise.this);
                     ll_1.setOrientation(LinearLayout.HORIZONTAL);

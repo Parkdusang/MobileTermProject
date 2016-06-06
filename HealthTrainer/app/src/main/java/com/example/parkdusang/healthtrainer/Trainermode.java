@@ -80,9 +80,7 @@ public class Trainermode extends AppCompatActivity {
 
         listView.setAdapter(adapter);
 
-        //     Log.i("testtttt", url);
 
-        //   Log.i("TAG", urlp);
         getData(url,urlp);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
