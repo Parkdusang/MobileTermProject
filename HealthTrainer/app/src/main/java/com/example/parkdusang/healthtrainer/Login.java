@@ -126,8 +126,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             Log.e("pass 1", "connection success ");
         } catch (Exception e) {
             Log.e("Fail 1", e.toString());
-            Toast.makeText(getApplicationContext(), "Invalid IP Address",
-                           Toast.LENGTH_LONG).show();
+
         }
         
         try {
@@ -194,6 +193,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             }
             
         } catch (Exception e) {
+            Intent intent = new Intent(getApplicationContext(),NetworkError.class);
+            startActivity(intent);
             Log.e("Fail 2", e.toString());
         }
 

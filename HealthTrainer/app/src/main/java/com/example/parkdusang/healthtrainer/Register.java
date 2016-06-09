@@ -74,7 +74,7 @@ public class Register extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "성별을 체크하시오", Toast.LENGTH_SHORT).show();
                 } else if (!ETpassword.getText().toString().equals(ETpasswordCheck.getText().toString())) {
                     Toast.makeText(getApplicationContext(), "비밀번호가 다릅니다.", Toast.LENGTH_SHORT).show();
-                } else if(!ETemail.getText().toString().contains("@") || !ETemail.getText().toString().contains(".") ){
+                } else if(!ETemail.getText().toString().contains("@") || !ETemail.getText().toString().contains(".") || ETemail.getText().length() <8){
                     Toast.makeText(getApplicationContext(), "이메일 형식이 잘못되었습니다.", Toast.LENGTH_SHORT).show();
                 }else {
 
@@ -167,6 +167,8 @@ public class Register extends AppCompatActivity {
                     }
                 } catch (Exception e) {
                     Log.e("Fail 2", e.toString());
+                    Intent intent = new Intent(getApplicationContext(),NetworkError.class);
+                    startActivity(intent);
                 }
 
 //                    try {

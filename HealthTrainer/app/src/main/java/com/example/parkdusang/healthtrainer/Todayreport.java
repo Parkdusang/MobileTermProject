@@ -116,6 +116,8 @@ public class Todayreport extends AppCompatActivity {
                     return sb.toString().trim();
                 } catch (Exception e) {
                     Log.e("Fail 2", e.toString());
+                    Intent intent = new Intent(getApplicationContext(),NetworkError.class);
+                    startActivity(intent);
                     return null;
                 }
 
@@ -123,7 +125,10 @@ public class Todayreport extends AppCompatActivity {
             }
             @Override
             protected void onPostExecute(String result) {
-                if(result.substring(0,2).equals("아직")){
+                if(result == null){
+
+                }
+                else if(result.substring(0,2).equals("아직")){
                     check =false;
                     tx.setText(result);
                 }

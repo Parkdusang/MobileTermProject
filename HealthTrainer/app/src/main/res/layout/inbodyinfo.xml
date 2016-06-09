@@ -36,7 +36,7 @@
                 android:layout_weight="0.5"
                 android:gravity="center"
                 android:text="키"
-                android:textSize="30dp"
+                android:textSize="27dp"
                 android:textColor="#406d93"
                 android:textColorHighlight="#5e809c"/>
 
@@ -60,7 +60,7 @@
                 android:layout_weight="0.5"
                 android:gravity="center"
                 android:text="몸무게"
-                android:textSize="30dp"
+                android:textSize="27dp"
                 android:textColor="#406d93"
                 android:textColorHighlight="#5e809c"/>
 
@@ -84,8 +84,8 @@
                 android:layout_height="40dp"
                 android:layout_weight="0.5"
                 android:gravity="center"
-                android:text="근육"
-                android:textSize="30dp"
+                android:text="근육량"
+                android:textSize="27dp"
                 android:textColor="#406d93"
                 android:textColorHighlight="#5e809c"/>
 
@@ -110,7 +110,7 @@
                 android:layout_weight="0.5"
                 android:gravity="center"
                 android:text="체지방량"
-                android:textSize="30dp"
+                android:textSize="27dp"
                 android:textColor="#406d93"
                 android:textColorHighlight="#5e809c"/>
 
@@ -135,7 +135,7 @@
                 android:layout_weight="0.5"
                 android:gravity="center"
                 android:text="체지방률"
-                android:textSize="30dp"
+                android:textSize="27dp"
                 android:textColor="#406d93"
                 android:textColorHighlight="#5e809c"/>
 
@@ -159,7 +159,7 @@
                 android:layout_weight="0.5"
                 android:gravity="center"
                 android:text="BMI"
-                android:textSize="30dp"
+                android:textSize="27dp"
                 android:textColor="#406d93"
                 android:textColorHighlight="#5e809c"/>
 

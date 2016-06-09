@@ -159,6 +159,8 @@ public class Recodeexercise extends AppCompatActivity {
                     return sb.toString().trim();
                 } catch (Exception e) {
                     Log.e("Fail 2", e.toString());
+                    Intent intent = new Intent(getApplicationContext(),NetworkError.class);
+                    startActivity(intent);
                     return null;
                 }
 
@@ -167,6 +169,7 @@ public class Recodeexercise extends AppCompatActivity {
             @Override
             protected void onPostExecute(String result) {
                 myJSON2 = result;
+                if(myJSON2 != null)
                 showList();
             }
         }

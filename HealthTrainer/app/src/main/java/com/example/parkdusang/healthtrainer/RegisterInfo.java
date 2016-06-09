@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
@@ -82,8 +81,8 @@ public class RegisterInfo extends Activity{
             Log.e("pass1", "connection success ");
         } catch (Exception e) {
             Log.e("Fail1", e.toString());
-            Toast.makeText(getApplicationContext(), "Invalid IP Address",
-                    Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(getApplicationContext(),NetworkError.class);
+            startActivity(intent);
         }
     }
 }

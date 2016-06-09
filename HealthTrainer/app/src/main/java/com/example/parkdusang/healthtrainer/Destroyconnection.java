@@ -62,6 +62,7 @@ public class Destroyconnection extends IntentService {
 
         }
     }
+    // 트레이너용 연결해제
     public void deletedt(String id, String name, String phone){
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         Log.i("TAG", "deletedt: "+ id + " "+ name+" " + phone);
@@ -82,6 +83,7 @@ public class Destroyconnection extends IntentService {
         }
     }
 
+    //고객용 연결해제
     public void deletedc(String id){
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 

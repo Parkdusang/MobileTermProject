@@ -101,7 +101,8 @@ public class ExerciseInformation extends AppCompatActivity {
 
                     return sb.toString().trim();
                 } catch (Exception e) {
-                    Log.e("Fail 2", e.toString());
+                    Intent intent = new Intent(getApplicationContext(),NetworkError.class);
+                    startActivity(intent);
                     return null;
                 }
 
@@ -109,6 +110,7 @@ public class ExerciseInformation extends AppCompatActivity {
 
             @Override
             protected void onPostExecute(String result) {
+                if(result != null)
                 tx.setText(result);
             }
         }

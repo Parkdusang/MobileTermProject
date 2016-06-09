@@ -1,5 +1,6 @@
 package com.example.parkdusang.healthtrainer;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -156,6 +157,8 @@ public class Customercontent2 extends Fragment{
                     return sb.toString().trim();
                 } catch (Exception e) {
                     Log.e("Fail 2", e.toString());
+                    Intent intent = new Intent(getActivity(),NetworkError.class);
+                    startActivity(intent);
                     return null;
                 }
 
@@ -164,7 +167,8 @@ public class Customercontent2 extends Fragment{
             @Override
             protected void onPostExecute(String result) {
                 myJSON2 = result;
-                showList();
+               if(myJSON2 != null)
+                   showList();
             }
         }
 

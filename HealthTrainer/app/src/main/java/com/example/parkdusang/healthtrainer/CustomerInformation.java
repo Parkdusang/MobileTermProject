@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -232,8 +231,8 @@ public class CustomerInformation extends AppCompatActivity {
             Log.e("pass1", "connection success ");
         } catch (Exception e) {
             Log.e("Fail1", e.toString());
-            Toast.makeText(getApplicationContext(), "Invalid IP Address",
-                    Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(getApplicationContext(),NetworkError.class);
+            startActivity(intent);
         }
     }
     protected void showList() {
@@ -315,6 +314,8 @@ public class CustomerInformation extends AppCompatActivity {
 
                     return sb.toString().trim();
                 } catch (Exception e) {
+                    Intent intent = new Intent(getApplicationContext(),NetworkError.class);
+                    startActivity(intent);
                     Log.e("Fail 2", e.toString());
                     return null;
                 }
@@ -324,7 +325,8 @@ public class CustomerInformation extends AppCompatActivity {
             @Override
             protected void onPostExecute(String result) {
                 myJSON = result;
-                showList();
+                if(myJSON != null)
+                    showList();
             }
         }
 

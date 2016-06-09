@@ -1,5 +1,6 @@
 package com.example.parkdusang.healthtrainer;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -72,7 +73,7 @@ public class Customercontent4 extends Fragment{
 
 
                 }
-                report += cc4edit.getText().toString();
+                report += "- - - - - - - - - - - - - - - - - -\n"+cc4edit.getText().toString();
                 checkexercise(report,2);
                 new Thread(new Runnable() {
                     @Override
@@ -166,7 +167,7 @@ public class Customercontent4 extends Fragment{
             Log.e("pass1", "connection success ");
         } catch (Exception e) {
             Log.e("Fail1", e.toString());
-            Toast.makeText(getActivity(), "Invalid IP Address",
+            Toast.makeText(getActivity(), "네트워크 연결이 되지않습니다.",
                     Toast.LENGTH_LONG).show();
         }
     }
@@ -245,6 +246,8 @@ public class Customercontent4 extends Fragment{
 
                     return sb.toString().trim();
                 } catch (Exception e) {
+                    Intent intent = new Intent(getActivity(),NetworkError.class);
+                    startActivity(intent);
                     Log.e("Fail 2", e.toString());
                     return null;
                 }
@@ -254,7 +257,8 @@ public class Customercontent4 extends Fragment{
             @Override
             protected void onPostExecute(String result) {
                 myJSON = result;
-                showList();
+                if(myJSON != null)
+                    showList();
                 //showList2();
             }
         }

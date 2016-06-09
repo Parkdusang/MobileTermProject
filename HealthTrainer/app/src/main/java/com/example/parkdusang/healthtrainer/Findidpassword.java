@@ -1,5 +1,6 @@
 package com.example.parkdusang.healthtrainer;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -104,7 +105,8 @@ public class Findidpassword extends AppCompatActivity {
 
                     return sb.toString().trim();
                 } catch (Exception e) {
-                    Log.e("Fail 2", e.toString());
+                    Intent intent = new Intent(getApplicationContext(),NetworkError.class);
+                    startActivity(intent);
                     return null;
                 }
 
@@ -119,7 +121,7 @@ public class Findidpassword extends AppCompatActivity {
                 else if(result.substring(0,4).equals("note")){
                     Toast.makeText(getApplicationContext(),"입력하신 정보가 맞지 않습니다." ,Toast.LENGTH_SHORT).show();
                 }
-                else{
+                else if(result != null){
                     Toast.makeText(getApplicationContext(),"아이뒤는 " + result + " 입니다." ,Toast.LENGTH_SHORT).show();
                 }
             }
@@ -179,7 +181,10 @@ public class Findidpassword extends AppCompatActivity {
 
             @Override
             protected void onPostExecute(String result) {
-                if(result.substring(0,4).equals("noti")){
+                if(result == null){
+
+                }
+                else if(result.substring(0,4).equals("noti")){
                     Toast.makeText(getApplicationContext(),"아이뒤가 존재하지 않습니다" ,Toast.LENGTH_SHORT).show();
                 }
                 else if(result.substring(0,4).equals("note")){

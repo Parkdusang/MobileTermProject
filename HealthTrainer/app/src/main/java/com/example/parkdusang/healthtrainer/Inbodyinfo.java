@@ -101,7 +101,7 @@ public class Inbodyinfo extends AppCompatActivity {
         try {
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost(url);
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8"));
             httpclient.execute(httppost);
             Log.e("pass1", "connection success ");
         } catch (Exception e) {
@@ -147,7 +147,7 @@ public class Inbodyinfo extends AppCompatActivity {
                 try {
                     HttpClient httpclient = new DefaultHttpClient();
                     HttpPost httppost = new HttpPost(uri);
-                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
+                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs, "UTF-8"));
                     HttpResponse response = httpclient.execute(httppost);
                     HttpEntity entity = response.getEntity();
                     is = entity.getContent();
@@ -173,6 +173,8 @@ public class Inbodyinfo extends AppCompatActivity {
                     return sb.toString().trim();
                 } catch (Exception e) {
                     Log.e("Fail 2", e.toString());
+                    Intent intent = new Intent(getApplicationContext(), NetworkError.class);
+                    startActivity(intent);
                     return null;
                 }
 
@@ -181,7 +183,8 @@ public class Inbodyinfo extends AppCompatActivity {
             @Override
             protected void onPostExecute(String result) {
                 myJSON = result;
-                showList();
+                if (myJSON != null)
+                    showList();
             }
         }
 

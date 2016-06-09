@@ -43,7 +43,7 @@ public class Answerclass extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String result = "트레이너 :"+ed.getText().toString() + "\n ---------- \n" + tx.getText().toString();
+                final String result = "트레이너 :"+ed.getText().toString() + "\n- - - - - - - - - - - - - - - - - -\n" + tx.getText().toString();
 
                 new Thread(new Runnable() {
                     public void run() {
@@ -73,10 +73,17 @@ public class Answerclass extends AppCompatActivity {
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
             httpclient.execute(httppost);
             Log.e("pass1", "connection success ");
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(getApplicationContext(), "피드백 전송이 완료되었습니다. ", Toast.LENGTH_SHORT).show();
+                }
+            });
         } catch (Exception e) {
             Log.e("Fail1", e.toString());
-            Toast.makeText(getApplicationContext(), "Invalid IP Address",
-                    Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(getApplicationContext(),NetworkError.class);
+            startActivity(intent);
         }
     }
 

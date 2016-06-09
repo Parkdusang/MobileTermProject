@@ -203,8 +203,8 @@ public class Customercontent1 extends Fragment {
             Log.e("pass1", "connection success ");
         } catch (Exception e) {
             Log.e("Fail1", e.toString());
-            Toast.makeText(getActivity(), "Invalid IP Address",
-                    Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(getActivity(),NetworkError.class);
+            startActivity(intent);
         }
     }
 
@@ -306,6 +306,8 @@ public class Customercontent1 extends Fragment {
                     Log.e("1223", result);
                     return sb.toString().trim();
                 } catch (Exception e) {
+                    Intent intent = new Intent(getActivity(),NetworkError.class);
+                    startActivity(intent);
                     Log.e("Fail 2", e.toString());
                     return null;
                 }
@@ -315,6 +317,7 @@ public class Customercontent1 extends Fragment {
             @Override
             protected void onPostExecute(String result) {
                 myJSON = result;
+                if(myJSON != null)
                 showList();
             }
         }

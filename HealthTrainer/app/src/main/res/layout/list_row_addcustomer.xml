@@ -41,10 +41,11 @@
 
     </LinearLayout>
     <CheckBox
+
         android:id="@+id/checkbox12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#54d9a3"
+        android:background="#e2dea1"
         android:checked="false"
         android:clickable="false"
         android:focusable="false"/>

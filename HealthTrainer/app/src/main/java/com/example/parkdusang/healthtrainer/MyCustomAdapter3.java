@@ -64,14 +64,18 @@ public class MyCustomAdapter3 extends BaseAdapter {
         CheckBox box = (CheckBox)v.findViewById(R.id.checkbox12);
 
         MyCustomDTOAddCustim dto = list.get(position);
-        txtTitle.setText(dto.getTitle());
-        txtContent.setText(dto.getContent());
-        imgIcon.setImageResource(dto.getImgIcon());
-        if(dto.getCheckboxt())
-            box.setChecked(true);
-        else{
-            box.setChecked(false);
+
+        if(!dto.getnullinput()) {
+            txtTitle.setText(dto.getTitle());
+            txtContent.setText(dto.getContent());
+            imgIcon.setImageResource(dto.getImgIcon());
+            if (dto.getCheckboxt())
+                box.setChecked(true);
+            else {
+                box.setChecked(false);
+            }
         }
+
         return v;
     }
 

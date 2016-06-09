@@ -286,6 +286,9 @@ public class Setexercise extends AppCompatActivity {
                     return sb.toString().trim();
 
                 } catch (Exception e) {
+
+                    Intent intent = new Intent(getApplicationContext(), NetworkError.class);
+                    startActivity(intent);
                     return null;
 
 
@@ -296,7 +299,8 @@ public class Setexercise extends AppCompatActivity {
             @Override
             protected void onPostExecute(String result) {
                 myJSON = result;
-                showList();
+                if (myJSON != null)
+                    showList();
             }
         }
         GetDataJSON g = new GetDataJSON();

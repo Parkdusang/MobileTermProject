@@ -133,7 +133,8 @@ public class Connectionwaiting extends AppCompatActivity {
                     Log.e("pass 1", sb.toString());
                     return sb.toString().trim();
                 } catch (Exception e) {
-                    Log.e("Fail 2", e.toString());
+                    Intent intent = new Intent(getApplicationContext(),NetworkError.class);
+                    startActivity(intent);
                     return null;
                 }
 
@@ -141,7 +142,8 @@ public class Connectionwaiting extends AppCompatActivity {
 
             @Override
             protected void onPostExecute(String result) {
-                txt.setText(result +" 트레이너와 공유하시겠습니까?");
+                if(result != null)
+                    txt.setText(result +" 트레이너와 공유하시겠습니까?");
             }
         }
         GetDataJSON g = new GetDataJSON();

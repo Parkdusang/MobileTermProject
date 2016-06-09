@@ -1,5 +1,6 @@
 package com.example.parkdusang.healthtrainer;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -31,7 +32,6 @@ import java.util.concurrent.ExecutionException;
 
 public class Customercontent3 extends Fragment{
 
-    int bar1rate,bar2rate,bar3rate,bar4rate,bar5rate;
 
     TextView cc3Txt1,cc3Txt2,cc3Txt3,cc3Txt4,cc3Txt5;
     ProgressBar cc3Pbar1,cc3Pbar2,cc3Pbar3,cc3Pbar4,cc3Pbar5;
@@ -41,6 +41,7 @@ public class Customercontent3 extends Fragment{
     String myJSON;
     String result = null;
     String line = null;
+    int sex;
 
     InputStream is = null;
     JSONArray peoples;
@@ -86,37 +87,88 @@ public class Customercontent3 extends Fragment{
 
             for (int i = 0; i < peoples.length(); i++) {
                 JSONObject c = peoples.getJSONObject(i);
-                String name = c.getString("name"); // 이름
-                height = c.getDouble("height"); // 키
-                muscle = c.getDouble("muscle"); // 근육
-                bodyfat = c.getDouble("bodyfat"); // 지방
-                weight = c.getDouble("weight"); // 몸무게
-                persentfat =  c.getDouble("persentfat"); // 지방률
-                BMI =c.getDouble("BMI"); //M
+                if (i == 0) {
+                    String name = c.getString("name"); // 이름
+                    height = c.getDouble("height"); // 키
+                    muscle = c.getDouble("muscle"); // 근육
+                    bodyfat = c.getDouble("bodyfat"); // 지방
+                    weight = c.getDouble("weight"); // 몸무게
+                    persentfat = c.getDouble("persentfat"); // 지방률
+                    BMI = c.getDouble("BMI"); //M
+                } else {
+                    sex = c.getInt("sex");
+                }
 
-                int fatRate=(int) (bodyfat / weight * 100)-9;
-
-                cc3Txt1.setText("" + weight);
-                cc3Txt2.setText(""+(int)(muscle/weight*100));
-                cc3Txt3.setText(""+bodyfat);
-                cc3Txt4.setText("" +fatRate);
-                cc3Txt5.setText("" + (int) ((weight / (height * height))*10000));
-
-
-                cc3Pbar1.setProgress((int)(weight-height)+124);
-                cc3Pbar2.setProgress((int) (muscle / weight * 100)-25);
-                cc3Pbar3.setProgress((int) (bodyfat / weight * 100)-9);
-                cc3Pbar4.setProgress((int) (bodyfat / weight * 100)-9);
-                cc3Pbar5.setProgress((int) ((weight / (height * height))*10000)-13);
-
-                Log.d("97979219", height + " " + weight + " " + muscle + " " + bodyfat + " " + persentfat + " " + BMI + " ");
-                int tmp=(int) (weight - height) + 124;
-                int tmp1=(int) (muscle / weight * 100) - 25;
-                int tmp2=(int) (bodyfat / weight * 100)-9;
-                int tmp3=(int) (weight / (height * height) *10000)-13;
-                Log.d("97979219",tmp+" "+tmp1+" "+tmp2+" "+tmp3);
             }
+            int fatRate = (int) ((bodyfat / weight) * 100);
+//남자 1 여자 2
+            cc3Txt1.setText("" + weight);
+            cc3Txt2.setText("" + muscle);
+            cc3Txt3.setText("" + bodyfat);
+            cc3Txt4.setText("" + fatRate);
+            cc3Txt5.setText("" + (int) ((weight / (height * height)) * 10000));
 
+            if (sex == 1) {//남성일 경우
+                cc3Pbar1.setProgress((int) (weight - height) + 124);//
+                int muscleAmount=(int)((muscle/weight)*100);
+                int fatAmount=(int)((bodyfat/weight)*100);
+
+                if(muscleAmount>=40||muscleAmount<=50)
+                    cc3Pbar2.setProgress((int)(muscleAmount*1.2));
+                else if(muscleAmount<40)
+                    cc3Pbar2.setProgress((int)(muscleAmount*0.75));
+                else
+                    cc3Pbar2.setProgress((int)(muscleAmount*1.2));
+
+                if(fatAmount>=10||fatAmount<=20) {
+                    cc3Pbar3.setProgress(fatAmount*3);
+                    cc3Pbar4.setProgress(fatAmount*3);
+                }
+                else if(fatAmount<10) {
+                    cc3Pbar3.setProgress(fatAmount*3);
+                    cc3Pbar4.setProgress(fatAmount*3);
+                }
+                else {
+                    cc3Pbar3.setProgress(fatAmount*3);
+                    cc3Pbar4.setProgress(fatAmount*3);
+                }
+
+                cc3Pbar5.setProgress((int) ((weight / (height * height)) * 10000) - 13);//
+            }
+            else
+            {
+                cc3Pbar1.setProgress((int) (weight - height) + 124);//
+                int muscleAmount=(int)((muscle/weight)*100);
+                int fatAmount=(int)((bodyfat/weight)*100);
+
+                if(muscleAmount>=34||muscleAmount<=44)
+                    cc3Pbar2.setProgress((int)(muscleAmount*1.36));
+                else if(muscleAmount<34)
+                    cc3Pbar2.setProgress((int)(muscleAmount*0.88));
+                else
+                    cc3Pbar2.setProgress((int)(muscleAmount*1.36));
+
+                if(fatAmount>=18||fatAmount<=28) {
+                    cc3Pbar3.setProgress((int)(fatAmount*2.1));
+                    cc3Pbar4.setProgress((int)(fatAmount*2.1));
+                }
+                else if(fatAmount<18) {
+                    cc3Pbar3.setProgress((int)(fatAmount*1.7));
+                    cc3Pbar4.setProgress((int)(fatAmount*1.7));
+                }
+                else {
+                    cc3Pbar3.setProgress((int)(fatAmount*2.06));
+                    cc3Pbar4.setProgress((int)(fatAmount*2.06));
+                }
+
+                cc3Pbar5.setProgress((int) ((weight / (height * height)) * 10000) - 13);//
+            }
+            Log.d("97979219", height + " " + weight + " " + muscle + " " + bodyfat + " " + persentfat + " " + BMI + " ");
+            int tmp = (int) (weight - height) + 124;
+            int tmp1 = (int) (muscle / weight * 100) - 25;
+            int tmp2 = (int) (bodyfat / weight * 100) - 9;
+            int tmp3 = (int) (weight / (height * height) * 10000) - 13;
+            Log.d("97979219", tmp + " " + tmp1 + " " + tmp2 + " " + tmp3);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -164,6 +216,8 @@ public class Customercontent3 extends Fragment{
                     return sb.toString().trim();
                 } catch (Exception e) {
                     Log.e("Fail 2", e.toString());
+                    Intent intent = new Intent(getActivity(),NetworkError.class);
+                    startActivity(intent);
                     return null;
                 }
 
@@ -172,7 +226,9 @@ public class Customercontent3 extends Fragment{
             @Override
             protected void onPostExecute(String result) {
                 myJSON = result;
-                saveList();
+
+                if(myJSON != null)
+                    saveList();
 
             }
         }

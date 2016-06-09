@@ -188,8 +188,8 @@ public class AddCustomer extends AppCompatActivity {
             Log.e("pass1", "connection success ");
         } catch (Exception e) {
             Log.e("Fail1", e.toString());
-            Toast.makeText(getApplicationContext(), "Invalid IP Address",
-                    Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(getApplicationContext(),NetworkError.class);
+            startActivity(intent);
         }
     }
     protected void showList() {
@@ -230,6 +230,7 @@ public class AddCustomer extends AppCompatActivity {
 
 
             list.add(new MyCustomDTOAddCustim(false, "아직 추가된 유저가 없습니다.", "", R.drawable.user1));
+            list.get(0).setnullinput(true);
             adapter3.notifyDataSetChanged();
             e.printStackTrace();
         }
@@ -300,6 +301,8 @@ public class AddCustomer extends AppCompatActivity {
 
                     return sb.toString().trim();
                 } catch (Exception e) {
+                    Intent intent = new Intent(getApplicationContext(),NetworkError.class);
+                    startActivity(intent);
                     Log.e("Fail 2", e.toString());
                     return null;
                 }
@@ -310,6 +313,7 @@ public class AddCustomer extends AppCompatActivity {
             protected void onPostExecute(String result) {
 
                 myJSON = result;
+                if(myJSON != null)
                 showList();
             }
         }

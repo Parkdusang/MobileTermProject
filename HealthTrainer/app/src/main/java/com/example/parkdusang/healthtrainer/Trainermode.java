@@ -203,6 +203,8 @@ public class Trainermode extends AppCompatActivity {
 
                     return sb.toString().trim();
                 } catch (Exception e) {
+                    Intent intent = new Intent(getApplicationContext(),NetworkError.class);
+                    startActivity(intent);
                     Log.e("Fail 2", e.toString());
                     return null;
                 }
@@ -233,6 +235,7 @@ public class Trainermode extends AppCompatActivity {
             @Override
             protected void onPostExecute(String result) {
                 myJSON = result;
+                if(myJSON != null)
                 showList();
             }
         }
