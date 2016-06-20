@@ -33,7 +33,7 @@
             android:id="@+id/txtContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Small Text"
+            android:text=""
             android:textSize="20dp"
             android:textColor="#7e7e7e"
             android:textColorHighlight="#9b9a9a"

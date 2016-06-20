@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_register"
-    tools:context="com.example.parkdusang.healthtrainer.customermode">
+    tools:context="com.fitcen.parkdusang.healthtrainer.customermode">
 
     <LinearLayout
         android:layout_width="match_parent"

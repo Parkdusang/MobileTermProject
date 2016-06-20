@@ -191,7 +191,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/cc3Bar2"
-                        android:max="39"/>
+                        android:max="90"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -280,7 +280,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/cc3Bar3"
-                        android:max="36"/>
+                        android:max="90"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -368,7 +368,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/cc3Bar4"
-                        android:max="36"/>
+                        android:max="90"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

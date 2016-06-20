@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.parkdusang.healthtrainer">
+    package="com.fitcen.parkdusang.healthtrainer">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -24,7 +24,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SplashActivity"
+            android:name="com.fitcen.parkdusang.healthtrainer.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,85 +33,85 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.fitcen.parkdusang.healthtrainer.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Trainermode"
+            android:name="com.fitcen.parkdusang.healthtrainer.Trainermode"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Login"
+            android:name="com.fitcen.parkdusang.healthtrainer.Login"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".AddCustomer"
+            android:name="com.fitcen.parkdusang.healthtrainer.AddCustomer"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Register"
+            android:name="com.fitcen.parkdusang.healthtrainer.Register"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".RegisterInfo"
+            android:name="com.fitcen.parkdusang.healthtrainer.RegisterInfo"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Customercontent1"
+            android:name="com.fitcen.parkdusang.healthtrainer.Customercontent1"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Customercontent2"
+            android:name="com.fitcen.parkdusang.healthtrainer.Customercontent2"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Customercontent3"
+            android:name="com.fitcen.parkdusang.healthtrainer.Customercontent3"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CustomerInformation"
+            android:name="com.fitcen.parkdusang.healthtrainer.CustomerInformation"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Setexercise"
+            android:name="com.fitcen.parkdusang.healthtrainer.Setexercise"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Todayreport"
+            android:name="com.fitcen.parkdusang.healthtrainer.Todayreport"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CreateExercise"
+            android:name="com.fitcen.parkdusang.healthtrainer.CreateExercise"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Customercontent4"
+            android:name="com.fitcen.parkdusang.healthtrainer.Customercontent4"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Connectionwaiting"
+            android:name="com.fitcen.parkdusang.healthtrainer.Connectionwaiting"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Answerclass"
+            android:name="com.fitcen.parkdusang.healthtrainer.Answerclass"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Inbodyinfo"
+            android:name="com.fitcen.parkdusang.healthtrainer.Inbodyinfo"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Recodeexercise"
+            android:name="com.fitcen.parkdusang.healthtrainer.Recodeexercise"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainTab"
+            android:name="com.fitcen.parkdusang.healthtrainer.MainTab"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <receiver
-            android:name=".GCMBroadcastReceiver"
+            android:name="com.fitcen.parkdusang.healthtrainer.GCMBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
 
@@ -127,22 +127,22 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".ExerciseInformation"
+            android:name="com.fitcen.parkdusang.healthtrainer.ExerciseInformation"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Findidpassword"
+            android:name="com.fitcen.parkdusang.healthtrainer.Findidpassword"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Developer"
+            android:name="com.fitcen.parkdusang.healthtrainer.Developer"
             android:screenOrientation="portrait" />
 
         <service
-            android:name=".Destroyconnection"
+            android:name="com.fitcen.parkdusang.healthtrainer.Destroyconnection"
             android:exported="false" />
 
-        <activity android:name=".NetworkError"></activity>
+        <activity android:name="com.fitcen.parkdusang.healthtrainer.NetworkError"></activity>
     </application>
 
 </manifest>

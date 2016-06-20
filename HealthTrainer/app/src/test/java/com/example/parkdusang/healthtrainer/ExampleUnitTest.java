@@ -1,4 +1,4 @@
-package com.example.parkdusang.healthtrainer;
+package com.fitcen.parkdusang.healthtrainer;
 
 import org.junit.Test;
 
