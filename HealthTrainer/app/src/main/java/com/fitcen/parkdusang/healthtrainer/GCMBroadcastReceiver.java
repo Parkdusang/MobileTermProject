@@ -36,7 +36,16 @@ public class GCMBroadcastReceiver  extends WakefulBroadcastReceiver {
 
     private void sendNotification(String title, String message) {
 
-        Intent intent = new Intent(mContext, MainActivity.class);
+        Intent intent = new Intent(mContext, Login.class);
+        if(message.substring(0,3).equals("트레이")){
+
+            Log.i("testset", message.substring(0,3) + " 2");
+            intent.putExtra("sign",Integer.parseInt("2"));
+        }
+        else{
+            Log.i("testset", message.substring(0,3)+ " 1");
+            intent.putExtra("sign",Integer.parseInt("1"));
+        }
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(mContext, 0, intent,
                 PendingIntent.FLAG_ONE_SHOT);
