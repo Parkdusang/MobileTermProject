@@ -22,6 +22,7 @@ import java.util.ArrayList;
  */
 public class RegisterInfo extends Activity{
     String url ="http://pesang72.cafe24.com/UpdateType.php";
+    private String url3 = "http://pesang72.cafe24.com/GCMservice.php";
     int editID[] = {R.id.ri_fweight,R.id.ri_gweight,R.id.ri_height};
     int btnID[]={R.id.ri_ok};
     EditText oneword;
@@ -57,12 +58,38 @@ public class RegisterInfo extends Activity{
                     Updatetype2(1, id, ri_Edit[0].getText().toString(),ri_Edit[1].getText().toString(),ri_Edit[2].getText().toString(),oneword.getText().toString());
                 }
             }).start();
+            new Thread(new Runnable() {
+                public void run() {
+                    gcmpush(id);
+                }
+            }).start();
+
             Intent myAct1 = new Intent(getApplicationContext(), MainTab.class);
             myAct1.putExtra("_id",id);
             startActivity(myAct1);
 
         }
     }
+
+    public void gcmpush(String id){
+        ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs.add(new BasicNameValuePair("check", "6"));
+        nameValuePairs.add(new BasicNameValuePair("customerid", id));
+
+
+        try {
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost(url3);
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
+            httpclient.execute(httppost);
+            Log.e("pass1", "connection success ");
+        } catch (Exception e) {
+            Log.e("Fail1", e.toString());
+            Intent intent = new Intent(getApplicationContext(),NetworkError.class);
+            startActivity(intent);
+        }
+    }
+
     public void Updatetype2(int check,String ids,String present1, String goal, String height,String oneword){
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         nameValuePairs.add(new BasicNameValuePair("mode", "3"));

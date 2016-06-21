@@ -48,6 +48,7 @@ public class AddCustomer extends AppCompatActivity {
     private static final String TAG_SEX = "sex";
     private String url = "http://pesang72.cafe24.com/connecttranirdb.php";
     private String url2 = "http://pesang72.cafe24.com/UpdateType.php";
+    private String url3 = "http://pesang72.cafe24.com/GCMservice.php";
     String trainrid;
     Boolean checkuser;
 
@@ -87,6 +88,11 @@ public class AddCustomer extends AppCompatActivity {
                             new Thread(new Runnable() {
                                 public void run() {
                                     Updatetype(list.get(i).getContent(), trainrid);
+                                }
+                            }).start();
+                            new Thread(new Runnable() {
+                                public void run() {
+                                    gcmpush(list.get(i).getContent(), trainrid);
                                 }
                             }).start();
                             break;
@@ -149,8 +155,6 @@ public class AddCustomer extends AppCompatActivity {
 
 
 
-
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -173,6 +177,29 @@ public class AddCustomer extends AppCompatActivity {
         });
 
     }
+
+    public void gcmpush(String phone , String trainerid){
+        ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+        nameValuePairs.add(new BasicNameValuePair("check", "5"));
+        nameValuePairs.add(new BasicNameValuePair("phone",phone));
+        nameValuePairs.add(new BasicNameValuePair("trainr_id", trainerid));
+
+
+        try {
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost(url3);
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
+            httpclient.execute(httppost);
+            Log.e("pass1", "connection success ");
+        } catch (Exception e) {
+            Log.e("Fail1", e.toString());
+            Intent intent = new Intent(getApplicationContext(),NetworkError.class);
+            startActivity(intent);
+        }
+    }
+
+
+
     public void Updatetype(String phone,String trainrid){
         ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
         nameValuePairs.add(new BasicNameValuePair("mode", "1"));
