@@ -22,7 +22,7 @@ import java.util.ArrayList;
  */
 public class RegisterInfo extends Activity{
     String url ="http://pesang72.cafe24.com/UpdateType.php";
-    private String url3 = "http://pesang72.cafe24.com/GCMservice.php";
+    String url3 = "http://pesang72.cafe24.com/GCMservice.php";
     int editID[] = {R.id.ri_fweight,R.id.ri_gweight,R.id.ri_height};
     int btnID[]={R.id.ri_ok};
     EditText oneword;
